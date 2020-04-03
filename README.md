@@ -49,3 +49,20 @@ Extras:
 ![Extra route result page design](doc/extra-route-result-page.png)
 
 ***REMARK:** These extras will be implemented after the main app is completed and if they can be realized (else they'll be excluded)*
+
+## Prerequisites
+Datasource:
+* any route map of a transport network
+
+External Components:
+* SQLAlchemy
+* Bootstrap
+
+Similar Apps (for example):
+* https://www.keikyu.co.jp/ride/kakueki/
+* https://railway.tobu.co.jp/guide/line/tojo_line.html
+I do not know the tecniques they use but somewhere like this
+
+Hardest part:
+* Routeplanner - will do this if everything else is ok
+* Types - a lot easier than the routeplanner but harder than the normal part
