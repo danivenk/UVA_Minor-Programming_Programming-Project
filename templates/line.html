@@ -1,0 +1,43 @@
+<!--
+    lines page
+    it extends from layout.html
+    
+    references:
+        https://jinja.palletsprojects.com/en/2.11.x/templates/
+
+    Dani van Enk, 11823526
+-->
+
+{% extends "layout.html" %}
+
+<!-- title of the page -->
+{% block title %}
+    Lines
+{% endblock %}
+
+<!-- content of the page -->
+{% block content %}
+    <h1>{{ line }}</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6">
+            {{ line.stops | first }} - {{ line.stops | last}}<br>
+            {{ line.stops | length}} stops
+        </div>
+        <div class="col-sm-6">
+            <ul>
+                {% for stop in line.stops %}
+                    <li>
+                        {{ stop }} - 
+                        {% for line in stop.lines %}
+                            {{ line }}
+                            {% if not loop.last %}
+                                , 
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

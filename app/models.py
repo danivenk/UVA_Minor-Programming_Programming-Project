@@ -91,3 +91,31 @@ class AnonymousUser(AnonymousUserMixin):
     @property
     def admin(self):
         return False
+
+
+stop_line = db.Table('stop_line_association',
+                     db.Column('stop_id', db.ForeignKey('stops.id'),
+                               primary_key=True),
+                     db.Column('line_id', db.ForeignKey('lines.id'),
+                               primary_key=True)
+                     )
+
+
+class Stop(db.Model):
+    __tablename__ = "stops"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=True)
+    lines = db.relationship("Line", secondary=stop_line)
+
+    def __repr__(self):
+        return self.name
+
+
+class Line(db.Model):
+    __tablename__ = "lines"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=True)
+    stops = db.relationship("Stop", secondary=stop_line)
+
+    def __repr__(self):
+        return self.name + " Line"

@@ -1,0 +1,29 @@
+<!--
+    lines page
+    it extends from layout.html
+    
+    references:
+        https://jinja.palletsprojects.com/en/2.11.x/templates/
+
+    Dani van Enk, 11823526
+-->
+
+{% extends "layout.html" %}
+
+<!-- title of the page -->
+{% block title %}
+    Lines
+{% endblock %}
+
+<!-- content of the page -->
+{% block content %}
+    <h1>Lines</h1>
+    <hr>
+    <ul class="row">
+        {% for line in lines %}
+            <a class="card col-sm-3", href="{{ url_for('line', id=line.id) }}">
+                <li>{{ line }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+{% endblock %}

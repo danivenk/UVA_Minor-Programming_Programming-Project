@@ -72,16 +72,41 @@ class AdminView(ModelView):
     column_exclude_list = ["password"]
     form_exclude_columns = ["Order"]
 
-    def is_accessible(self):
-        """
-        check if current_user is admin, return true if so else false
-        """
+    # def is_accessible(self):
+    #     """
+    #     check if current_user is admin, return true if so else false
+    #     """
 
-        return current_user.admin
+    #     return current_user.admin
 
-    def inaccessible_callback(self, name, **kwargs):
-        """
-        redirect to site home if user isn't admin
-        """
+    # def inaccessible_callback(self, name, **kwargs):
+    #     """
+    #     redirect to site home if user isn't admin
+    #     """
 
-        return redirect(url_for('index'))
+    #     return redirect(url_for('index'))
+
+
+class NetworkView(ModelView):
+    """
+    Here the NetworkView class is defined
+        it's based on the ModelView class
+
+    methods:
+        is_accessible           - returns if current_user is admin;
+        inaccessible_callback   - redirects to site index if inaccessible
+    """
+
+    # def is_accessible(self):
+    #     """
+    #     check if current_user is admin, return true if so else false
+    #     """
+
+    #     return current_user.admin
+
+    # def inaccessible_callback(self, name, **kwargs):
+    #     """
+    #     redirect to site home if user isn't admin
+    #     """
+
+    #     return redirect(url_for('index'))

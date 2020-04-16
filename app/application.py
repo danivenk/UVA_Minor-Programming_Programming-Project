@@ -8,17 +8,18 @@ Dani van Enk, 11823526
 
 import os
 
-from flask import Flask, abort, request
+from flask import Flask, abort, request, render_template
 from flask_session import Session
 from flask_migrate import Migrate
 from flask_admin import Admin
 from flask_login import LoginManager
+from werkzeug.exceptions import default_exceptions, HTTPException
 
-from models import db, User, AnonymousUser
-from adminviews import AdminUserIndexView, AdminView
+from models import db, User, AnonymousUser, Stop, Line
+from adminviews import AdminUserIndexView, AdminView, NetworkView
 
 # Configure Flask app
-app = Flask(__name__)
+app = Flask(__name__, root_path=os.getcwd())
 
 # Configure database
 if not os.getenv("DATABASE_URL"):
@@ -40,6 +41,8 @@ Migrate(app, db)
 # admin setup
 admin = Admin(app, index_view=AdminUserIndexView())
 admin.add_view(AdminView(User, db.session))
+admin.add_view(NetworkView(Stop, db.session))
+admin.add_view(NetworkView(Line, db.session))
 
 # login setup
 login_manager = LoginManager(app)
@@ -63,7 +66,53 @@ def load_user(user_id):
 @app.route("/", methods=["GET"])
 def index():
 
-    if request.method == "GET":
+    if request.method not in request.url_rule.methods:
         abort(405)
 
-    return "Hello World"
+    return render_template("index.html")
+
+
+@app.route("/lines", methods=["GET"])
+def lines():
+
+    if request.method not in request.url_rule.methods:
+        abort(405)
+
+    return render_template("lines.html", lines=Line.query.all())
+
+
+@app.route("/line", methods=["GET"])
+def line():
+
+    if request.method not in request.url_rule.methods:
+        abort(405)
+
+    line_id = request.args.get('id', None)
+    current_line = Line.query.get(line_id)
+
+    return render_template("line.html", line=current_line)
+
+
+@app.errorhandler(HTTPException)
+def errorhandler(error):
+    """
+    Handle errors
+
+    used same code as in the exercise similarities
+
+    return error template
+
+    reused part of the code from the Survey and Similarities web apps
+        from UVA Mprog Programming 2 Module 10 - Web
+    """
+
+    # split the error into the header and message (index, 0 header, 1 text)
+    error_message = str(error).split(":")
+
+    return render_template("error.html", header=error_message[0],
+                           message=error_message[1]), error.code
+
+
+# https://github.com/pallets/flask/pull/2314
+for code in default_exceptions:
+    app.errorhandler(code)(errorhandler)
