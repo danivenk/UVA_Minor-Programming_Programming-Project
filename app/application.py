@@ -93,6 +93,27 @@ def line():
     return render_template("line.html", line=current_line)
 
 
+@app.route("/stops", methods=["GET"])
+def stops():
+
+    if request.method not in request.url_rule.methods:
+        abort(405)
+
+    return render_template("stops.html", stops=Stop.query.all())
+
+
+@app.route("/stop", methods=["GET"])
+def stop():
+
+    if request.method not in request.url_rule.methods:
+        abort(405)
+
+    stop_id = request.args.get('id', None)
+    current_stop = Stop.query.get(stop_id)
+
+    return render_template("stop.html", stop=current_stop)
+
+
 @app.errorhandler(HTTPException)
 def errorhandler(error):
     """

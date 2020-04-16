@@ -104,8 +104,26 @@ stop_line = db.Table('stop_line_association',
 class Stop(db.Model):
     __tablename__ = "stops"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=True)
+    name = db.Column(db.String, nullable=False)
+    location = db.Column(db.String, nullable=True)
     lines = db.relationship("Line", secondary=stop_line)
+
+    def get_neighbouring_stops(self):
+        neighbours = dict()
+
+        for line in self.lines:
+            for i, stop in enumerate(line.stops):
+                if stop == self and (i <= 0):
+                    neighbours[line.name] = \
+                        {"previous": None, "next": line.stops[i+1]}
+                elif stop == self and (i >= len(line.stops) - 1):
+                    neighbours[line.name] = \
+                        {"previous": line.stops[i-1], "next": None}
+                elif stop == self:
+                    neighbours[line.name] = \
+                        {"previous": line.stops[i-1], "next": line.stops[i+1]}
+
+        return neighbours
 
     def __repr__(self):
         return self.name

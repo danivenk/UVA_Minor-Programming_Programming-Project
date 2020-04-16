@@ -1,0 +1,56 @@
+<!--
+    stop page
+    it extends from layout.html
+    
+    references:
+        https://jinja.palletsprojects.com/en/2.11.x/templates/
+
+    Dani van Enk, 11823526
+-->
+
+{% extends "layout.html" %}
+
+<!-- title of the page -->
+{% block title %}
+    Stops
+{% endblock %}
+
+<!-- content of the page -->
+{% block content %}
+    <h1>{{ stop }}</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6">
+            {{ stop.location }}
+        </div>
+        <div class="col-sm-6">
+            <ul>
+                <h2>Transfers</h2>
+                {% for line in stop.lines %}
+                    {% set neighbours = stop.get_neighbouring_stops()[line.name] %}
+                    <li>
+                        <a href="{{ url_for('line', id=line.id) }}">{{ line }}</a>
+
+                        <ul>
+                            {% if neighbours.previous %}
+                                <li>
+                                    <a href="{{ url_for('stop', id=neighbours.previous.id) }}">
+                                        previous stop: {{ neighbours.previous }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if neighbours.next %}
+                                <li>
+                                    <a href="{{ url_for('stop', id=neighbours.next.id) }}">
+                                        next stop: {{ neighbours.next }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <hr>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

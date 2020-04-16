@@ -1,5 +1,5 @@
 <!--
-    lines page
+    line page
     it extends from layout.html
     
     references:
@@ -25,17 +25,27 @@
             {{ line.stops | length}} stops
         </div>
         <div class="col-sm-6">
+            <h2>Stops</h2>
             <ul>
                 {% for stop in line.stops %}
                     <li>
-                        {{ stop }} - 
-                        {% for line in stop.lines %}
-                            {{ line }}
-                            {% if not loop.last %}
-                                , 
-                            {% endif %}
-                        {% endfor %}
+                        <a href="{{ url_for('stop', id=stop.id) }}">
+                            {{ stop }}
+                        </a>
+                        
+                        <br>
+                        Transfers:
+                        <ul>
+                            {% for line in stop.lines %}
+                                <li>
+                                    <a href="{{ url_for('line', id=line.id) }}">
+                                        {{ line }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </li>
+                    <hr>
                 {% endfor %}
             </ul>
         </div>
