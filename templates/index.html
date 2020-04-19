@@ -18,16 +18,5 @@
 <!-- content of the page -->
 {% block content %}
     <h1>Welcome</h1>
-    <ul>
-        {% for line in lines %}
-            <li>
-                {{ line }}
-                <ul>
-                    {% for stop in line.stops %}
-                        <li>{{ stop }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
+    {{ text }}
 {% endblock %}

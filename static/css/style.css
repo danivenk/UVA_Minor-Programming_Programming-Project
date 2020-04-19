@@ -85,6 +85,10 @@ a.index {
 ul li {
   list-style-type: none; }
 
+.query {
+  font-weight: 600;
+  font-style: italic; }
+
 .total {
   font-weight: bolder; }
 

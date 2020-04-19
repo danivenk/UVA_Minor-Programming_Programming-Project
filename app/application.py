@@ -7,16 +7,20 @@ Dani van Enk, 11823526
 """
 
 import os
+import shlex
 
-from flask import Flask, abort, request, render_template
+from flask import Flask, abort, request, render_template, escape
 from flask_session import Session
 from flask_migrate import Migrate
 from flask_admin import Admin
 from flask_login import LoginManager
 from werkzeug.exceptions import default_exceptions, HTTPException
 
+from sqlalchemy import or_
+
 from models import db, User, AnonymousUser, Stop, Line
 from adminviews import AdminUserIndexView, AdminView, NetworkView
+from functions.search import relevance_query
 
 # Configure Flask app
 app = Flask(__name__, root_path=os.getcwd())
@@ -63,6 +67,16 @@ def load_user(user_id):
         return None
 
 
+@app.template_test("line")
+def line_test(obj):
+    return type(obj) is Line
+
+
+@app.template_test("stop")
+def stop_test(obj):
+    return type(obj) is Stop
+
+
 @app.route("/", methods=["GET"])
 def index():
 
@@ -70,6 +84,35 @@ def index():
         abort(405)
 
     return render_template("index.html")
+
+
+@app.route("/search", methods=["GET"])
+def search():
+
+    if request.method not in request.url_rule.methods:
+        abort(405)
+
+    search_query = request.args.get('search', None)
+    queries = shlex.split(search_query)
+    query_list = relevance_query(queries)
+
+    result_list = []
+
+    for query in query_list:
+        result_stops = Stop.query.filter(or_(Stop.name.ilike(f"%{query}%"), Stop.location.ilike(f"%{query}%"))).all()
+        result_lines = Line.query.filter(Line.name.ilike(f"%{query}%")).all()
+
+        for stop in result_stops:
+            if stop not in result_list:
+                result_list.append(stop)
+
+        for line in result_lines:
+            if line not in result_list:
+                result_list.append(line)
+
+    print(result_list)
+
+    return render_template("search.html", results=result_list, query=search_query)
 
 
 @app.route("/lines", methods=["GET"])

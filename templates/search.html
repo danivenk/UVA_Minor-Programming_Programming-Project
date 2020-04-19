@@ -1,0 +1,56 @@
+<!--
+    search page
+    it extends from layout.html
+
+    Dani van Enk, 11823526
+-->
+
+{% extends "layout.html" %}
+
+<!-- title of the page -->
+{% block title %}
+    search
+{% endblock %}
+
+<!-- content of the page -->
+{% block content %}
+    <h1>Search</h1>
+
+    <!-- search bar -->
+    <form action="{{ url_for('search') }}" method="get" novalidate>
+
+        <!-- search form group -->
+        <div class="form-row col-sm-12">
+            <input type="search" class="form-control col-md-11 col-8"
+                name="search" id="search" placeholder="write your search query" value="{{ query }}">
+            <button type="submit" class="btn btn-primary col-md-1 col-4">
+                Search
+            </button>
+        </div>
+    </form>
+    <hr>
+
+    <!-- list all results and tell how many have been found -->
+    <h4>Search results</h4>
+
+    <!-- show number of results -->
+    <p>searched <span class="query">{{ query }}</span> ({{ results | length }} results found)</p>
+
+    <!-- show all results -->
+    <div class="row">
+        {% for result in results %}
+            {% if result is stop %}
+                <a class="card col-sm-3" , href="{{ url_for('stop', id=result.id) }}">
+                    {{ result }}
+                </a>
+            {% elif result is line %}
+                <a class="card col-sm-3" , href="{{ url_for('line', id=result.id) }}">
+                    {{ result }}
+                </a>
+            {% else %}
+                HI
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+{% endblock %}

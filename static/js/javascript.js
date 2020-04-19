@@ -11,7 +11,7 @@ function init() {
         // check if required fields are empty upon submitting and stop it if that's the case
         form.addEventListener("submit", function(event) {
             // find the items to validate in the form
-            const validation_items = event.target.closest("form").querySelectorAll(".form-control");
+            const validation_items = event.target.closest(".needs-validation").querySelectorAll(".form-control");
             
             // for each to be validated item validate
             for (const item of validation_items) {

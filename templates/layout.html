@@ -47,6 +47,19 @@
                     <a class="nav-item nav-link" href="{{ url_for('lines')}}">Lines</a>
                     <a class="nav-item nav-link" href="{{ url_for('stops')}}">Stops</a>
                 </div>
+
+                <!-- search bar -->
+                <form action="{{ url_for('search') }}" method="get" class="right" autocomplete="off" novalidate>
+                
+                    <!-- search form group -->
+                    <div class="form-row col-sm-12">
+                        <input type="search" class="form-control col-sm-8" name="search" id="search"
+                            placeholder="Search">
+                        <button type="submit" class="btn btn-primary col-sm-4">
+                            Search
+                        </button>
+                    </div>
+                </form>
             </div>
         </nav>
 
