@@ -43,7 +43,7 @@ Session(app)
 Migrate(app, db)
 
 # admin setup
-admin = Admin(app, index_view=AdminUserIndexView())
+admin = Admin(app, index_view=AdminUserIndexView(), base_template="admin/master.html")
 admin.add_view(AdminView(User, db.session))
 admin.add_view(NetworkView(Stop, db.session))
 admin.add_view(NetworkView(Line, db.session))
@@ -99,7 +99,9 @@ def search():
     result_list = []
 
     for query in query_list:
-        result_stops = Stop.query.filter(or_(Stop.name.ilike(f"%{query}%"), Stop.location.ilike(f"%{query}%"))).all()
+        result_stops = Stop.query.filter(or_(Stop.name.ilike(f"%{query}%"),
+                                             Stop.location.ilike(f"%{query}%")
+                                             )).all()
         result_lines = Line.query.filter(Line.name.ilike(f"%{query}%")).all()
 
         for stop in result_stops:
@@ -112,7 +114,8 @@ def search():
 
     print(result_list)
 
-    return render_template("search.html", results=result_list, query=search_query)
+    return render_template("search.html", results=result_list,
+                           query=search_query)
 
 
 @app.route("/lines", methods=["GET"])

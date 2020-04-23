@@ -1,0 +1,65 @@
+<!--
+    admin/master.html
+
+    Dani van Enk, 11823526
+-->
+{% extends 'admin/base.html' %}
+{% import 'admin/layout.html' as layout with context -%}
+
+{% block head_css %}
+    <!-- bootstrap inclusion -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+
+    <!-- style and inclusion -->
+    <link href="{{ url_for('static', filename='css/style_admin.css') }}"
+        rel="stylesheet">
+{% endblock %}
+
+{% block page_body %}
+    <!-- container of the page -->
+    <div id="container">
+
+        <!-- navbar -->
+        <nav class="navbar navbar-light navbar-expand-lg" id="nav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav" id="nav_menu">
+                    {% set menu_items = admin_view.admin.menu() %}
+                    {% for item in menu_items %}
+                    {%- if item.is_accessible() and item.is_visible() -%}
+                    <a href="{{ item.get_url() }}" {% if item.target %} target="{{ item.target }}" {% endif %}
+                        class="nav-item nav-link">{{ item.name }}</a>
+                    {%- endif -%}
+                    {% endfor %}
+                </div>
+            </div>
+            {% block access_control %}
+            {% endblock %}
+        </nav>
+
+        {% block messages %}
+        {{ layout.messages() }}
+        {% endblock %}
+
+        {# store the jinja2 context for form_rules rendering logic #}
+        {% set render_ctx = h.resolve_ctx() %}
+
+        <!-- content of the page -->
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <!-- footer of the page -->
+        <footer>Dani van Enk, Hakkajiten 2020</footer>
+    </div>
+{% endblock %}
