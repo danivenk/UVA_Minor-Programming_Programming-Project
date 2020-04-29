@@ -37,6 +37,11 @@ $main-color: #E06;
         }
 }
 
+body {
+    margin: 0!important;
+    padding: 0!important;
+}
+
 /* container style */
 #container {
     margin: 0 10% 0 10%;
@@ -53,8 +58,17 @@ $main-color: #E06;
         background-color: $main-color;
     }
 
+    .navbar {
+        border-radius: 0;
+        padding: .5rem 1rem;
+    }
+
     .nav-link:hover {
         color: #FFF!important;
+    }
+
+    .dropdown-toggle::after {
+        border: none;
     }
 
     .right {
@@ -107,6 +121,10 @@ $main-color: #E06;
 @media screen and (max-device-width: 768px) {
     #container{
         margin: 0;
+    }
+
+    .navbar {
+        border-radius: 0;
     }
 
     .nav-link {

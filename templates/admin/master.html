@@ -6,17 +6,37 @@
 {% extends 'admin/base.html' %}
 {% import 'admin/layout.html' as layout with context -%}
 
-{% block head_css %}
-    <!-- bootstrap inclusion -->
+{% block head_meta %}
+    <!-- <meta charset="UTF-8"> -->
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="">
+    <meta name="author" content=""> -->
+{% endblock %}
+
+{% block head_css %}
+    <!-- <link
+        href="{{ admin_static.url(filename='bootstrap/bootstrap3/swatch/{swatch}/bootstrap.min.css'.format(swatch=config.get('FLASK_ADMIN_SWATCH', 'default')), v='3.3.5') }}"
+        rel="stylesheet"> -->
+    {% if config.get('FLASK_ADMIN_SWATCH', 'default') == 'default' %}
+        <link
+            href="{{ admin_static.url(filename='bootstrap/bootstrap3/css/bootstrap-theme.min.css', v='3.3.5') }}"
+            rel="stylesheet">
+    {% endif %}
+    <link
+        href="{{ admin_static.url(filename='admin/css/bootstrap3/admin.css', v='1.1.1') }}"
+        rel="stylesheet">
+    <link
+        href="{{ admin_static.url(filename='admin/css/bootstrap3/submenu.css') }}"
+        rel="stylesheet">
+
     <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
 
-    <!-- style and inclusion -->
-    <link href="{{ url_for('static', filename='css/style_admin.css') }}"
+    <link
+        href="{{ url_for('static', filename='css/style_admin.css') }}"
         rel="stylesheet">
 {% endblock %}
 

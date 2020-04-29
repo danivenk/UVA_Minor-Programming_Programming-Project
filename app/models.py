@@ -106,6 +106,7 @@ class Stop(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=True)
+    stoptype = db.Column(db.String, nullable=True)
     lines = db.relationship("Line", secondary=stop_line)
 
     def get_neighbouring_stops(self):
