@@ -2,6 +2,7 @@
 
 /* predefining some mulitple used colors */
 $main-color: #E06;
+$secondary-color: #0AE;
 
 /* alignment inheritance */
 %alignment {
@@ -9,32 +10,29 @@ $main-color: #E06;
 }
 
 /* button border color inheritance */
-%button_border {
-    border-color: darken( $main-color, 10%) !important;
+@mixin button_border($color) {
+    border-color: darken( $color, 10%) !important;
 }
 
 /* button when clicked inheritance */
-%click {
-    background-color: darken( $main-color, 7%) !important;
-    @extend %button_border;
-    box-shadow: 0 0 0 0.2rem lighten( $main-color, 10%) !important;
+@mixin click($color) {
+    background-color: darken( $color, 7%) !important;
+    @include button_border($color);
+    box-shadow: 0 0 0 0.2rem lighten( $color, 10%) !important;
 }
 
-%button {
-    .btn-primary {
-        background-color: $main-color !important;
-        float: right !important;
-        @extend %button_border
-        }
+@mixin button($color) {
+    background-color: $color !important;
+    @include button_border($color);
 
-        .btn-primary:hover {
-            background-color: darken( $main-color, 5%) !important;
-            @extend %button_border;
-        }
+    :hover {
+        background-color: darken( $color, 5%) !important;
+        @include button_border($color);
+    }
 
-        .btn-primary:active, .btn-primary:focus {
-            @extend %click;
-        }
+    :active, :focus {
+        @include click($color);
+    }
 }
 
 body {
@@ -71,36 +69,70 @@ body {
         border: none;
     }
 
-    .right {
-        right: 0;
-        position: absolute;
-        margin: 0 1% 0 0;
-        left: auto;
-
-        form {
-            padding: 0 5%;
- 
-            @extend %button;
-        }
-        
-        a {
-            display: contents;
-        }
-
-    }
-
     /* content style */
     .container {
         flex: 1;
-
-        form {
-            @extend %button;
-        }
     }
     
     h1 {
         @extend %alignment;
         margin: 3% 0;
+    }
+
+    ul.nav-tabs {
+        margin: 1% 0 0 0;
+
+        li {
+            margin: 0 1% 0 0;
+        }
+
+        li:not(.active) {
+            margin: 1.5px 1% 0 1%;
+        }
+
+        .active {
+            border: 1.5px solid #dee2e6;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom: none;
+            padding: 0 2%;
+        }
+    }
+
+    .model-list .icon {
+        margin-left: 0;
+        display: inline-block;
+    }
+
+    .icon-trash {
+        background-image: url("../img/trashbin.svg");
+        display: block;
+        height: 30px;
+        width: 30px;
+    }
+
+    .icon-pencil {
+        background-image: url("../img/pencil.svg");
+        display: block;
+        height: 30px;
+        width: 30px;
+    }
+
+    form {
+        margin-bottom: 1%;
+    }
+
+    #s2id_lines {
+        width: 20%!important;
+    }
+
+    .btn-primary {
+        @include button($main-color);
+    }
+
+    .btn:not(.btn-primary):not(.btn-danger) {
+        color: #FFF;
+        @include button($secondary-color);
     }
 
     /* footer */
@@ -130,6 +162,23 @@ body {
     .nav-link {
         padding-top: 5%;
         padding-bottom: 5%;
+    }
+
+    ul.nav-tabs {
+        margin: 10% 0 0 0;
+        font-size: 120%;
+
+        li {
+            margin: 0 2%;
+        }
+    }
+    
+    #s2id_lines {
+        width: 50%!important;
+    }
+
+    .btn {
+        margin: 1%;
     }
 
     footer {
