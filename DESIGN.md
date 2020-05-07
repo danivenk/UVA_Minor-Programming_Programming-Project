@@ -13,10 +13,6 @@ Line/Stop page with info;
 
 The extra part in the models is for the types,
 Stop_type refers to it being served by for example Local, Rapid, Express services
-Line_type refers to the type of vehicles using this line (Metro, Train, Tram, Bus etc.)
 
 ## Database
-The database will be constructed using SQLAlchemy. I'll be using the train network of Hankyū Electric Railways in Ōsaka, Japan. Since I haven't found a good api to use, I'm going to construct the database myself.
-
-#### Info about the used network
-The train network of Hankyū Electric Railways contains 3 main lines with branchlines, the Kōbe Main Line, the Takarazuka Main Line and the Kyōto Main Line. On these lines serveral different rail services run. These are for example: Local, Rapid, Limited Express and more.
+The database will be constructed using SQLAlchemy. I'll be using the train network of Hankyū Electric Railways in Ōsaka, Japan. Since I haven't found a good API to use, I'm going to construct the database myself.
