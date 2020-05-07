@@ -19,32 +19,30 @@ $main-color: #E06;
 }
 
 /* button border color inheritance */
-%button_border {
-    border-color: darken( $main-color, 10%) !important;
+@mixin button_border($color) {
+    border-color: darken($color, 10%) !important;
 }
 
 /* button when clicked inheritance */
-%click {
-    background-color: darken( $main-color, 7%) !important;
-    @extend %button_border;
-    box-shadow: 0 0 0 0.2rem lighten( $main-color, 10%) !important;
+@mixin click($color) {
+    background-color: darken($color, 7%) !important;
+    box-shadow: 0 0 0 0.2rem lighten($color, 10%) !important;
+    @include button_border($color);
 }
 
-%button {
-    .btn-primary {
-        background-color: $main-color !important;
-        float: right !important;
-        @extend %button_border
-        }
+@mixin button($color) {
+    background-color: $color !important;
+    float: right !important;
+    @include button_border($color);
 
-        .btn-primary:hover {
-            background-color: darken( $main-color, 5%) !important;
-            @extend %button_border;
-        }
+    :hover {
+        background-color: darken($color, 5%) !important;
+        @include button_border($color);
+    }
 
-        .btn-primary:active, .btn-primary:focus {
-            @extend %click;
-        }
+    :active, :focus {
+        @extend %click;
+    }
 }
 
 
@@ -74,10 +72,10 @@ $main-color: #E06;
         margin: 0 1% 0 0;
         left: auto;
 
-        form {
+        form.btn-primary{
             padding: 0 5%;
  
-            @extend %button;
+            @include button($main-color);
         }
         
         a {
@@ -90,8 +88,8 @@ $main-color: #E06;
     .container {
         flex: 1;
 
-        form {
-            @extend %button;
+        form.btn-primary{
+            @include button($main-color);
         }
     }
     
@@ -106,7 +104,9 @@ $main-color: #E06;
     }
 
     .header {
-        @extend %button;
+        .btn-primary {
+            @include button($main-color);
+        }
 
         .btn {
             float: none!important;
@@ -117,7 +117,9 @@ $main-color: #E06;
         margin-top: 2%;
         margin-bottom: 2%;
 
-        @extend %button;
+        .btn-primary {
+            @include button($main-color);
+        }
     }
 
     .card {

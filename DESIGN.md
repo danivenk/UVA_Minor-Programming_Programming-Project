@@ -16,4 +16,7 @@ Stop_type refers to it being served by for example Local, Rapid, Express service
 Line_type refers to the type of vehicles using this line (Metro, Train, Tram, Bus etc.)
 
 ## Database
-The database will be constructed using SQLAlchemy, I think I'll construct it myself. Since the things I've found are more then what I want and separated over multiple places. The transport network I'll be using is intially the metro network of Amsterdam (GVB) as it is quite simple, later I could change this to a more complicated system. Like Tram-Metro of GVB or Metro network of NYC.
+The database will be constructed using SQLAlchemy. I'll be using the train network of Hankyū Electric Railways in Ōsaka, Japan. Since I haven't found a good api to use, I'm going to construct the database myself.
+
+#### Info about the used network
+The train network of Hankyū Electric Railways contains 3 main lines with branchlines, the Kōbe Main Line, the Takarazuka Main Line and the Kyōto Main Line. On these lines serveral different rail services run. These are for example: Local, Rapid, Limited Express and more.
