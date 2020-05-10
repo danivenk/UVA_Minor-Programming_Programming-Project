@@ -7,8 +7,13 @@
 {% extends "admin/master.html" %}
 
 {% block body %}
-    <h1>Admin</h1>
-    <p>Hello There</p>
-    <p>General {{ user.last_name }}, I didn't expect you there</p>
-    <p>This is the pizza order website for Pinocchio’s Pizza & Subs</p>
+    {% if current_user.admin %}
+        <h1>Admin</h1>
+        <p>
+            Welcome {{ current_user.username }}, <br>
+            On this side of this app you can edit/delete/create entries in the database
+        </p>
+    {% else %}
+        
+    {% endif %}
 {% endblock %}

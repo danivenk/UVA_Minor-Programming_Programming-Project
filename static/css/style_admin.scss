@@ -51,6 +51,22 @@ body {
     flex-direction: column;
 }
 
+.admin {
+    width: 100%;
+    background-color: $secondary-color;
+    color: #FFF;
+    @extend %alignment;
+}
+
+.admin:hover {
+    text-decoration: none;
+    color: #000!important;
+}
+
+.admin:visited {
+    color: #FFF;
+}
+
     /* nav style */
     nav {
         background-color: $main-color;
@@ -65,8 +81,18 @@ body {
         color: #FFF!important;
     }
 
-    .dropdown-toggle::after {
-        border: none;
+    .dropdown-menu {
+        margin: 0!important;
+        left: auto;
+        right: 0;
+
+        form {
+            padding: 0 5%;
+        }
+
+        .btn-primary {
+            @include button($main-color)
+        }
     }
 
     /* content style */

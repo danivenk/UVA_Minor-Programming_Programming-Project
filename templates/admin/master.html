@@ -15,13 +15,6 @@
 {% endblock %}
 
 {% block head_css %}
-    <link
-        href="{{ admin_static.url(filename='admin/css/bootstrap3/admin.css', v='1.1.1') }}"
-        rel="stylesheet">
-    <link
-        href="{{ admin_static.url(filename='admin/css/bootstrap3/submenu.css') }}"
-        rel="stylesheet">
-
     <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -35,24 +28,99 @@
 {% block page_body %}
     <!-- container of the page -->
     <div id="container">
+        <a href="{{ url_for('index') }}" class="admin">
+            Return to Main side
+        </a>
 
         <!-- navbar -->
         <nav class="navbar navbar-light navbar-expand-lg" id="nav">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav" id="nav_menu">
+                <div class="navbar-nav mr-auto" id="nav_menu">
                     {% set menu_items = admin_view.admin.menu() %}
                     {% for item in menu_items %}
-                    {%- if item.is_accessible() and item.is_visible() -%}
-                    <a href="{{ item.get_url() }}" {% if item.target %} target="{{ item.target }}" {% endif %}
-                        class="nav-item nav-link">{{ item.name }}</a>
-                    {%- endif -%}
+                        {%- if item.is_accessible() and item.is_visible() -%}
+                            <a href="{{ item.get_url() }}"
+                                {% if item.target %}
+                                    target="{{ item.target }}"
+                                {% endif %}
+                                class="nav-item nav-link">{{ item.name }}</a>
+                        {%- endif -%}
                     {% endfor %}
                 </div>
+                <div class="navbar-nav">
+                    {% if not current_user.is_authenticated %}
+                        <!-- show login screen in dropdown if not logged in -->
+                        <a class="nav-item nav-link dropdown dropdown-toggle"
+                                id="drop_link" data-toggle="dropdown"
+                                href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                            Login
+                        </a>
+                    
+                        <div class="dropdown-menu" id="drop_menu">
+                            <!-- login form
+                                source: https://getbootstrap.com/docs/4.1/components/forms/ -->
+                            <form class="needs-validation"
+                                action="{{ url_for('login') }}" method="post"
+                                novalidate>
+                    
+                                <!-- username form group -->
+                                <div class="form-group">
+                                    <label for="username">Username: </label>
+                                    <input type="username" class="form-control"
+                                        name="username" id="username"
+                                        placeholder="Username" required>
+                    
+                                    <!-- failed feedback -->
+                                    <div class="invalid-feedback">
+                                        Please enter a username.
+                                    </div>
+                                </div>
+                    
+                                <!-- password form group -->
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password"
+                                        class="form-control" id="password"
+                                        placeholder="Password" required>
+                    
+                                    <!-- failed feedback -->
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+                    
+                                <input type="hidden" name="page"
+                                    value="{{ request.url_rule }}">
+                    
+                                <!-- register via this link -->
+                                <a href="{{ url_for('register', page=request.url_rule ) }}">
+                                    Sign Up
+                                </a>
+                    
+                                <!-- loginbutton -->
+                                <button type="submit" class="btn btn-primary">
+                                    Log In
+                                </button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <div class="nav-item navbar-text">
+                            Hi there, {{ current_user.username }} |
+                        </div>
+                        <a class="nav-item nav-link"
+                                href="{{ url_for('logout', page=request.url_rule ) }}"
+                                role="button">
+                            Logout
+                        </a>
+                    {% endif %}
             </div>
             {% block access_control %}
             {% endblock %}

@@ -31,6 +31,11 @@
 
     <!-- container of the page -->
     <div id="container">
+        {% if current_user.admin %}
+            <a href="{{ url_for('admin.index') }}" class="admin">
+                Go to the Admin side
+            </a>
+        {% endif %}
 
         <!-- navbar -->
         <nav class="navbar navbar-light navbar-expand-lg" id="nav">
@@ -42,29 +47,98 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav" id="nav_menu">
+                <div class="navbar-nav mr-auto" id="nav_menu">
                     <a class="nav-item nav-link" href="{{ url_for('index')}}">Home</a>
                     <a class="nav-item nav-link" href="{{ url_for('lines')}}">Lines</a>
                     <a class="nav-item nav-link" href="{{ url_for('stops')}}">Stops</a>
                 </div>
+                <div class="navbar-nav">
+                    <!-- search bar -->
+                    <form action="{{ url_for('search') }}" method="get" class="" autocomplete="off" novalidate>
+                    
+                        <!-- search form group -->
+                        <div class="form-row col-sm-12">
+                            <input type="search" class="form-control col-sm-8" name="search" id="search"
+                                placeholder="Search">
+                            <button type="submit" class="btn btn-primary col-sm-4">
+                                Search
+                            </button>
+                        </div>
+                    </form>
 
-                <!-- search bar -->
-                <form action="{{ url_for('search') }}" method="get" class="right" autocomplete="off" novalidate>
-                
-                    <!-- search form group -->
-                    <div class="form-row col-sm-12">
-                        <input type="search" class="form-control col-sm-8" name="search" id="search"
-                            placeholder="Search">
-                        <button type="submit" class="btn btn-primary col-sm-4">
-                            Search
-                        </button>
-                    </div>
-                </form>
+                    {% if not current_user.is_authenticated %}
+                        <!-- show login screen in dropdown if not logged in -->
+                        <a class="nav-item nav-link dropdown dropdown-toggle"
+                                id="drop_link" data-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                            Login
+                        </a>
+
+                        <div class="dropdown-menu" id="drop_menu">
+                            <!-- login form
+                                source: https://getbootstrap.com/docs/4.1/components/forms/ -->
+                            <form class="needs-validation"
+                                action="{{ url_for('login') }}" method="post"
+                                novalidate>
+                            
+                                <!-- username form group -->
+                                <div class="form-group">
+                                    <label for="username">Username: </label>
+                                    <input type="username" class="form-control"
+                                        name="username" id="username"
+                                        placeholder="Username" required>
+                            
+                                    <!-- failed feedback -->
+                                    <div class="invalid-feedback">
+                                        Please enter a username.
+                                    </div>
+                                </div>
+                            
+                                <!-- password form group -->
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password"
+                                        class="form-control" id="password"
+                                        placeholder="Password" required>
+                            
+                                    <!-- failed feedback -->
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="page"
+                                    value="{{ request.url_rule }}">
+
+                                <!-- register via this link -->
+                                <a href="{{ url_for('register', page=request.url_rule ) }}">
+                                    Sign Up
+                                </a>
+                            
+                                <!-- loginbutton -->
+                                <button type="submit" class="btn btn-primary">
+                                    Log In
+                                </button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <div class="nav-item navbar-text">
+                            Hi there, {{ current_user.username }} |
+                        </div>
+                        <a class="nav-item nav-link"
+                                href="{{ url_for('logout', page=request.url_rule ) }}"
+                                role="button">
+                            Logout
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </nav>
 
         <!-- content of the page -->
         <div class="container">
+
             {% block content %}{% endblock %}
         </div>
 

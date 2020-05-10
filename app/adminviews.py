@@ -14,9 +14,9 @@ references:
 # used imports
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import AdminIndexView, expose
-from flask import redirect, url_for
+from flask import abort, request, redirect, url_for
 from flask_login import current_user
-from wtforms.validators import ValidationError
+# from wtforms.validators import ValidationError
 
 
 class AdminUserIndexView(AdminIndexView):
@@ -32,7 +32,7 @@ class AdminUserIndexView(AdminIndexView):
         inaccessible_callback   - redirects to site index if inaccessible
     """
 
-    @expose("/")
+    @expose("/", methods=["GET"])
     def index(self):
         """
         defines the index template for the admin part of the site
@@ -41,21 +41,24 @@ class AdminUserIndexView(AdminIndexView):
             - "/"
         """
 
+        if request.method not in request.url_rule.methods:
+            abort(405)
+
         return self.render("admin/index.html", user=current_user)
 
-    # def is_accessible(self):
-    #     """
-    #     check if current_user is admin, return true if so else false
-    #     """
+    def is_accessible(self):
+        """
+        check if current_user is admin, return true if so else false
+        """
 
-    #     return current_user.admin
+        return current_user.admin
 
-    # def inaccessible_callback(self, name, **kwargs):
-    #     """
-    #     redirect to site home if user isn't admin
-    #     """
+    def inaccessible_callback(self, name, **kwargs):
+        """
+        redirect to site home if user isn't admin
+        """
 
-    #     return redirect(url_for('index'))
+        return redirect(url_for('index'))
 
 
 class AdminView(ModelView):
@@ -72,19 +75,19 @@ class AdminView(ModelView):
     column_exclude_list = ["password"]
     form_exclude_columns = ["Order"]
 
-    # def is_accessible(self):
-    #     """
-    #     check if current_user is admin, return true if so else false
-    #     """
+    def is_accessible(self):
+        """
+        check if current_user is admin, return true if so else false
+        """
 
-    #     return current_user.admin
+        return current_user.admin
 
-    # def inaccessible_callback(self, name, **kwargs):
-    #     """
-    #     redirect to site home if user isn't admin
-    #     """
+    def inaccessible_callback(self, name, **kwargs):
+        """
+        redirect to site home if user isn't admin
+        """
 
-    #     return redirect(url_for('index'))
+        return redirect(url_for('index'))
 
 
 class NetworkView(ModelView):
@@ -97,16 +100,16 @@ class NetworkView(ModelView):
         inaccessible_callback   - redirects to site index if inaccessible
     """
 
-    # def is_accessible(self):
-    #     """
-    #     check if current_user is admin, return true if so else false
-    #     """
+    def is_accessible(self):
+        """
+        check if current_user is admin, return true if so else false
+        """
 
-    #     return current_user.admin
+        return current_user.admin
 
-    # def inaccessible_callback(self, name, **kwargs):
-    #     """
-    #     redirect to site home if user isn't admin
-    #     """
+    def inaccessible_callback(self, name, **kwargs):
+        """
+        redirect to site home if user isn't admin
+        """
 
-    #     return redirect(url_for('index'))
+        return redirect(url_for('index'))

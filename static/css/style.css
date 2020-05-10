@@ -8,24 +8,11 @@ a.index, a.index .index:hover {
   color: #00F; }
 
 /* alignment inheritance */
-h1, footer, .error {
+.admin, h1, footer, .error {
   text-align: center; }
 
 /* button border color inheritance */
-.right form .btn-primary:active, .container form .btn-primary:active, .header .btn-primary:active, .row .btn-primary:active, .right form .btn-primary:focus, .container form .btn-primary:focus, .header .btn-primary:focus, .row .btn-primary:focus, .right form .btn-primary, .container form .btn-primary, .header .btn-primary, .row .btn-primary, .right form .btn-primary:hover, .container form .btn-primary:hover, .header .btn-primary:hover, .row .btn-primary:hover {
-  border-color: #bb0050 !important; }
-
 /* button when clicked inheritance */
-.right form .btn-primary:active, .container form .btn-primary:active, .header .btn-primary:active, .row .btn-primary:active, .right form .btn-primary:focus, .container form .btn-primary:focus, .header .btn-primary:focus, .row .btn-primary:focus {
-  background-color: #ca0057 !important;
-  box-shadow: 0 0 0 0.2rem #ff2281 !important; }
-
-.right form .btn-primary, .container form .btn-primary, .header .btn-primary, .row .btn-primary {
-  background-color: #E06 !important;
-  float: right !important; }
-.right form .btn-primary:hover, .container form .btn-primary:hover, .header .btn-primary:hover, .row .btn-primary:hover {
-  background-color: #d5005b !important; }
-
 /* container style */
 #container {
   margin: 0 10% 0 10%;
@@ -36,6 +23,18 @@ h1, footer, .error {
   min-height: 100vh;
   flex-direction: column; }
 
+.admin {
+  width: 100%;
+  background-color: #0AE;
+  color: #FFF; }
+
+.admin:hover {
+  text-decoration: none;
+  color: #000 !important; }
+
+.admin:visited {
+  color: #FFF; }
+
 /* nav style */
 nav {
   background-color: #E06; }
@@ -43,19 +42,38 @@ nav {
 .nav-link:hover {
   color: #FFF !important; }
 
-.right {
-  right: 0;
-  position: absolute;
-  margin: 0 1% 0 0;
-  left: auto; }
-  .right form {
+.dropdown-menu {
+  margin: 0 !important;
+  left: auto;
+  right: 0; }
+  .dropdown-menu form {
     padding: 0 5%; }
-  .right a {
-    display: contents; }
+  .dropdown-menu .btn-primary {
+    background-color: #E06 !important;
+    float: right !important;
+    border-color: #bb0050 !important; }
+    .dropdown-menu .btn-primary :hover {
+      background-color: #d5005b !important;
+      border-color: #bb0050 !important; }
+    .dropdown-menu .btn-primary :active, .dropdown-menu .btn-primary :focus {
+      background-color: #ca0057 !important;
+      box-shadow: 0 0 0 0.2rem #ff2281 !important;
+      border-color: #bb0050 !important; }
 
 /* content style */
 .container {
   flex: 1; }
+  .container form.btn-primary {
+    background-color: #E06 !important;
+    float: right !important;
+    border-color: #bb0050 !important; }
+    .container form.btn-primary :hover {
+      background-color: #d5005b !important;
+      border-color: #bb0050 !important; }
+    .container form.btn-primary :active, .container form.btn-primary :focus {
+      background-color: #ca0057 !important;
+      box-shadow: 0 0 0 0.2rem #ff2281 !important;
+      border-color: #bb0050 !important; }
 
 h1 {
   margin: 3% 0; }
@@ -64,12 +82,34 @@ h4 {
   font-weight: bold;
   font-size: 120%; }
 
+.header .btn-primary {
+  background-color: #E06 !important;
+  float: right !important;
+  border-color: #bb0050 !important; }
+  .header .btn-primary :hover {
+    background-color: #d5005b !important;
+    border-color: #bb0050 !important; }
+  .header .btn-primary :active, .header .btn-primary :focus {
+    background-color: #ca0057 !important;
+    box-shadow: 0 0 0 0.2rem #ff2281 !important;
+    border-color: #bb0050 !important; }
 .header .btn {
   float: none !important; }
 
 .row {
   margin-top: 2%;
   margin-bottom: 2%; }
+  .row .btn-primary {
+    background-color: #E06 !important;
+    float: right !important;
+    border-color: #bb0050 !important; }
+    .row .btn-primary :hover {
+      background-color: #d5005b !important;
+      border-color: #bb0050 !important; }
+    .row .btn-primary :active, .row .btn-primary :focus {
+      background-color: #ca0057 !important;
+      box-shadow: 0 0 0 0.2rem #ff2281 !important;
+      border-color: #bb0050 !important; }
 
 .card {
   padding: 1%; }

@@ -14,6 +14,7 @@ references:
 # used imports
 from flask_sqlalchemy import SQLAlchemy, event
 from flask_login import AnonymousUserMixin
+from functions import security as s
 
 # define SQLAlchemy
 db = SQLAlchemy()
@@ -113,6 +114,14 @@ class Stop(db.Model):
         neighbours = dict()
 
         for line in self.lines:
+            stops = dict()
+            for stop in line.stops:
+                for _type in stop.stoptype.split(","):
+                    stops[_type].append(stop)
+
+            print(stops, line)
+
+        for line in self.lines:
             for i, stop in enumerate(line.stops):
                 if stop == self and (i <= 0):
                     neighbours[line.name] = \
@@ -135,6 +144,37 @@ class Line(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     stops = db.relationship("Stop", secondary=stop_line)
+    company_id = db.Column(db.Integer, db.ForeignKey("companies.id"))
+    company = db.relationship("Company", uselist=False)
 
     def __repr__(self):
-        return self.name + " Line"
+        if self.company:
+            return f"{self.company.name} {self.name} Line"
+        else:
+            return self.name + " Line"
+
+
+class Company(db.Model):
+    __tablename__ = "companies"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=True)
+    short_name = db.Column(db.String, nullable=True)
+    line = db.relationship("Line")
+
+    def __repr__(self):
+        return self.name
+
+
+@event.listens_for(User.password, 'set', retval=True)
+def hash_user_password(target, value, oldvalue, initiator):
+    """
+    listens for a change in the password of a user
+    if called it hashes the new password (if password is changed)
+
+    references:
+        https://stackoverflow.com/a/57100627
+    """
+
+    if value != oldvalue:
+        return s.hash_psswd(value)
+    return value

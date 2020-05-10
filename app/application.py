@@ -9,18 +9,20 @@ Dani van Enk, 11823526
 import os
 import shlex
 
-from flask import Flask, abort, request, render_template, escape
+from flask import Flask, abort, request, render_template, Response, session, \
+                  escape, redirect, url_for
 from flask_session import Session
 from flask_migrate import Migrate
 from flask_admin import Admin
-from flask_login import LoginManager
+from flask_login import LoginManager, login_user, logout_user, login_required
 from werkzeug.exceptions import default_exceptions, HTTPException
 
 from sqlalchemy import or_
 
-from models import db, User, AnonymousUser, Stop, Line
+from models import db, User, AnonymousUser, Stop, Line, Company
 from adminviews import AdminUserIndexView, AdminView, NetworkView
 from functions.search import relevance_query
+from functions import security
 
 # Configure Flask app
 app = Flask(__name__, root_path=os.getcwd())
@@ -43,10 +45,12 @@ Session(app)
 Migrate(app, db)
 
 # admin setup
-admin = Admin(app, index_view=AdminUserIndexView(), base_template="admin/master.html")
+admin = Admin(app, index_view=AdminUserIndexView(),
+              base_template="admin/master.html")
 admin.add_view(AdminView(User, db.session))
 admin.add_view(NetworkView(Stop, db.session))
 admin.add_view(NetworkView(Line, db.session))
+admin.add_view(NetworkView(Company, db.session))
 
 # login setup
 login_manager = LoginManager(app)
@@ -158,6 +162,137 @@ def stop():
     current_stop = Stop.query.get(stop_id)
 
     return render_template("stop.html", stop=current_stop)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """
+    register a new user
+
+    aborts if:
+        - a user is already registering (403)
+        - no username/password/retype password is given (400)
+        - user already registered (400)
+        - request is anything else than "POST" or "GET" (405)
+
+    returns the register form again if the retype password and password
+        weren't the same or the request was a "GET" request. If
+        registration was successfull it redirects (303) to "/".
+    """
+
+    next_page = request.args.get("page", None)
+
+    # abort using a 405 if request method is not "POST" or "GET"
+    if request.method not in request.url_rule.methods:
+        abort(405)
+
+    if request.method == "POST":
+        # check if user is already registering if so abort 403
+        if session.get("register_user") is not None:
+
+            # remove registering user from session
+            session.pop("register_user", None)
+            abort(403, "Detected double submission of form please try "
+                  "again")
+
+        # get all values from the submitted form
+        username = escape(request.form.get("register_username"))
+        password = escape(request.form.get("register_password"))
+        rpassword = escape(request.form.get("register_rpassword"))
+        email = escape(request.form.get("register_email"))
+
+        # if the given passwords aren't the same rerender the template
+        if password != rpassword:
+            return render_template("register.html",
+                                   message="passwords weren't the same...")
+
+        # if no username/password/retype password were given abort (400)
+        if not username or not password or not rpassword:
+
+            # abort using a 400 HTTPException
+            abort(400, "No username/password specified")
+
+        # add registering user to session
+        session["register_user"] = username
+
+        # look for username in database
+        user = User.query.filter_by(username=username).all()
+
+        # if username was found in the database abort (400)
+        if len(user) >= 1:
+
+            # abort using a 400 HTTPException
+            abort(400, "User already registered")
+
+        # add user to database
+        register_user = User(password=password, username=username,
+                             email=email)
+        db.session.add(register_user)
+        db.session.commit()
+
+        # remove registering user from session
+        session.pop("register_user", None)
+
+        return redirect(next_page, 303)
+    elif request.method == "GET":
+        return render_template("register.html", last=next_page)
+
+
+@app.route("/login", methods=["POST"])
+def login():
+
+    if request.method not in request.url_rule.methods:
+        abort(405)
+
+    # get the username and password from the login form
+    username = escape(request.form.get("username"))
+    password = escape(request.form.get("password"))
+    next_page = escape(request.form.get("page"))
+
+    # if no credentials are given abort using 400 HTTPException
+    if not username or not password:
+
+        abort(400, "No username/password specified")
+
+    # look for user in database
+    user_login = User.query.filter_by(username=username).first()
+
+    # is user not found in database abort using 404 HTTPException
+    if not user_login:
+
+        abort(404, "Not found")
+
+    # check if credentials are correct
+    #   login if correct, abort using 403 HTTPException if not
+    if security.compare_hash(user_login.password, password):
+        login_user(user_login)
+    else:
+        abort(403)
+
+    return redirect(next_page, 303)
+
+
+@app.route("/logout", methods=["GET"])
+@login_required
+def logout():
+    """
+    log logged on user out, LOGIN REQUIRED
+
+    abort if:
+        - request anything else than "GET";
+
+    return redirect to index (303)
+    """
+
+    next_page = request.args.get("page", None)
+
+    if request.method not in request.url_rule.methods:
+        abort(405)
+
+    # logout user
+    logout_user()
+
+    return redirect(next_page, 303)
 
 
 @app.errorhandler(HTTPException)
