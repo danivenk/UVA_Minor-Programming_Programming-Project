@@ -169,6 +169,48 @@ $secondary-color: #0AE;
         }
     }
 
+    .neighbours {
+
+        li {
+            display: contents;
+        }
+
+        .between {
+            margin: 0 5%;
+            display: initial;
+        }
+    }
+
+    table {
+
+        tr {
+            display: flex;
+        }
+
+        td {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 2em;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        .stop {
+            writing-mode: vertical-rl!important;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 2em;
+        }
+
+        th:not(.stop) {
+            width: 10%!important;
+        }
+    }
+
     .query {
         font-weight: 600;
         font-style: italic;

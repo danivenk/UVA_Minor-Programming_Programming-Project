@@ -17,36 +17,46 @@
 
 <!-- content of the page -->
 {% block content %}
-    <h1>{{ stop }}</h1>
+    <h1>{{ current_stop }}</h1>
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            {{ stop.location }}
+            {{ current_stop.location }}
         </div>
         <div class="col-sm-6">
             <ul>
                 <h2>Transfers</h2>
-                {% for line in stop.lines %}
-                    {% set neighbours = stop.get_neighbouring_stops()[line.name] %}
+                {% set neighbouring_stops = current_stop.get_neighbouring_stops() %}
+                {% for line, type_dict  in neighbouring_stops.items() %}
                     <li>
                         <a href="{{ url_for('line', id=line.id) }}">{{ line }}</a>
 
-                        <ul>
+                    {% for type, neighbours in type_dict.items() %}
+                        <li>
+                            {{ type | capitalize }}
+                        </li>
+
+                        <ul class="neighbours">
                             {% if neighbours.previous %}
                                 <li>
                                     <a href="{{ url_for('stop', id=neighbours.previous.id) }}">
-                                        previous stop: {{ neighbours.previous }}
+                                        Previous stop: {{ neighbours.previous }}
                                     </a>
                                 </li>
+                            {% endif %}
+                            {% if neighbours.previous and neighbours.next %}
+                                <div class="between">|</div>
                             {% endif %}
                             {% if neighbours.next %}
                                 <li>
                                     <a href="{{ url_for('stop', id=neighbours.next.id) }}">
-                                        next stop: {{ neighbours.next }}
+                                        Next stop: {{ neighbours.next }}
                                     </a>
                                 </li>
                             {% endif %}
                         </ul>
+                    {% endfor %}
+                    
                     </li>
                     <hr>
                 {% endfor %}

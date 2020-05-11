@@ -17,17 +17,17 @@
 
 <!-- content of the page -->
 {% block content %}
-    <h1>{{ line }}</h1>
+    <h1>{{ current_line }}</h1>
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            {{ line.stops | first }} - {{ line.stops | last}}<br>
-            {{ line.stops | length}} stops
+            {{ current_line.stops | first }} - {{ current_line.stops | last}}<br>
+            {{ current_line.stops | length}} stops
         </div>
         <div class="col-sm-6">
             <h2>Stops</h2>
             <ul>
-                {% for stop in line.stops %}
+                {% for stop in current_line.stops %}
                     <li>
                         <a href="{{ url_for('stop', id=stop.id) }}">
                             {{ stop }}
@@ -36,18 +36,52 @@
                         <br>
                         Transfers:
                         <ul>
-                            {% for line in stop.lines %}
-                                <li>
-                                    <a href="{{ url_for('line', id=line.id) }}">
-                                        {{ line }}
-                                    </a>
-                                </li>
+                            {% for transfer_line in stop.lines %}
+                                {% if (not transfer_line.name == current_line.name) and stop.lines|length > 1 %}
+                                    <li>
+                                        <a href="{{ url_for('line', id=transfer_line.id) }}">
+                                            {{ transfer_line }}
+                                        </a>
+                                    </li>
+                                {% elif stop.lines|length == 1 %}
+                                    <li>
+                                        None
+                                    </li>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                     </li>
                     <hr>
                 {% endfor %}
             </ul>
+        </div>
+        <div class="table-responsive col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        {% for stop in current_line.stops %}
+                        <th class="stop">
+                            {{ stop | capitalize }}
+                        </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                {% for type, stops in current_line.get_stops()[1].items() %}
+                <tr>
+                    <th>{{ type | capitalize }}</th>
+                    {% for stop in stops %}
+                        <td>
+                            {% if stop %}
+                                ●
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
 {% endblock %}

@@ -116,8 +116,6 @@ def search():
             if line not in result_list:
                 result_list.append(line)
 
-    print(result_list)
-
     return render_template("search.html", results=result_list,
                            query=search_query)
 
@@ -140,7 +138,7 @@ def line():
     line_id = request.args.get('id', None)
     current_line = Line.query.get(line_id)
 
-    return render_template("line.html", line=current_line)
+    return render_template("line.html", current_line=current_line)
 
 
 @app.route("/stops", methods=["GET"])
@@ -161,7 +159,7 @@ def stop():
     stop_id = request.args.get('id', None)
     current_stop = Stop.query.get(stop_id)
 
-    return render_template("stop.html", stop=current_stop)
+    return render_template("stop.html", current_stop=current_stop)
 
 
 @app.route("/register", methods=["GET", "POST"])

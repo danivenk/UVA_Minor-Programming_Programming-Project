@@ -114,24 +114,19 @@ class Stop(db.Model):
         neighbours = dict()
 
         for line in self.lines:
-            stops = dict()
-            for stop in line.stops:
-                for _type in stop.stoptype.split(","):
-                    stops[_type].append(stop)
-
-            print(stops, line)
-
-        for line in self.lines:
-            for i, stop in enumerate(line.stops):
-                if stop == self and (i <= 0):
-                    neighbours[line.name] = \
-                        {"previous": None, "next": line.stops[i+1]}
-                elif stop == self and (i >= len(line.stops) - 1):
-                    neighbours[line.name] = \
-                        {"previous": line.stops[i-1], "next": None}
-                elif stop == self:
-                    neighbours[line.name] = \
-                        {"previous": line.stops[i-1], "next": line.stops[i+1]}
+            neighbours[line] = dict()
+            for _type, stops in line.get_stops()[0].items():
+                for i, stop in enumerate(stops):
+                    if stop == self and (i <= 0):
+                        neighbours[line][_type] = \
+                            {"previous": None, "next": stops[i+1]}
+                    elif stop == self and (i >= len(stops) - 1):
+                        neighbours[line][_type] = \
+                            {"previous": stops[i-1], "next": None}
+                    elif stop == self:
+                        neighbours[line][_type] = \
+                            {"previous": stops[i-1],
+                             "next": stops[i+1]}
 
         return neighbours
 
@@ -144,8 +139,26 @@ class Line(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     stops = db.relationship("Stop", secondary=stop_line)
+    stoptypes = db.Column(db.String, nullable=True)
     company_id = db.Column(db.Integer, db.ForeignKey("companies.id"))
     company = db.relationship("Company", uselist=False)
+
+    def get_stops(self):
+        stops = dict()
+        stops_pi = dict()
+
+        for _type in self.stoptypes.split(","):
+            stops[_type] = []
+            stops_pi[_type] = []
+
+            for stop in self.stops:
+                if _type in stop.stoptype:
+                    stops[_type].append(stop)
+                    stops_pi[_type].append(stop)
+                else:
+                    stops_pi[_type].append(None)
+
+        return stops, stops_pi
 
     def __repr__(self):
         if self.company:
