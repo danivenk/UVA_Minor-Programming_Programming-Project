@@ -52,7 +52,10 @@ Committed on May 10 2020
 Added company to lines and continue stoptype implementation and link from admin side to main side and back when admin is logged on.
 I decided to do this becaus this way when an admin is signed on he/she can easily go to the adminside. This has been done as an convenience to future admins, this way they don't have to know the url to the admin side.
 
-
 Committed on May 11 2020
 Finished stoptype implementation,
+Nothing Special
+
+Committed on May 12 2020
+Pocess Document,
 Nothing Special
