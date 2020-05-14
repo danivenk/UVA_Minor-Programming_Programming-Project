@@ -1,20 +1,104 @@
-Stop Name,Line Name,Stop Number,Location,Stop Type
-Ōsaka-Umeda,Koube Main Line;Takarazuka Main Line;Kyōto Main Line,HK-01,Ōsaka-fu Ōsaka-shi Kita-ku Shibata 1-Chōme 1-2,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express
-Nakatsu,Koube Main Line;Takarazuka Main Line,HK-02,Ōsaka-fu Ōsaka-shi Kita-ku Nakatsu 3-Chōme 1-30,local
-Jūsō,Koube Main Line;Takarazuka Main Line;Kyōto Main Line,HK-03,Ōsaka-fu Ōsaka-shi Yodogawa-ku Jūsō-Higashi 2-Chōme 12-1,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express
-Kanzakigawa,Koube Main Line,HK-04,Ōsaka-fu Ōsaka-shi Yodogawa-ku Nītaka 6-Chōme 14-16,local
-Sonoda,Koube Main Line,HK-05,Hyōgo-ken Amagasaki-shi Higashi-Sonoda 9-Chōme 48-1,local
-Tsukaguchi,Koube Main Line;Itami Line,HK-06,Hyōgo-ken Amagasaki-shi Tsukaguchi-Motomach 1-Chōme 1,local;semi-express;commuter express;express;rapid express;commuter limited express
-Mukonosō,Koube Main Line,HK-07,Hyōgo-ken Amagasaki-shi Mukonosō 1-Chōme 1-1,local;commuter express
-Nishinomiya-Kitaguchi,Koube Main Line;Imazu Line,HK-08,Hyōgo-ken Nishinomiya-shi Takamatsu-chō 6-20,local;commuter express;express;rapid express;commuter limited express;limited express
-Shukugawa,Koube Main Line;Kōyō Line,HK-09,Hyōgo-ken Nishinomiya-shi Aioi-chō 2-1,local;commuter express;express;rapid express;commuter limited express;limited express
-Ashiyagawa,Koube Main Line,HK-10,Hyōgo-ken Ashiyashi-shi Nishiyama-chō 1-10,local;commuter express;express
-Okamoto,Koube Main Line,HK-11,Hyōgo-ken Kōbe-shi Higashi-Nada-ku Okamoto 5-Chōme 1-1,local;commuter express;express;rapid express;commuter limited express;limited express
-Mikage,Koube Main Line,HK-12,Hyōgo-ken Kōbe-shi Higashi-Nada-ku Mikage 2-Chōme 1-1,local;commuter express;express
-Rokkō,Koube Main Line,HK-13,Hyōgo-ken Kōbe-shi Nada-ku Miyayama-chō 3-Chōme 1,local;commuter express;express;rapid express
-Ōji-Kōen,Koube Main Line,HK-14,Hyōgo-ken Kōbe-shi Nada-ku Ōji-chō 1-Chōme 4-20,local;commuter express;express
-Kasuganomichi,Koube Main Line,HK-15,Hyōgo-ken Kōbe-shi Chūō-ku Wakana-dōri 1-Chōme 1,local;commuter express;express
-Kōbe-Sannomiya,Koube Main Line;Kōbe-Kōsoku Line,HK-16,Hyōgo-ken Kōbe-shi Chūō-ku Kanō-chō 4-Chōme 2-1,local;commuter express;express;rapid express;commuter limited express;limited express
-Hanakuma,Kōbe-Kōsoku Line,HK-17,Hyōgo-ken Kōbe-shi Chūō-ku Kita-Nagasa-dōri 6-Chōme,local;commuter express;express;rapid express;commuter limited express;limited express
-Kōsoku-Kōbe,Kōbe-Kōsoku Line,HS-35,Hyōgo-ken Kōbe-shi Chūō-ku Nakamachi-dōri 3-Chōme 2,local;commuter express;express;rapid express;commuter limited express;limited express
-Shin-Kaichi,Kōbe-Kōsoku Line,HS-36,Hyōgo-ken Kōbe-shi Hyōgo-ku Shinkachi 2-Chōme 3-24,local;commuter express;express;rapid express;commuter limited express;limited express
+stop,line,stopnumber,location,stoptype
+Ōsaka-Umeda,Kōbe;Takarazuka;Kyōto,HK-01,Ōsaka-fu Ōsaka-shi Kita-ku Shibata 1-Chōme 1-2,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express;limited express nissei express;rapid limited express;rapid limited express A
+Nakatsu,Kōbe;Takarazuka,HK-02,Ōsaka-fu Ōsaka-shi Kita-ku Nakatsu 3-Chōme 1-30,local;semi-express
+Jūsō,Kōbe;Takarazuka;Kyōto,HK-03,Ōsaka-fu Ōsaka-shi Yodogawa-ku Jūsō-Higashi 2-Chōme 12-1,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express;limited express nissei express;rapid limited express
+Kanzakigawa,Kōbe,HK-04,Ōsaka-fu Ōsaka-shi Yodogawa-ku Nītaka 6-Chōme 14-16,local
+Sonoda,Kōbe,HK-05,Hyōgo-ken Amagasaki-shi Higashi-Sonoda 9-Chōme 48-1,local
+Tsukaguchi,Kōbe;Itami,HK-06,Hyōgo-ken Amagasaki-shi Tsukaguchi-Motomach 1-Chōme 1,local;semi-express;commuter express;express;rapid express;commuter limited express
+Mukonosō,Kōbe,HK-07,Hyōgo-ken Amagasaki-shi Mukonosō 1-Chōme 1-1,local;commuter express
+Nishinomiya-Kitaguchi,Kōbe;Imazu,HK-08,Hyōgo-ken Nishinomiya-shi Takamatsu-chō 6-20,local;commuter express;express;rapid express;commuter limited express;limited express
+Shukugawa,Kōbe;Kōyō,HK-09,Hyōgo-ken Nishinomiya-shi Aioi-chō 2-1,local;commuter express;express;rapid express;commuter limited express;limited express
+Ashiyagawa,Kōbe,HK-10,Hyōgo-ken Ashiyashi-shi Nishiyama-chō 1-10,local;commuter express;express
+Okamoto,Kōbe,HK-11,Hyōgo-ken Kōbe-shi Higashi-Nada-ku Okamoto 5-Chōme 1-1,local;commuter express;express;rapid express;commuter limited express;limited express
+Mikage,Kōbe,HK-12,Hyōgo-ken Kōbe-shi Higashi-Nada-ku Mikage 2-Chōme 1-1,local;commuter express;express
+Rokkō,Kōbe,HK-13,Hyōgo-ken Kōbe-shi Nada-ku Miyayama-chō 3-Chōme 1,local;commuter express;express;rapid express
+Ōji-Kōen,Kōbe,HK-14,Hyōgo-ken Kōbe-shi Nada-ku Ōji-chō 1-Chōme 4-20,local;commuter express;express
+Kasuganomichi,Kōbe,HK-15,Hyōgo-ken Kōbe-shi Chūō-ku Wakana-dōri 1-Chōme 1,local;commuter express;express
+Kōbe-Sannomiya,Kōbe;Kōbe-Kōsoku,HK-16,Hyōgo-ken Kōbe-shi Chūō-ku Kanō-chō 4-Chōme 2-1,local;commuter express;express;rapid express;commuter limited express;limited express
+Hanakuma,Kōbe-Kōsoku,HK-17,Hyōgo-ken Kōbe-shi Chūō-ku Kita-Nagasa-dōri 6-Chōme,local;commuter express;express;rapid express;commuter limited express;limited express
+Kōsoku-Kōbe,Kōbe-Kōsoku,HS-35,Hyōgo-ken Kōbe-shi Chūō-ku Nakamachi-dōri 3-Chōme 2,local;commuter express;express;rapid express;commuter limited express;limited express
+Shin-Kaichi,Kōbe-Kōsoku,HS-36,Hyōgo-ken Kōbe-shi Hyōgo-ku Shin-Kachi 2-Chōme 3-24,local;commuter express;express;rapid express;commuter limited express;limited express
+Inano,Itami,HK-18,Hyōgo-ken Itami-shi Inano-chō 1-Chōme 50-1,local
+Shin-Itami,Itami,HK-19,Hyōgo-ken Itami-shi Umenoki 2-Chōme 4-1,local
+Itami,Itami,HK-20,Hyōgo-ken Itami-shi Nishidai 1-Chōme 1-1,local
+Imazu,Imazu,HK-21,Hyōgo-ken Nishinomiya-shi Tsuto-Kureha-chō 1-37,local;semi-express
+Hanshin-Kokudō,Imazu,HK-22,Hyōgo-ken Nishinomiya-shi Tsuto-Ōtsuka-chō 8-18,local;semi-express
+Mondo-Yakujin,Imazu,HK-23,Hyōgo-ken Nishinomiya-shi Shimo-Ōichi-Higashi-chō 1-22,local;semi-express
+Kōtōen,Imazu,HK-24,Hyōgo-ken Nishinomiya-shi Kōtōen 1-Chōme 204,local;semi-express
+Nigawa,Imazu,HK-25,Hyōgo-ken Takarazuka-shi Nigawa-Kita 3-Chōme 3-5,local;semi-express
+Obayashi,Imazu,HK-26,Hyōgo-ken Takarazuka-shi Chigusa 2-Chōme 1-1,local;semi-express
+Sakasegawa,Imazu,HK-27,Hyōgo-ken Takarazuka-shi Sakasegawa 2-Chōme 1-17,local;semi-express
+Takarazuka-Minamiguchi,Imazu,HK-28,Hyōgo-ken Takarazuka-shi Umeno-chō 1-48,local;semi-express
+Kurakuenguchi,Kōyō,HK-29,Hyōgo-ken Nishinomiya-shi Ishibane-chō 1-22,local
+Kōyōen,Kōyō,HK-30,Hyōgo-ken Nishinomiya-shi Kōyōen-Wakae-chō 7-19,local
+Mikuni,Takarazuka,HK-41,Ōsaka-fu Ōsaka-shi Yodogawa-ku Nītaka 3-Chōme 6-33,local
+Shōnai,Takarazuka,HK-42,Ōsaka-fu Toyonaka-shi Shōnai-Higashi-machi 1-Chōme 10-1,local
+Hottori-Tenjin,Takarazuka,HK-43,Ōsaka-fu Toyonaka-shi Hattori-motomachi 1-Chōme 1-1,local
+Sone,Takarazuka,HK-44,Ōsaka-fu Toyonaka-shi Sone-Higashi-chō 3-Chōme 1-1,local;semi-express
+Okamachi,Takarazuka,HK-45,Ōsaka-fu Toyonaka-shi Naka-Sakurazuka 1-Chōme 1-1,local;semi-express
+Toyonaka,Takarazuka,HK-46,Ōsaka-fu Toyonaka-shi Hon-machi 1-Chōme 1-1,local;semi-express;express;commuter limited express
+Hotarugaike,Takarazuka,HK-47,Ōsaka-fu Toyonaka-shi Hotarugaike-Higashi-machi 1-Chōme 5-1,local;semi-express;express
+Ishibashi-Handai-mae,Takarazuka;Minō,HK-48,Ōsaka-fu Ikeda-shi Ishibashi 2-Chōme 18-1,local;semi-express;express;commuter limited express;limited express nissei express
+Ikeda,Takarazuka,HK-49,Ōsaka-fu Ikeda-shi Sakae-machi 1-1,local;semi-express;express
+Kawanishi-Noseguchi,Takarazuka;Myōken,HK-50;NS01,Hyōgo-ken Kawanishi-shi Sakae-machi 20-1,local;semi-express;express
+Hibarigaoka-Hanayashiki,Takarazuka,HK-51,Hyōgo-ken Takarazuka-shi Hibarigaoka 1-Chōme 1-10,local;semi-express;express
+Yamamoto,Takarazuka,HK-52,Hyōgo-ken Takarazuka-shi Hirai 1-Chōme 1-1,local;semi-express;express
+Nakayama-Kannon,Takarazuka,HK-53,Hyōgo-ken Takarazuka-shi Nakayama-dera 2-Chōme 7-1,local;semi-express;express
+Mefu-Jinja,Takarazuka,HK-54,Hyōgo-ken Takarazuka-shi Mefu 2-Chōme 14-30,local;semi-express;express
+Kiyoshi-Kōjin,Takarazuka,HK-55,Hyōgo-ken Takarazuka-shi Kiyoshi-Kōjin 1-Chōme 9-3,local;semi-express;express
+Takarazuka,Takarazuka;Imazu,HK-56,Hyōgo-ken Takarazuka-shi Sakae-machi 2-Chōme 3-1,local;semi-express;express
+Sakurai,Minō,HK-57,Ōsaka-fu Minō-shi Sakurai 2-Chōme 2-1,local
+Makiochi,Minō,HK-58,Ōsaka-fu Minō-shi Hyakuraku-sō 1-Chōme 1-6,local
+Minō,Minō,HK-59,Ōsaka-fu Minō-shi Minō 1-Chōme 1-1,local
+Hirano,Myōken,NS-07,Hyōgo-ken Kawanishi-shi Hirano 1-Chōme 36-1,limited express nissei express
+Uneno,Myōken,NS-09,Hyōgo-ken Kawanishi-shi Higashi-Uneno 2-Chōme 2-12,limited express nissei express
+Yamashita,Myōken;Nissei,NS-10,Hyōgo-ken Kawanishi-shi Mino 1-Chōme 19-1,limited express nissei express
+Nissei-Chūō,Nissei,NS-21,Hyōgo-ken Kawabe-gun Inagawa-chō Matuo-dai 1-Chōme 2-2,limited express nissei express
+Minamikata,Kyōto,HK-61,Ōsaka-fu Ōsaka-shi Yodogawa-ku Nishi-Nakajima 3-Chōme 17-3,local
+Sōzenji,Kyōto,HK-62,Ōsaka-fu Ōsaka-shi Higashi-Yodogawa-ku Kunijima 1-Chōme 7-28,local;semi-express;rapid
+Awaji,Kyōto;Senri,HK-63,Ōsaka-fu Ōsaka-shi Higashi-Yodogawa-ku Higashi-Awaji 4-Chōme 17-8,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A
+Kami-Shinjō,Kyōto,HK-64,Ōsaka-fu Ōsaka-shi Higashi-Yodogawa-ku Kami-Shinjō 2-Chōme 24-5,local;semi-express;rapid
+Aikawa,Kyōto,HK-65,Ōsaka-fu Ōsaka-shi Higashi-Yodogawa-ku Aikawa 1-Chōme 7-24,local
+Shōjaku,Kyōto,HK-66,Ōsaka-fu Settsu-shi Hankyū-Shōjaku 1-1,local
+Settsu-shi,Kyōto,HK-67,Ōsaka-fu Settsu-shi Senrioka-Higashi 4-Chōme 1-1,local
+Minami-Ibaraki,Kyōto,HK-68,Ōsaka-fu Ibaraki-shi Tennō 2-Chōme 6-14,local;semi-express;rapid
+Ibaraki-shi,Kyōto,HK-69,Ōsaka-fu Ibaraki-shi Eidai-chō 1-5,local;semi-express;rapid;rapid express;commuter limited express; limited express
+Sōjiji,Kyōto,HK-70,Ōsaka-fu Ibaraki-shi Sōjiji-Ekimae-chō 7–3,local
+Tonda,Kyōto,HK-71,Ōsaka-fu Takatsuki-shi Tonda-chō 3-Chōme 4-10,local
+Takatsuki-shi,Kyōto,HK-72,Ōsaka-fu Takatsuki-shi Jōhoku-chō 2-Chōme 1-18,local;semi-express;rapid;rapid express;commuter limited express; limited express
+Kanmaki,Kyōto,HK-73,Ōsaka-fu Takatsuki-shi Kōnai 2-Chōme 1-5,local;semi-express
+Minase,Kyōto,HK-74,Ōsaka-fu Mishima-gun Shimamoto-chō Minase 1-Chōme 17-12,local;semi-express
+Ōyamazaki,Kyōto,HK-75,Kyōto-fu Otokuni-gun Ōyamazaki-chō Myōjima 13-2,local;semi-express
+Nishiyama-Tennōzan,Kyōto,HK-76,Kyōto-fu Nagaokakyō-shi Tomo-oka 4-Chōme 22-1,local;semi-express
+Nagaoka-Tenjin,Kyōto,HK-77,Kyōto-fu Nagaokakyō-shi Tenjin 1-Chōme 30-1,local;semi-express;rapid;rapid express;commuter limited express; limited express
+Nishi-Mukō,Kyōto,HK-78,Kyōto-fu Mukō-shi Kami-Ueno-chō Minami-Biraki 23-1,local;semi-express
+Higashi-Mukō,Kyōto,HK-79,Kyōto-fu Mukō-shi Terado-chō Kotsukuda 5-2,local;semi-express
+Rakusaiguchi,Kyōto,HK-80,Kyōto-fu Kyōto-shi Nishikyō-ku Kawashima-Rokunotsubo-chō ,local;semi-express
+Katsura,Kyōto;Arashiyama,HK-81,Kyōto-fu Kyōto-shi Nishikyō-ku Kawashima-Kitaura-chō 97-2,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A
+Nishi-Kyōgoku,Kyōto,HK-82,Kyōto-fu Kyōto-shi Ukyō-ku Nishikyōgoku-Nishi-Ikeda-chō 2,local;semi-express
+Saiin,Kyōto,HK-83,Kyōto-fu Kyōto-shi Ukyō-ku Saiin-Kōzanji-chō 38-1,local;semi-express;rapid;rapid express;commuter limited express
+Ōmiya,Kyōto,HK-84,Kyōto-fu Kyōto-shi Nakagyō-ku 4-Jō-dōri Ōmiya Nishi-Iru Nishiki-Ōmiya-chō 127,local;semi-express;rapid;rapid express;commuter limited express
+Karasuma,Kyōto,HK-85,Kyōto-fu Kyōto-shi Shimogyō-ku 4-Jō-dōri Karasuma Higashi-Iru Naginataboko-chō 17,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A
+Kyōto-Kawaramachi,Kyōto,HK-86,Kyōto-fu Kyōto-shi Shimogyō-ku 4-Jō-dōri Kawara-chō Nishi-Iru Shin-chō 52,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A
+Tengachaya,Sakaisuji,K20,Ōsaka-fu Ōsaka-shi Nishinari-ku Kishinosato 1-Chōme 1-10,local;semi-express
+Dōbutsuen-mae,Sakaisuji,K19,Ōsaka-fu Ōsaka-shi Nishinari-ku Daishi 1-Chōme 6-12,local;semi-express
+Ebisu-chō,Sakaisuji,K18,Ōsaka-fu Ōsaka-shi Naniwa-ku Nipponbashi 5-Chōme,local;semi-express
+Nipponbashi,Sakaisuji,K17,Ōsaka-fu Ōsaka-shi Chūō-ku Nipponbashi 1-Chōme 5-12,local;semi-express
+Nagahoribashi,Sakaisuji,K16,Ōsaka-fu Ōsaka-shi Chūō-ku Shimanouchi 1-Chōme ,local;semi-express
+Sakaisuji-Honmachi,Sakaisuji,K15,Ōsaka-fu Ōsaka-shi Chūō-ku Senba-Chūō 1-Chōme 4-16,local;semi-express
+Kitahama,Sakaisuji,K14,Ōsaka-fu Ōsaka-shi Chūō-ku Kitahama 1-Chōme 8-16,local;semi-express
+Minamimori-machi,Sakaisuji,K13,Ōsaka-fu Ōsaka-shi Kita-ku Minamimori-chō 2-Chōme 1,local;semi-express
+Ōgimachi,Sakaisuji,K12,Ōsaka-fu Ōsaka-shi Kita-ku Tenjinbashi 4-Chōme 8-3,local;semi-express
+Tenjinbashi-Suji-Roku-Chōme,Senri;Sakaisuji,K11,Ōsaka-fu Ōsaka-shi Kita-ku Tenjinbashi 6-Chōme ,local;semi-express
+Kunijima,Senri,HK-87,Ōsaka-fu Ōsaka-shi Higashi-Yodogawa-ku Kunijima 2-Chōme 12-3,local
+Shimo-Shinjō,Senri,HK-88,Ōsaka-fu Ōsaka-shi Higashi-Yodogawa-ku Shimo-Shinjō 5-Chōme 1-21,local
+Suita,Senri,HK-89,Ōsaka-fu Suita-shi Nishinoshō-chō 12-21,local
+Toyotsu,Senri,HK-90,Ōsaka-fu Suita-shi Tarumi-chō 1-Chōme 1-4,local
+Kandai-mae,Senri,HK-91,Ōsaka-fu Suita-shi Yamate-chō 3-Chōme 8-19,local
+Senriyama,Senri,HK-92,Ōsaka-fu Suita-shi Senriyama-Nishi 5-Chōme 1-3,local
+Minami-Senri,Senri,HK-93,Ōsaka-fu Suita-shi Tsukumodai 1-Chōme 1-1,local
+Yamada,Senri,HK-94,Ōsaka-fu Suita-shi Yamada-Nishi 4-Chōme 1-1,local
+Kita-Senri,Senri,HK-95,Ōsaka-fu Suita-shi Furuedai 4-Chōme 2-1-1,local
+Kami-Katsura,Arashiyama,HK-96,Kyōto-fu Kyōto-shi Nishikyō-ku Kami-Katsura-Miyanogo-chō 33-2,local
+Matsuo-Daisha,Arashiyama,HK-97,Kyōto-fu Kyōto-shi Nishikyō-ku Arashiyama-Miyanomae-chō 49,local
+Arashiyama,Arashiyama,HK-98,Kyōto-fu Kyōto-shi Nishikyō-ku Arashiyama-Higashi-Ichikawa-chō 7,local

@@ -11,10 +11,12 @@ references:
     https://cs50.harvard.edu/web/notes/4/
 """
 
+
 # used imports
 from flask_sqlalchemy import SQLAlchemy, event
 from flask_login import AnonymousUserMixin
-from functions import security as s
+
+from app.functions import security as s
 
 # define SQLAlchemy
 db = SQLAlchemy()
@@ -114,7 +116,7 @@ class Stop(db.Model):
     def get_stopnumbers(self):
         stopnumbers = dict()
 
-        for stopnumber in self.stopnumber.split(","):
+        for stopnumber in self.stopnumber.split(";"):
             for line in self.lines:
                 if line.stopnumber_prefix in stopnumber:
                     stopnumbers[line] = stopnumber
@@ -159,7 +161,7 @@ class Line(db.Model):
         stops = dict()
         stops_pi = dict()
 
-        for _type in self.stoptypes.split(","):
+        for _type in self.stoptypes.split(";"):
             stops[_type] = []
             stops_pi[_type] = []
 
@@ -171,6 +173,14 @@ class Line(db.Model):
                     stops_pi[_type].append(None)
 
         return stops, stops_pi
+
+    def check_stopnumber_prefix(self, prefix):
+
+        for stop_prefix in self.stopnumber_prefix.split(";"):
+            if stop_prefix in prefix:
+                return True
+
+        return False
 
     def __repr__(self):
         if self.company:
