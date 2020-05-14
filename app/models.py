@@ -106,9 +106,20 @@ class Stop(db.Model):
     __tablename__ = "stops"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
+    stopnumber = db.Column(db.String, nullable=True)
     location = db.Column(db.String, nullable=True)
     stoptype = db.Column(db.String, nullable=True)
     lines = db.relationship("Line", secondary=stop_line)
+
+    def get_stopnumbers(self):
+        stopnumbers = dict()
+
+        for stopnumber in self.stopnumber.split(","):
+            for line in self.lines:
+                if line.stopnumber_prefix in stopnumber:
+                    stopnumbers[line] = stopnumber
+
+        return stopnumbers
 
     def get_neighbouring_stops(self):
         neighbours = dict()
@@ -139,6 +150,7 @@ class Line(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     stops = db.relationship("Stop", secondary=stop_line)
+    stopnumber_prefix = db.Column(db.String, nullable=True)
     stoptypes = db.Column(db.String, nullable=True)
     company_id = db.Column(db.Integer, db.ForeignKey("companies.id"))
     company = db.relationship("Company", uselist=False)

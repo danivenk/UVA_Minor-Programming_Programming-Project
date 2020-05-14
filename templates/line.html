@@ -21,8 +21,45 @@
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            {{ current_line.stops | first }} - {{ current_line.stops | last}}<br>
+            {% set first = current_line.stops | first %}
+            {% set last = current_line.stops | last %}
+            <a href="{{ url_for('stop', id=first.id) }}">
+                {{ first }}
+            </a>
+            -
+            <a href="{{ url_for('stop', id=last.id) }}">
+                {{ last }}
+            </a>
+            <br>
             {{ current_line.stops | length}} stops
+        </div>
+        <div class="table-responsive col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        {% for stop in current_line.stops %}
+                        <th class="stop">
+                            {{ stop | capitalize }}
+                        </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                {% for type, stops in current_line.get_stops()[1].items() %}
+                <tr>
+                    <th>{{ type | capitalize }}</th>
+                    {% for stop in stops %}
+                    <td>
+                        {% if stop %}
+                        ●
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
         </div>
         <div class="col-sm-6">
             <h2>Stops</h2>
@@ -30,7 +67,7 @@
                 {% for stop in current_line.stops %}
                     <li>
                         <a href="{{ url_for('stop', id=stop.id) }}">
-                            {{ stop }}
+                            {{ stop }} ({{ stop.get_stopnumbers()[current_line] }})
                         </a>
                         
                         <br>
@@ -54,34 +91,6 @@
                     <hr>
                 {% endfor %}
             </ul>
-        </div>
-        <div class="table-responsive col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        {% for stop in current_line.stops %}
-                        <th class="stop">
-                            {{ stop | capitalize }}
-                        </th>
-                        {% endfor %}
-                    </tr>
-                </thead>
-                {% for type, stops in current_line.get_stops()[1].items() %}
-                <tr>
-                    <th>{{ type | capitalize }}</th>
-                    {% for stop in stops %}
-                        <td>
-                            {% if stop %}
-                                ●
-                            {% else %}
-                                -
-                            {% endif %}
-                        </td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            </table>
         </div>
     </div>
 {% endblock %}

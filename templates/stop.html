@@ -21,7 +21,15 @@
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            {{ current_stop.location }}
+            Stop Number: 
+            {% for line in current_stop.lines %}
+                {{ current_stop.get_stopnumbers()[line] }}
+                {% if not loop.last %}
+                    ,
+                {% endif %}
+            {% endfor %}
+            <br>
+            Location: {{ current_stop.location }}
         </div>
         <div class="col-sm-6">
             <ul>
@@ -29,7 +37,7 @@
                 {% set neighbouring_stops = current_stop.get_neighbouring_stops() %}
                 {% for line, type_dict  in neighbouring_stops.items() %}
                     <li>
-                        <a href="{{ url_for('line', id=line.id) }}">{{ line }}</a>
+                        <a href="{{ url_for('line', id=line.id) }}">{{ line }} ({{ current_stop.get_stopnumbers()[line] }})</a>
 
                     {% for type, neighbours in type_dict.items() %}
                         <li>
@@ -45,7 +53,9 @@
                                 </li>
                             {% endif %}
                             {% if neighbours.previous and neighbours.next %}
-                                <div class="between">|</div>
+                                <div class="between">
+                                    |
+                                </div>
                             {% endif %}
                             {% if neighbours.next %}
                                 <li>

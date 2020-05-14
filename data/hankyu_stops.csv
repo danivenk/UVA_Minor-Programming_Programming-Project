@@ -1,0 +1,20 @@
+Stop Name,Line Name,Stop Number,Location,Stop Type
+Ōsaka-Umeda,Koube Main Line;Takarazuka Main Line;Kyōto Main Line,HK-01,Ōsaka-fu Ōsaka-shi Kita-ku Shibata 1-Chōme 1-2,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express
+Nakatsu,Koube Main Line;Takarazuka Main Line,HK-02,Ōsaka-fu Ōsaka-shi Kita-ku Nakatsu 3-Chōme 1-30,local
+Jūsō,Koube Main Line;Takarazuka Main Line;Kyōto Main Line,HK-03,Ōsaka-fu Ōsaka-shi Yodogawa-ku Jūsō-Higashi 2-Chōme 12-1,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express
+Kanzakigawa,Koube Main Line,HK-04,Ōsaka-fu Ōsaka-shi Yodogawa-ku Nītaka 6-Chōme 14-16,local
+Sonoda,Koube Main Line,HK-05,Hyōgo-ken Amagasaki-shi Higashi-Sonoda 9-Chōme 48-1,local
+Tsukaguchi,Koube Main Line;Itami Line,HK-06,Hyōgo-ken Amagasaki-shi Tsukaguchi-Motomach 1-Chōme 1,local;semi-express;commuter express;express;rapid express;commuter limited express
+Mukonosō,Koube Main Line,HK-07,Hyōgo-ken Amagasaki-shi Mukonosō 1-Chōme 1-1,local;commuter express
+Nishinomiya-Kitaguchi,Koube Main Line;Imazu Line,HK-08,Hyōgo-ken Nishinomiya-shi Takamatsu-chō 6-20,local;commuter express;express;rapid express;commuter limited express;limited express
+Shukugawa,Koube Main Line;Kōyō Line,HK-09,Hyōgo-ken Nishinomiya-shi Aioi-chō 2-1,local;commuter express;express;rapid express;commuter limited express;limited express
+Ashiyagawa,Koube Main Line,HK-10,Hyōgo-ken Ashiyashi-shi Nishiyama-chō 1-10,local;commuter express;express
+Okamoto,Koube Main Line,HK-11,Hyōgo-ken Kōbe-shi Higashi-Nada-ku Okamoto 5-Chōme 1-1,local;commuter express;express;rapid express;commuter limited express;limited express
+Mikage,Koube Main Line,HK-12,Hyōgo-ken Kōbe-shi Higashi-Nada-ku Mikage 2-Chōme 1-1,local;commuter express;express
+Rokkō,Koube Main Line,HK-13,Hyōgo-ken Kōbe-shi Nada-ku Miyayama-chō 3-Chōme 1,local;commuter express;express;rapid express
+Ōji-Kōen,Koube Main Line,HK-14,Hyōgo-ken Kōbe-shi Nada-ku Ōji-chō 1-Chōme 4-20,local;commuter express;express
+Kasuganomichi,Koube Main Line,HK-15,Hyōgo-ken Kōbe-shi Chūō-ku Wakana-dōri 1-Chōme 1,local;commuter express;express
+Kōbe-Sannomiya,Koube Main Line;Kōbe-Kōsoku Line,HK-16,Hyōgo-ken Kōbe-shi Chūō-ku Kanō-chō 4-Chōme 2-1,local;commuter express;express;rapid express;commuter limited express;limited express
+Hanakuma,Kōbe-Kōsoku Line,HK-17,Hyōgo-ken Kōbe-shi Chūō-ku Kita-Nagasa-dōri 6-Chōme,local;commuter express;express;rapid express;commuter limited express;limited express
+Kōsoku-Kōbe,Kōbe-Kōsoku Line,HS-35,Hyōgo-ken Kōbe-shi Chūō-ku Nakamachi-dōri 3-Chōme 2,local;commuter express;express;rapid express;commuter limited express;limited express
+Shin-Kaichi,Kōbe-Kōsoku Line,HS-36,Hyōgo-ken Kōbe-shi Hyōgo-ku Shinkachi 2-Chōme 3-24,local;commuter express;express;rapid express;commuter limited express;limited express
