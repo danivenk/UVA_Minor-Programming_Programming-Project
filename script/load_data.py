@@ -10,6 +10,9 @@ import sys
 import os
 import csv
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+
 
 def main(argv):
     if len(argv) != 1:
@@ -19,9 +22,9 @@ def main(argv):
               "data/<dataset_name>_lines.csv & "
               "data/<dataset_name>_companies.csv")
 
-    add_stops(argv[0])
-    add_lines(argv[0])
-    add_companies(argv[0])
+    stops = add_stops(argv[0])
+    lines = add_lines(argv[0])
+    companies = add_companies(argv[0])
 
 
 def add_stops(dataset_name):
@@ -55,9 +58,8 @@ def add_stops(dataset_name):
                             location=stop["location"],
                             stoptype=stop["stoptype"])
 
-        db.session.add(database_row)
-
-    db.session.commit()
+        ssess.add(database_row)
+        ssess.commit()
 
     return stops
 
@@ -92,9 +94,8 @@ def add_companies(dataset_name):
         database_row = Company(name=company["name"],
                                short_name=company["short_name"])
 
-        db.session.add(database_row)
-
-    db.session.commit()
+        ssess.add(database_row)
+        ssess.commit()
 
     return companies
 
@@ -131,22 +132,28 @@ def add_lines(dataset_name):
                             stopnumber_prefix=line["stopnumber_prefix"],
                             stoptypes=line["stoptypes"])
 
-        db.session.add(database_row)
-
-    db.session.commit()
+        ssess.add(database_row)
+        ssess.commit()
 
     return lines
 
 
 if __name__ == "__main__":
-    sys.path.append(os.path.abspath(os.getcwd() + "/../"))
+    # https://stackoverflow.com/a/16985066
+    PACKAGE_PARENT = '..'
+    SCRIPT_DIR = os.path.dirname(os.path.realpath(
+        os.path.join(os.getcwd(), os.path.expanduser(__file__))))
+    sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
-    from app.models import Stop, Line, Company
-    from app import create_app, db
+    from app.models import db, Stop, Line, Company
 
-    flask_app = create_app()
-    flask_app.app_context().push()
+    # Configure database
+    if not os.getenv("DATABASE_URL"):
+        raise RuntimeError("DATABASE_URL is not set")
 
-    with flask_app.app_context():
-        db.create_all(app=flask_app)
-        main(sys.argv[1:])
+    # set up database
+    engine = create_engine(os.getenv("DATABASE_URL"))
+    ssess = scoped_session(sessionmaker(bind=engine))
+    db.metadata.create_all(engine)
+
+    main(sys.argv[1:])

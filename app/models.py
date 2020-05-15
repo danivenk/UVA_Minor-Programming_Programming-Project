@@ -11,14 +11,14 @@ references:
     https://cs50.harvard.edu/web/notes/4/
 """
 
-
 # used imports
-import sys
-import os
-from flask_sqlalchemy import event
+from flask_sqlalchemy import SQLAlchemy, event
 from flask_login import AnonymousUserMixin
 
-from . import db
+from .functions import security as s
+
+# define SQLAlchemy
+db = SQLAlchemy()
 
 
 class User(db.Model):
@@ -112,7 +112,9 @@ class Stop(db.Model):
     stopnumber = db.Column(db.String, nullable=True)
     location = db.Column(db.String, nullable=True)
     stoptype = db.Column(db.String, nullable=True)
-    lines = db.relationship("Line", secondary=stop_line, back_populates="stops", lazy="joined", cascade="all")
+    lines = db.relationship("Line", secondary=stop_line,
+                            back_populates="stops", lazy="joined",
+                            cascade="all")
 
     def get_stopnumbers(self):
         stopnumbers = dict()
@@ -153,7 +155,8 @@ class Line(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     stops = db.relationship("Stop", secondary=stop_line,
-                            back_populates="lines", lazy="joined", cascade="all")
+                            back_populates="lines", lazy="joined",
+                            cascade="all")
     stopnumber_prefix = db.Column(db.String, nullable=True)
     stoptypes = db.Column(db.String, nullable=True)
     company_id = db.Column(db.Integer, db.ForeignKey("companies.id"))
@@ -215,10 +218,3 @@ def hash_user_password(target, value, oldvalue, initiator):
     if value != oldvalue:
         return s.hash_psswd(value)
     return value
-
-
-if __name__ == "__package__":
-
-    sys.path.append(os.path.abspath(os.getcwd() + "/../"))
-
-    from app.functions import security as s
