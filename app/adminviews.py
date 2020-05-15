@@ -100,6 +100,8 @@ class NetworkView(ModelView):
         inaccessible_callback   - redirects to site index if inaccessible
     """
 
+    # fast_mass_delete = True
+
     def is_accessible(self):
         """
         check if current_user is admin, return true if so else false

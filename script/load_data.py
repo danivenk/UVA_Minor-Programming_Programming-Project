@@ -19,9 +19,9 @@ def main(argv):
               "data/<dataset_name>_lines.csv & "
               "data/<dataset_name>_companies.csv")
 
-    print(add_stops(argv[0]))
-    print(add_lines(argv[0]))
-    print(add_companies(argv[0]))
+    add_stops(argv[0])
+    add_lines(argv[0])
+    add_companies(argv[0])
 
 
 def add_stops(dataset_name):
@@ -55,7 +55,9 @@ def add_stops(dataset_name):
                             location=stop["location"],
                             stoptype=stop["stoptype"])
 
-        # db.session.add(database_row)
+        db.session.add(database_row)
+
+    db.session.commit()
 
     return stops
 
@@ -90,7 +92,9 @@ def add_companies(dataset_name):
         database_row = Company(name=company["name"],
                                short_name=company["short_name"])
 
-        # db.session.add(database_row)
+        db.session.add(database_row)
+
+    db.session.commit()
 
     return companies
 
@@ -127,7 +131,9 @@ def add_lines(dataset_name):
                             stopnumber_prefix=line["stopnumber_prefix"],
                             stoptypes=line["stoptypes"])
 
-        # db.session.add(database_row)
+        db.session.add(database_row)
+
+    db.session.commit()
 
     return lines
 
@@ -135,6 +141,12 @@ def add_lines(dataset_name):
 if __name__ == "__main__":
     sys.path.append(os.path.abspath(os.getcwd() + "/../"))
 
-    from app.models import db, Stop, Line, Company
+    from app.models import Stop, Line, Company
+    from app import create_app, db
 
-    main(sys.argv[1:])
+    flask_app = create_app()
+    flask_app.app_context().push()
+
+    with flask_app.app_context():
+        db.create_all(app=flask_app)
+        main(sys.argv[1:])

@@ -9,8 +9,7 @@ Dani van Enk, 11823526
 import os
 import shlex
 
-from flask import Flask, abort, request, render_template, Response, session, \
-                  escape, redirect, url_for
+from flask import abort, request, render_template, session, escape, redirect
 from flask_session import Session
 from flask_migrate import Migrate
 from flask_admin import Admin
@@ -19,20 +18,15 @@ from werkzeug.exceptions import default_exceptions, HTTPException
 
 from sqlalchemy import or_
 
-from models import db, User, AnonymousUser, Stop, Line, Company
-from adminviews import AdminUserIndexView, AdminView, NetworkView
-from functions.search import relevance_query
-from functions import security
+from .models import User, AnonymousUser, Stop, Line, Company
+from .adminviews import AdminUserIndexView, AdminView, NetworkView
+from .functions.search import relevance_query
+from .functions import security
 
-# Configure Flask app
-app = Flask(__name__, root_path=os.getcwd())
+from . import create_app, db
 
-# Configure database
-if not os.getenv("DATABASE_URL"):
-    raise RuntimeError("DATABASE_URL is not set")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db.init_app(app)
+app = create_app()
+app.app_context().push()
 
 app.secret_key = os.environ['SECRET_KEY']
 

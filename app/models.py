@@ -13,13 +13,12 @@ references:
 
 
 # used imports
-from flask_sqlalchemy import SQLAlchemy, event
+import sys
+import os
+from flask_sqlalchemy import event
 from flask_login import AnonymousUserMixin
 
-from app.functions import security as s
-
-# define SQLAlchemy
-db = SQLAlchemy()
+from . import db
 
 
 class User(db.Model):
@@ -96,11 +95,13 @@ class AnonymousUser(AnonymousUserMixin):
         return False
 
 
-stop_line = db.Table('stop_line_association',
+stop_line = db.Table('stop_line_association', db.Model.metadata,
                      db.Column('stop_id', db.ForeignKey('stops.id'),
                                primary_key=True),
                      db.Column('line_id', db.ForeignKey('lines.id'),
-                               primary_key=True)
+                               primary_key=True),
+                     db.UniqueConstraint('stop_id', 'line_id',
+                                         name='UC_stop_id_line_id')
                      )
 
 
@@ -111,7 +112,7 @@ class Stop(db.Model):
     stopnumber = db.Column(db.String, nullable=True)
     location = db.Column(db.String, nullable=True)
     stoptype = db.Column(db.String, nullable=True)
-    lines = db.relationship("Line", secondary=stop_line)
+    lines = db.relationship("Line", secondary=stop_line, back_populates="stops", lazy="joined", cascade="all")
 
     def get_stopnumbers(self):
         stopnumbers = dict()
@@ -151,11 +152,12 @@ class Line(db.Model):
     __tablename__ = "lines"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
-    stops = db.relationship("Stop", secondary=stop_line)
+    stops = db.relationship("Stop", secondary=stop_line,
+                            back_populates="lines", lazy="joined", cascade="all")
     stopnumber_prefix = db.Column(db.String, nullable=True)
     stoptypes = db.Column(db.String, nullable=True)
     company_id = db.Column(db.Integer, db.ForeignKey("companies.id"))
-    company = db.relationship("Company", uselist=False)
+    company = db.relationship("Company", uselist=False, cascade="delete")
 
     def get_stops(self):
         stops = dict()
@@ -194,7 +196,7 @@ class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     short_name = db.Column(db.String, nullable=True)
-    line = db.relationship("Line")
+    line = db.relationship("Line", cascade="delete")
 
     def __repr__(self):
         return self.name
@@ -213,3 +215,10 @@ def hash_user_password(target, value, oldvalue, initiator):
     if value != oldvalue:
         return s.hash_psswd(value)
     return value
+
+
+if __name__ == "__package__":
+
+    sys.path.append(os.path.abspath(os.getcwd() + "/../"))
+
+    from app.functions import security as s
