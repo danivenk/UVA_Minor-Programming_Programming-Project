@@ -21,8 +21,8 @@
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            {% set first = current_line.stops | first %}
-            {% set last = current_line.stops | last %}
+            {% set first = current_line.get_stops()[2] | first %}
+            {% set last = current_line.get_stops()[2] | last %}
             <a href="{{ url_for('stop', id=first.id) }}">
                 {{ first }}
             </a>
@@ -31,14 +31,14 @@
                 {{ last }}
             </a>
             <br>
-            {{ current_line.stops | length}} stops
+            {{ current_line.get_stops()[2] | length}} stops
         </div>
         <div class="table-responsive col-sm-12">
             <table class="table">
                 <thead>
                     <tr>
                         <th></th>
-                        {% for stop in current_line.stops %}
+                        {% for stop in current_line.get_stops()[2] %}
                         <th class="stop">
                             {{ stop | capitalize }}
                         </th>
@@ -64,7 +64,7 @@
         <div class="col-sm-6">
             <h2>Stops</h2>
             <ul>
-                {% for stop in current_line.stops %}
+                {% for stop in current_line.get_stops()[2] %}
                     <li>
                         <a href="{{ url_for('stop', id=stop.id) }}">
                             {{ stop }} ({{ stop.get_stopnumbers()[current_line] }})

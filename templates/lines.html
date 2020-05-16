@@ -20,10 +20,36 @@
     <h1>Lines</h1>
     <hr>
     <ul class="row">
-        {% for line in lines %}
+        {% if page == 1 %}
+            {% set lower = 0 %}
+        {% else %}
+            {% set lower = (page - 1) * 50 %}
+        {% endif %}
+        {% set upper = page * 50 %}
+        {% for line in lines[lower:upper] %}
             <a class="card col-sm-3", href="{{ url_for('line', id=line.id) }}">
                 <li>{{ line }}</li>
             </a>
         {% endfor %}
     </ul>
+
+    {% if no_pages > 50 %}
+        <ul class="row pages">
+            {% if page > 1 %}
+            <a href="{{ url_for('lines', page=page - 1) }}">
+                &lt;
+            </a>
+            {% endif %}
+            {% for page_no in range(no_pages | int) %}
+            <a href="{{ url_for('lines', page=page_no + 1) }}">
+                {{ page_no + 1 }}
+            </a>
+            {% endfor %}
+            {% if no_pages > page %}
+            <a href="{{ url_for('lines', page=page + 1) }}">
+                &gt;
+            </a>
+            {% endif %}
+        </ul>
+    {% endif %}
 {% endblock %}

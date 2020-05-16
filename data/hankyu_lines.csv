@@ -1,20 +1,20 @@
 line,stop,stopnumber-prefix,stoptype,company
-Kōbe,Ōsaka-Umeda,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Nakatsu,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Jūsō,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Kanzakigawa,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Sonoda,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Tsukaguchi,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Mukonosō,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Nishinomiya-Kitaguchi,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Shukugawa,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Ashiyagawa,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Okamoto,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Mikage,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Rokkō,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Ōji-Kōen,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Kasuganomichi,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
-Kōbe,Kōbe-Sannomiya,HK,local;semi-express;commuter express;express;rapid express;commuter limited express,Hankyū
+Kōbe,Ōsaka-Umeda,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Nakatsu,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Jūsō,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Kanzakigawa,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Sonoda,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Tsukaguchi,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Mukonosō,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Nishinomiya-Kitaguchi,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Shukugawa,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Ashiyagawa,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Okamoto,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Mikage,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Rokkō,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Ōji-Kōen,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Kasuganomichi,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
+Kōbe,Kōbe-Sannomiya,HK,local;semi-express;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
 Kōbe-Kōsoku,Kōbe-Sannomiya,HK;HS,local;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
 Kōbe-Kōsoku,Hanakuma,HK;HS,local;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
 Kōbe-Kōsoku,Kōsoku-Kōbe,HK;HS,local;commuter express;express;rapid express;commuter limited express;limited express,Hankyū
@@ -65,34 +65,34 @@ Myōken,Uneno,HK;NS,limited express nissei express,Nosedentetsu
 Myōken,Yamashita,HK;NS,limited express nissei express,Nosedentetsu
 Nissei,Yamashita,NS,limited express nissei express,Nosedentetsu
 Nissei,Nissei-Chūō,NS,limited express nissei express,Nosedentetsu
-Kyōto,Ōsaka-Umeda,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Jūsō,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Minamikata,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Sōzenji,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Awaji,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Kami-Shinjō,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Aikawa,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Shōjaku,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Settsu-shi,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Minami-Ibaraki,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Ibaraki-shi,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Sōjiji,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Tonda,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Takatsuki-shi,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Kanmaki,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Minase,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Ōyamazaki,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Nishiyama-Tennōzan,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Nagaoka-Tenjin,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Nishi-Mukō,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Higashi-Mukō,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Rakusaiguchi,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Katsura,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Nishi-Kyōgoku,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Saiin,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Ōmiya,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Karasuma,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
-Kyōto,Kyōto-Kawaramachi,HK,local;semi-express;rapid;rapid express;commuter limited express; limited express; rapid limited express; rapid limited express A,Hankyū
+Kyōto,Ōsaka-Umeda,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Jūsō,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Minamikata,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Sōzenji,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Awaji,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Kami-Shinjō,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Aikawa,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Shōjaku,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Settsu-shi,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Minami-Ibaraki,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Ibaraki-shi,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Sōjiji,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Tonda,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Takatsuki-shi,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Kanmaki,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Minase,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Ōyamazaki,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Nishiyama-Tennōzan,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Nagaoka-Tenjin,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Nishi-Mukō,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Higashi-Mukō,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Rakusaiguchi,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Katsura,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Nishi-Kyōgoku,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Saiin,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Ōmiya,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Karasuma,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
+Kyōto,Kyōto-Kawaramachi,HK,local;semi-express;rapid;rapid express;commuter limited express;limited express;rapid limited express;rapid limited express A,Hankyū
 Sakaisuji,Tengachaya,K,local;semi-express,Ōsaka Metro
 Sakaisuji,Dōbutsuen-mae,K,local;semi-express,Ōsaka Metro
 Sakaisuji,Ebisu-chō,K,local;semi-express,Ōsaka Metro

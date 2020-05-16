@@ -14,6 +14,10 @@ def main():
 
     print(relevance_query(list_a))
 
+    b = "Osaka-ku"
+
+    macron_query(b)
+
 
 def relevance_query(in_list):
 
@@ -32,6 +36,33 @@ def relevance_query(in_list):
                 out_list.append(query.strip())
 
     return out_list[::-1]
+
+
+def macron_query(query):
+
+    accents = {"A": "Ā", "a": "ā", "I": "Ī", "i": "ī", "U": "Ū",
+               "u": "ū", "E": "Ē", "e": "ē", "O": "Ō", "o": "ō"}
+
+    vowels = []
+
+    for i, letter in enumerate(query):
+        if letter in accents:
+            vowels.append((letter, i))
+
+    queries = {query}
+
+    for length in range(len(vowels) + 1):
+        for subset in combinations(vowels, length):
+            if len(subset) > 0:
+                query = list(query)
+                for letter in subset:
+                    query[letter[1]] = accents[letter[0]]
+
+                query = "".join(query)
+
+                queries.add(query)
+
+    return queries
 
 
 if __name__ == "__main__":

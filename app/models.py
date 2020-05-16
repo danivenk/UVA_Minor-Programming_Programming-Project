@@ -121,8 +121,9 @@ class Stop(db.Model):
 
         for stopnumber in self.stopnumber.split(";"):
             for line in self.lines:
-                if line.stopnumber_prefix in stopnumber:
-                    stopnumbers[line] = stopnumber
+                for prefix in line.stopnumber_prefix.split(";"):
+                    if prefix in stopnumber:
+                        stopnumbers[line] = stopnumber
 
         return stopnumbers
 
@@ -157,6 +158,7 @@ class Line(db.Model):
     stops = db.relationship("Stop", secondary=stop_line,
                             back_populates="lines", lazy="joined",
                             cascade="all")
+    stops_order = db.Column(db.String, nullable=True)
     stopnumber_prefix = db.Column(db.String, nullable=True)
     stoptypes = db.Column(db.String, nullable=True)
     company_id = db.Column(db.Integer, db.ForeignKey("companies.id"))
@@ -166,18 +168,27 @@ class Line(db.Model):
         stops = dict()
         stops_pi = dict()
 
+        stops_order = self.stops_order.split(";")
+
+        correct_order = []
+
+        for stop_order in stops_order:
+            for stop in self.stops:
+                if stop.name == stop_order:
+                    correct_order.append(stop)
+
         for _type in self.stoptypes.split(";"):
             stops[_type] = []
             stops_pi[_type] = []
 
-            for stop in self.stops:
-                if _type in stop.stoptype:
+            for stop in correct_order:
+                if _type in stop.stoptype.split(";"):
                     stops[_type].append(stop)
                     stops_pi[_type].append(stop)
                 else:
                     stops_pi[_type].append(None)
 
-        return stops, stops_pi
+        return stops, stops_pi, correct_order
 
     def check_stopnumber_prefix(self, prefix):
 
@@ -189,7 +200,7 @@ class Line(db.Model):
 
     def __repr__(self):
         if self.company:
-            return f"{self.company.name} {self.name} Line"
+            return f"{self.company.short_name} {self.name} Line"
         else:
             return self.name + " Line"
 
@@ -199,7 +210,7 @@ class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     short_name = db.Column(db.String, nullable=True)
-    line = db.relationship("Line", cascade="delete")
+    lines = db.relationship("Line", cascade="delete")
 
     def __repr__(self):
         return self.name

@@ -8,6 +8,7 @@ Dani van Enk, 11823526
 
 import os
 import shlex
+import math
 
 from flask import Flask, abort, request, render_template, session, escape, \
                   redirect
@@ -21,7 +22,7 @@ from sqlalchemy import or_
 
 from .models import db, User, AnonymousUser, Stop, Line, Company
 from .adminviews import AdminUserIndexView, AdminView, NetworkView
-from .functions.search import relevance_query
+from .functions.search import relevance_query, macron_query
 from .functions import security
 
 # Configure Flask app
@@ -96,9 +97,20 @@ def search():
     if request.method not in request.url_rule.methods:
         abort(405)
 
+    page = request.args.get('page', None)
+
+    try:
+        page = int(page)
+    except TypeError:
+        abort(404, f"Page {page} not found")
+
     search_query = request.args.get('search', None)
     queries = shlex.split(search_query)
-    query_list = relevance_query(queries)
+    query_list_relevance = relevance_query(queries)
+    query_list = []
+
+    for query in query_list_relevance:
+        query_list += macron_query(query)
 
     result_list = []
 
@@ -116,8 +128,11 @@ def search():
             if line not in result_list:
                 result_list.append(line)
 
+    no_pages = math.ceil(len(result_list) / 50)
+
     return render_template("search.html", results=result_list,
-                           query=search_query)
+                           query=search_query, page=page,
+                           no_pages=no_pages)
 
 
 @app.route("/lines", methods=["GET"])
@@ -126,7 +141,19 @@ def lines():
     if request.method not in request.url_rule.methods:
         abort(405)
 
-    return render_template("lines.html", lines=Line.query.all())
+    page = request.args.get('page', None)
+
+    try:
+        page = int(page)
+    except TypeError:
+        abort(404, f"Page {page} not found")
+
+    lines = sorted(Line.query.all(), key=lambda x: x.name)
+
+    no_pages = math.ceil(len(lines) / 50)
+
+    return render_template("lines.html", lines=lines, page=page,
+                           no_pages=no_pages)
 
 
 @app.route("/line", methods=["GET"])
@@ -147,7 +174,19 @@ def stops():
     if request.method not in request.url_rule.methods:
         abort(405)
 
-    return render_template("stops.html", stops=Stop.query.all())
+    page = request.args.get('page', None)
+
+    try:
+        page = int(page)
+    except TypeError:
+        abort(404, f"Page {page} not found")
+
+    stops = sorted(Stop.query.all(), key=lambda x: x.name)
+
+    no_pages = math.ceil(len(stops) / 50)
+
+    return render_template("stops.html", stops=stops, page=page,
+                           no_pages=no_pages)
 
 
 @app.route("/stop", methods=["GET"])

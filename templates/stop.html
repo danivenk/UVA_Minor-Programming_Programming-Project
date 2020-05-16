@@ -21,13 +21,16 @@
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            Stop Number: 
+            Stop Number:
+            {% set stopnumber_text = [] %}
             {% for line in current_stop.lines %}
-                {{ current_stop.get_stopnumbers()[line] }}
-                {% if not loop.last %}
-                    ,
+                {% set stopnumber = current_stop.get_stopnumbers()[line] %}
+                {% if not (stopnumber in stopnumber_text) %}
+                    {%- stopnumber_text.append(stopnumber) -%}
                 {% endif %}
             {% endfor %}
+
+            {{ stopnumber_text | join(",")}}
             <br>
             Location: {{ current_stop.location }}
         </div>

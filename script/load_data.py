@@ -10,7 +10,7 @@ import sys
 import os
 import csv
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, and_
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 
@@ -22,9 +22,47 @@ def main(argv):
               "data/<dataset_name>_lines.csv & "
               "data/<dataset_name>_companies.csv")
 
-    stops = add_stops(argv[0])
+    add_stops(argv[0])
     lines = add_lines(argv[0])
     companies = add_companies(argv[0])
+
+    for company_dict in companies.values():
+        company = ssess.query(Company).filter_by(name=company_dict["name"]) \
+            .first()
+        company_lines = []
+        for line_name in company_dict["lines"]:
+            line = ssess.query(Line).filter(Line.name == line_name).first()
+            company_lines.append(line)
+
+        company.lines = company_lines
+        ssess.add(company)
+        ssess.commit()
+
+    for line_dict in lines.values():
+        line_company = ssess.query(Company) \
+            .filter(Company.short_name == line_dict["company"]).first()
+        line = ssess.query(Line) \
+            .filter(and_(Line.name == line_dict["name"],
+                         Line.company == line_company)).first()
+
+        line_stops = []
+
+        for stop_name in line_dict["stops"]:
+            stop = ssess.query(Stop).filter(Stop.name == stop_name).first()
+            line_stops.append(stop)
+
+        stops_order = ""
+
+        for i, stop in enumerate(line_stops):
+            if i < len(line_stops) - 1:
+                stops_order += f"{stop};"
+            else:
+                stops_order += f"{stop}"
+
+        line.stops = line_stops
+        line.stops_order = stops_order
+        ssess.add(line)
+        ssess.commit()
 
 
 def add_stops(dataset_name):
@@ -49,9 +87,9 @@ def add_stops(dataset_name):
         stops[row[0]]["stoptype"] = row[4]
 
         try:
-            stops[row[0]]["line"]
+            stops[row[0]]["lines"]
         except KeyError:
-            stops[row[0]]["line"] = row[1].split(";")
+            stops[row[0]]["lines"] = row[1].split(";")
 
     for stop in stops.values():
         database_row = Stop(name=stop["name"], stopnumber=stop["stopnumber"],
@@ -84,11 +122,11 @@ def add_companies(dataset_name):
         companies[row[0]]["short_name"] = row[1]
 
         try:
-            companies[row[0]]["line"]
+            companies[row[0]]["lines"]
         except KeyError:
-            companies[row[0]]["line"] = []
+            companies[row[0]]["lines"] = []
 
-        companies[row[0]]["line"].append(row[2])
+        companies[row[0]]["lines"].append(row[2])
 
     for company in companies.values():
         database_row = Company(name=company["name"],
@@ -121,11 +159,11 @@ def add_lines(dataset_name):
         lines[row[0]]["company"] = row[4]
 
         try:
-            lines[row[0]]["stop"]
+            lines[row[0]]["stops"]
         except KeyError:
-            lines[row[0]]["stop"] = []
+            lines[row[0]]["stops"] = []
 
-        lines[row[0]]["stop"].append(row[1])
+        lines[row[0]]["stops"].append(row[1])
 
     for line in lines.values():
         database_row = Line(name=line["name"],

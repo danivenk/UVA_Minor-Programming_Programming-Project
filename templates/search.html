@@ -23,6 +23,7 @@
         <div class="form-row col-sm-12">
             <input type="search" class="form-control col-md-11 col-8"
                 name="search" id="search" placeholder="write your search query" value="{{ query }}">
+            <input type="hidden" name="page" value="1">
             <button type="submit" class="btn btn-primary col-md-1 col-4">
                 Search
             </button>
@@ -38,19 +39,44 @@
 
     <!-- show all results -->
     <div class="row">
-        {% for result in results %}
+        {% if page == 1 %}
+            {% set lower = 0 %}
+        {% else %}
+            {% set lower = (page - 1) * 50 %}
+        {% endif %}
+        {% set upper = page * 50 %}
+        {% for result in results[lower:upper] %}
             {% if result is stop %}
+                {% set location = result.location.split(" ") %}
                 <a class="card col-sm-3" , href="{{ url_for('stop', id=result.id) }}">
-                    {{ result }}
+                    {{ result }} ({{ location[0] }})
                 </a>
             {% elif result is line %}
                 <a class="card col-sm-3" , href="{{ url_for('line', id=result.id) }}">
                     {{ result }}
                 </a>
-            {% else %}
-                HI
             {% endif %}
         {% endfor %}
     </div>
+
+    {% if results | length > 50 %}
+        <ul class="row pages">
+            {% if page > 1 %}
+            <a href="{{ url_for('search', search=query, page=page - 1) }}">
+                &lt;
+            </a>
+            {% endif %}
+            {% for page_no in range(no_pages | int) %}
+            <a href="{{ url_for('search', search=query, page=page_no + 1) }}">
+                {{ page_no + 1 }}
+            </a>
+            {% endfor %}
+            {% if no_pages > page %}
+            <a href="{{ url_for('search', search=query, page=page + 1) }}">
+                &gt;
+            </a>
+            {% endif %}
+        </ul>
+    {% endif %}
     
 {% endblock %}

@@ -20,10 +20,37 @@
     <h1>Stops</h1>
     <hr>
     <ul class="row">
-        {% for stop in stops %}
-            <a class="card col-sm-3", href="{{ url_for('stop', id=stop.id) }}">
-                <li>{{ stop }} ({{ stop.location }})</li>
+        {% if page == 1 %}
+            {% set lower = 0 %}
+        {% else %}
+            {% set lower = (page - 1) * 50 %}
+        {% endif %}
+        {% set upper = page * 50 %}
+        {% for stop in stops[lower:upper] %}
+            {% set location = stop.location.split(" ") %}
+            <a class="card col-sm-3" href="{{ url_for('stop', id=stop.id) }}">
+                <li>{{ stop }} ({{ location[0] }})</li>
             </a>
         {% endfor %}
     </ul>
+
+    {% if no_pages > 50 %}
+        <ul class="row pages">
+            {% if page > 1 %}
+                <a href="{{ url_for('stops', page=page - 1) }}">
+                    &lt;
+                </a>
+            {% endif %}
+            {% for page_no in range(no_pages | int) %}
+                <a href="{{ url_for('stops', page=page_no + 1) }}">
+                    {{ page_no + 1 }}
+                </a>
+            {% endfor %}
+            {% if no_pages > page %}
+                <a href="{{ url_for('stops', page=page + 1) }}">
+                    &gt;
+                </a>
+            {% endif %}
+        </ul>
+    {% endif %}
 {% endblock %}

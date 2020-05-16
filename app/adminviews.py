@@ -100,7 +100,8 @@ class NetworkView(ModelView):
         inaccessible_callback   - redirects to site index if inaccessible
     """
 
-    # fast_mass_delete = True
+    # excludes from columns
+    column_exclude_list = ["stops_order"]
 
     def is_accessible(self):
         """

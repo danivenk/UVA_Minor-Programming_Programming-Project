@@ -49,8 +49,8 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav mr-auto" id="nav_menu">
                     <a class="nav-item nav-link" href="{{ url_for('index')}}">Home</a>
-                    <a class="nav-item nav-link" href="{{ url_for('lines')}}">Lines</a>
-                    <a class="nav-item nav-link" href="{{ url_for('stops')}}">Stops</a>
+                    <a class="nav-item nav-link" href="{{ url_for('lines', page=1)}}">Lines</a>
+                    <a class="nav-item nav-link" href="{{ url_for('stops', page=1)}}">Stops</a>
                 </div>
                 <div class="navbar-nav">
                     <!-- search bar -->
@@ -60,6 +60,7 @@
                         <div class="form-row col-sm-12">
                             <input type="search" class="form-control col-sm-8" name="search" id="search"
                                 placeholder="Search">
+                            <input type="hidden" name="page" value="1">
                             <button type="submit" class="btn btn-primary col-sm-4">
                                 Search
                             </button>
