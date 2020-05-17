@@ -199,6 +199,10 @@ class Stop(db.Model):
         return neighbours
 
     def __repr__(self):
+        """
+        returns the representation of the Stop class
+        """
+
         return self.name
 
 
@@ -240,6 +244,9 @@ class Line(db.Model):
         """
         get stops in correct order and stops per stoptype
 
+        full width means the length of stops per stoptype lists are the same
+            if the stop is not present for the stoptype none is added
+
         return stops in correct order and stops per stoptype
         """
 
@@ -247,20 +254,32 @@ class Line(db.Model):
         stops = dict()
         stops_full_width = dict()
 
+        # get stops order
         stops_order = self.stops_order.split(";")
 
+        # predefine correct order list
         correct_order = []
 
+        # loop over stop order in stops order
         for stop_order in stops_order:
+
+            # loop over stop in stops and add to correct order
             for stop in self.stops:
                 if stop.name == stop_order:
                     correct_order.append(stop)
 
+        # loop over stoptype in stoptypes
         for _type in self.stoptypes.split(";"):
+
+            # predefine stops and stops full width list per stoptype
             stops[_type] = []
             stops_full_width[_type] = []
 
+            # loop over stop in correct order
             for stop in correct_order:
+
+                # add stop if type is present in stoptype
+                #   else add none to stops full width
                 if _type in stop.stoptype.split(";"):
                     stops[_type].append(stop)
                     stops_full_width[_type].append(stop)
@@ -270,7 +289,16 @@ class Line(db.Model):
         return stops, stops_full_width, correct_order
 
     def check_stopnumber_prefix(self, prefix):
+        """
+        check if stop_prefix is present in prefix
 
+        parameters:
+            prefix  - stopnumber/prefix to check;
+
+        return True if present else false
+        """
+
+        # loop over stop_prefix in stopnumber_prefix and check if prefix in it
         for stop_prefix in self.stopnumber_prefix.split(";"):
             if stop_prefix in prefix:
                 return True
@@ -278,6 +306,12 @@ class Line(db.Model):
         return False
 
     def __repr__(self):
+        """
+        returns the representation of the Line class
+
+        adds company to it if company is present
+        """
+
         if self.company:
             return f"{self.company.short_name} {self.name} Line"
         else:
@@ -285,6 +319,18 @@ class Line(db.Model):
 
 
 class Company(db.Model):
+    """
+    The Line Class defines a line and is based of db.Model
+
+    tablename: lines
+
+    columns:
+        id          - company id;
+        name        - name of the company;
+        short_name  - short name of the company;
+        lines       - lines of the company
+    """
+
     # database tablename and column setup
     __tablename__ = "companies"
     id = db.Column(db.Integer, primary_key=True)
@@ -293,6 +339,10 @@ class Company(db.Model):
     lines = db.relationship("Line")
 
     def __repr__(self):
+        """
+        returns the representation of the Company class
+        """
+
         return self.name
 
 
