@@ -237,10 +237,15 @@ class Line(db.Model):
     company = db.relationship("Company", uselist=False)
 
     def get_stops(self):
-        """"""
+        """
+        get stops in correct order and stops per stoptype
 
+        return stops in correct order and stops per stoptype
+        """
+
+        # predefine stops dictionary and stops full width dictionary
         stops = dict()
-        stops_pi = dict()
+        stops_full_width = dict()
 
         stops_order = self.stops_order.split(";")
 
@@ -253,16 +258,16 @@ class Line(db.Model):
 
         for _type in self.stoptypes.split(";"):
             stops[_type] = []
-            stops_pi[_type] = []
+            stops_full_width[_type] = []
 
             for stop in correct_order:
                 if _type in stop.stoptype.split(";"):
                     stops[_type].append(stop)
-                    stops_pi[_type].append(stop)
+                    stops_full_width[_type].append(stop)
                 else:
-                    stops_pi[_type].append(None)
+                    stops_full_width[_type].append(None)
 
-        return stops, stops_pi, correct_order
+        return stops, stops_full_width, correct_order
 
     def check_stopnumber_prefix(self, prefix):
 
