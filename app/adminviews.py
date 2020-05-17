@@ -16,7 +16,6 @@ from flask_admin.contrib.sqla import ModelView
 from flask_admin import AdminIndexView, expose
 from flask import abort, request, redirect, url_for
 from flask_login import current_user
-# from wtforms.validators import ValidationError
 
 
 class AdminUserIndexView(AdminIndexView):
@@ -39,6 +38,9 @@ class AdminUserIndexView(AdminIndexView):
 
         expose:
             - "/"
+
+        abort:
+            - if method is not in methods (405)
         """
 
         if request.method not in request.url_rule.methods:

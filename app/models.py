@@ -95,8 +95,9 @@ class AnonymousUser(AnonymousUserMixin):
         return False
 
 
+# association table between stops and lines
 stop_line = db.Table('stop_line_association', db.Model.metadata,
-                     db.Column('stop_id', db.ForeignKey('stops.id'),
+                     db.Column('stop_id', db.ForeignKey('stops.id',),
                                primary_key=True),
                      db.Column('line_id', db.ForeignKey('lines.id'),
                                primary_key=True),
@@ -106,6 +107,26 @@ stop_line = db.Table('stop_line_association', db.Model.metadata,
 
 
 class Stop(db.Model):
+    """
+    The Stop Class defines a stop and is based of db.Model
+
+    tablename: stops
+
+    columns:
+        id          - stop id;
+        name        - name of the stop;
+        stopnumber  - stopnames of the stop;
+        location    - location of the stop;
+        stoptype    - stoptype of the stop;
+        lines       - lines of the stop;
+
+    methods:
+        get_stopnumbers         - get the stopnumber per line as dict;
+        get_neighbouring_stops  - get neighbouring stops for this
+                                    stop per stoptype;
+    """
+
+    # database tablename and column setup
     __tablename__ = "stops"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
@@ -113,27 +134,57 @@ class Stop(db.Model):
     location = db.Column(db.String, nullable=True)
     stoptype = db.Column(db.String, nullable=True)
     lines = db.relationship("Line", secondary=stop_line,
-                            back_populates="stops", lazy="joined",
-                            cascade="all")
+                            back_populates="stops", lazy="joined")
 
     def get_stopnumbers(self):
+        """
+        get the stopnumber per line as a dictionary
+
+        return stopnumber dictionary
+        """
+
+        # predefine stopnumber dictionary
         stopnumbers = dict()
 
+        # loop over stopnumber in stopnumbers
         for stopnumber in self.stopnumber.split(";"):
+
+            # loop over line in lines
             for line in self.lines:
+
+                # loop over prefix in prefix of the line
                 for prefix in line.stopnumber_prefix.split(";"):
+
+                    # no duplicates
                     if prefix in stopnumber:
                         stopnumbers[line] = stopnumber
 
         return stopnumbers
 
     def get_neighbouring_stops(self):
+        """
+        get neighbouring stops per stoptype
+
+        returns dictionary with neighbouring stops
+        """
+
+        # predefine neighbours dictionaries
         neighbours = dict()
 
+        # loop over line in lines
         for line in self.lines:
+
+            # predefine neighbour dictionary per line
             neighbours[line] = dict()
+
+            # loop over stops and stoptype in line
             for _type, stops in line.get_stops()[0].items():
+
+                # loop over index and stop in stops
                 for i, stop in enumerate(stops):
+
+                    # add previous and next stop to neighbours
+                    #   none if no neighbour is found
                     if stop == self and (i <= 0):
                         neighbours[line][_type] = \
                             {"previous": None, "next": stops[i+1]}
@@ -152,19 +203,42 @@ class Stop(db.Model):
 
 
 class Line(db.Model):
+    """
+    The Line Class defines a line and is based of db.Model
+
+    tablename: lines
+
+    columns:
+        id                  - line id;
+        name                - name of the line;
+        stops               - stopnames of the line;
+        stops_order         - order of stops of line;
+        stopnumber_prefix   - stopnumber prefix of the line;
+        stoptypes           - stoptype of line;
+        company_id          - company id of line;
+        company             - company of line;
+
+    methods:
+        get_stop                    - gets stops in right order and
+                                        stops per stopstype;
+        check_stopnumber_prefix     - check stopnumber prefix;
+    """
+
+    # database tablename and column setup
     __tablename__ = "lines"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     stops = db.relationship("Stop", secondary=stop_line,
-                            back_populates="lines", lazy="joined",
-                            cascade="all")
+                            back_populates="lines", lazy="joined")
     stops_order = db.Column(db.String, nullable=True)
     stopnumber_prefix = db.Column(db.String, nullable=True)
     stoptypes = db.Column(db.String, nullable=True)
     company_id = db.Column(db.Integer, db.ForeignKey("companies.id"))
-    company = db.relationship("Company", uselist=False, cascade="delete")
+    company = db.relationship("Company", uselist=False)
 
     def get_stops(self):
+        """"""
+
         stops = dict()
         stops_pi = dict()
 
@@ -206,11 +280,12 @@ class Line(db.Model):
 
 
 class Company(db.Model):
+    # database tablename and column setup
     __tablename__ = "companies"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     short_name = db.Column(db.String, nullable=True)
-    lines = db.relationship("Line", cascade="delete")
+    lines = db.relationship("Line")
 
     def __repr__(self):
         return self.name

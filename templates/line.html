@@ -47,7 +47,7 @@
                 </thead>
                 {% for type, stops in current_line.get_stops()[1].items() %}
                 <tr>
-                    <th>{{ type | capitalize }}</th>
+                    <th>{{ type | title }}</th>
                     {% for stop in stops %}
                     <td>
                         {% if stop %}

@@ -6,6 +6,7 @@ application.py defines flask application
 Dani van Enk, 11823526
 """
 
+# used imports
 import os
 import shlex
 import math
@@ -35,6 +36,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
+# set secret key
 app.secret_key = os.environ['SECRET_KEY']
 
 # Configure session, use filesystem
@@ -74,16 +76,36 @@ def load_user(user_id):
 
 @app.template_test("line")
 def line_test(obj):
+    """
+    template_test line
+
+    checks if object is a Line object
+    """
+
     return type(obj) is Line
 
 
 @app.template_test("stop")
 def stop_test(obj):
+    """
+    template_test stop
+
+    checks if object is a Stop object
+    """
+
     return type(obj) is Stop
 
 
 @app.route("/", methods=["GET"])
 def index():
+    """
+    app index
+
+    abort:
+        - if method not in methods (405)
+
+    return index template
+    """
 
     if request.method not in request.url_rule.methods:
         abort(405)
@@ -93,41 +115,80 @@ def index():
 
 @app.route("/search", methods=["GET"])
 def search():
+    """
+    find search query
 
+    abort:
+        - if method not in methods (405)
+        - page argument not integer (404)
+
+    returns result page 1
+    """
+
+    # abort if method not in methods
     if request.method not in request.url_rule.methods:
         abort(405)
 
+    # get page number
     page = request.args.get('page', None)
 
+    # check if page is integer else abort 404
     try:
         page = int(page)
     except TypeError:
         abort(404, f"Page {page} not found")
 
+    # get search query
     search_query = request.args.get('search', None)
+
+    # split query in subqueries and get list of relevant queries/sub queries
     queries = shlex.split(search_query)
     query_list_relevance = relevance_query(queries)
+
+    # predefine query list
     query_list = []
 
+    # get all combinations of marcons in the queries
     for query in query_list_relevance:
         query_list += macron_query(query)
 
+    # predefine results
     result_list = []
 
+    # loop over queries in list
     for query in query_list:
+
+        # find all stops and lines according to the query
         result_stops = Stop.query.filter(or_(Stop.name.ilike(f"%{query}%"),
                                              Stop.location.ilike(f"%{query}%")
                                              )).all()
+        result_exact_stops = Stop.query.filter(or_(Stop.name == query,
+                                                   Stop.location == query
+                                                   )).all()
         result_lines = Line.query.filter(Line.name.ilike(f"%{query}%")).all()
+        result_exact_lines = Line.query.filter(Line.name == query).all()
 
+        # add stops found for exact query
+        for stop in result_exact_stops:
+            if stop not in result_list:
+                result_list.append(stop)
+
+        # add lines found for exact query
+        for line in result_exact_lines:
+            if line not in result_list:
+                result_list.append(line)
+
+        # add stops found for query
         for stop in result_stops:
             if stop not in result_list:
                 result_list.append(stop)
 
+        # add lines found for query
         for line in result_lines:
             if line not in result_list:
                 result_list.append(line)
 
+    # get number of pages
     no_pages = math.ceil(len(result_list) / 50)
 
     return render_template("search.html", results=result_list,
@@ -137,19 +198,32 @@ def search():
 
 @app.route("/lines", methods=["GET"])
 def lines():
+    """
+    show all lines
 
+    abort:
+        - if method not in methods (405)
+
+    return lines list page
+    """
+
+    # abort if method not in methods
     if request.method not in request.url_rule.methods:
         abort(405)
 
+    # get page number
     page = request.args.get('page', None)
 
+    # check if page is integer else abort 404
     try:
         page = int(page)
     except TypeError:
         abort(404, f"Page {page} not found")
 
+    # get lines and sort by name (alphabetical)
     lines = sorted(Line.query.all(), key=lambda x: x.name)
 
+    # get number of pages
     no_pages = math.ceil(len(lines) / 50)
 
     return render_template("lines.html", lines=lines, page=page,
@@ -158,10 +232,20 @@ def lines():
 
 @app.route("/line", methods=["GET"])
 def line():
+    """
+    show line page
 
+    abort:
+        - if method is not methods (405)
+
+    return line page for current line
+    """
+
+    # abort if method not in methods
     if request.method not in request.url_rule.methods:
         abort(405)
 
+    # get line_id and get line from that id
     line_id = request.args.get('id', None)
     current_line = Line.query.get(line_id)
 
@@ -170,19 +254,32 @@ def line():
 
 @app.route("/stops", methods=["GET"])
 def stops():
+    """
+    show all stops
 
+    abort:
+        - if method not in methods (405)
+
+    return stops list page
+    """
+
+    # abort if method not in methods
     if request.method not in request.url_rule.methods:
         abort(405)
 
+    # get page number
     page = request.args.get('page', None)
 
+    # check if page is integer else abort 404
     try:
         page = int(page)
     except TypeError:
         abort(404, f"Page {page} not found")
 
+    # get stops and sort by name (alphabetical)
     stops = sorted(Stop.query.all(), key=lambda x: x.name)
 
+    # get number of pages
     no_pages = math.ceil(len(stops) / 50)
 
     return render_template("stops.html", stops=stops, page=page,
@@ -191,10 +288,20 @@ def stops():
 
 @app.route("/stop", methods=["GET"])
 def stop():
+    """
+    show stop page
 
+    abort:
+        - if method is not methods (405)
+
+    return stop page for current stop
+    """
+
+    # abort if method not in methods
     if request.method not in request.url_rule.methods:
         abort(405)
 
+    # get stop_id and get stop from that id
     stop_id = request.args.get('id', None)
     current_stop = Stop.query.get(stop_id)
 
@@ -214,9 +321,10 @@ def register():
 
     returns the register form again if the retype password and password
         weren't the same or the request was a "GET" request. If
-        registration was successfull it redirects (303) to "/".
+        registration was successfull it redirects (303) to next_page.
     """
 
+    # get next page
     next_page = request.args.get("page", None)
 
     # abort using a 405 if request method is not "POST" or "GET"
@@ -277,7 +385,17 @@ def register():
 
 @app.route("/login", methods=["POST"])
 def login():
+    """
+    log user in
 
+    abort:
+        - if method not in methods (405);
+        - if username and password not found (400);
+        - if user not found in database (404);
+        - if credentials incorrect (403);
+    """
+
+    # abort if method not in methods
     if request.method not in request.url_rule.methods:
         abort(405)
 
@@ -321,8 +439,10 @@ def logout():
     return redirect to index (303)
     """
 
+    # get next page
     next_page = request.args.get("page", None)
 
+    # abort if method not in methods
     if request.method not in request.url_rule.methods:
         abort(405)
 

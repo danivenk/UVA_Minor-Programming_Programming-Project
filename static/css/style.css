@@ -75,6 +75,11 @@ nav {
       box-shadow: 0 0 0 0.2rem #ff2281 !important;
       border-color: #bb0050 !important; }
 
+img {
+  position: inherit;
+  float: right;
+  margin: 2% 0; }
+
 h1 {
   margin: 3% 0; }
 
@@ -149,6 +154,19 @@ table .stop {
 table th:not(.stop) {
   width: 10% !important; }
 
+.paginator {
+  display: block; }
+  .paginator .pages {
+    padding: 0; }
+    .paginator .pages a {
+      list-style-type: none;
+      display: initial !important;
+      padding: 1% 2%;
+      background-color: #E06;
+      color: #FFF; }
+    .paginator .pages a.active {
+      background-color: #0AE; }
+
 .query {
   font-weight: 600;
   font-style: italic; }
@@ -181,6 +199,15 @@ footer {
   p.row.index {
     margin-left: 0;
     margin-right: 0; }
+
+  ul.row {
+    margin: 2%;
+    padding: 0; }
+
+  ul.pages {
+    margin-top: 5%; }
+    ul.pages a {
+      padding: 2% 5% !important; }
 
   footer {
     margin: 5% 0 2% 0; } }

@@ -17,6 +17,17 @@
 
 <!-- content of the page -->
 {% block content %}
+    <img src="{{ url_for('static', filename='img/NI_icon.svg') }}">
+
     <h1>Welcome</h1>
-    {{ text }}
+    
+    <p>
+        Welcome to the Network Info App (NI),
+
+        In this app a network can be shown when loaded into the database. It contains a page with a list of all stops and lines in the database.<br>
+        Each line page contains the number of stops in the line, it's start stop and end stop, transfers per stop and a table with the stopping pattern of that line.<br>
+        Each stop page contains the stopnumber, location and transfers with neighbouring stops per service type (Local, Rapid etc.).<br>
+        With the search bar you can search for stops/locations by name and location (for stops).<br>
+        When logged on as an admin, the database can be edited.
+    </p>
 {% endblock %}

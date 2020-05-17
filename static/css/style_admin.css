@@ -64,11 +64,16 @@ nav {
 .container {
   flex: 1; }
 
+img {
+  position: inherit;
+  float: right;
+  margin: 2% 0; }
+
 h1 {
   margin: 3% 0; }
 
 ul.nav-tabs {
-  margin: 1% 0 0 0; }
+  margin: 2% 0 0 0; }
   ul.nav-tabs li {
     margin: 0 1% 0 0; }
   ul.nav-tabs li:not(.active) {
@@ -83,6 +88,10 @@ ul.nav-tabs {
 .model-list .icon {
   margin-left: 0;
   display: inline-block; }
+  .model-list .icon button {
+    border: none;
+    background-color: transparent;
+    padding: 0; }
 
 .icon-trash {
   background-image: url("../img/trashbin.svg");
@@ -95,6 +104,22 @@ ul.nav-tabs {
   display: block;
   height: 30px;
   width: 30px; }
+
+.pagination {
+  display: block; }
+  .pagination ul {
+    padding: 0; }
+    .pagination ul li {
+      list-style-type: none;
+      display: initial !important;
+      padding: 1% 2%;
+      background-color: #E06; }
+      .pagination ul li a {
+        color: #FFF; }
+    .pagination ul li.disabled {
+      display: none !important; }
+    .pagination ul .active {
+      background-color: #0AE; }
 
 form {
   margin-bottom: 1%; }
@@ -149,6 +174,11 @@ footer {
     font-size: 120%; }
     ul.nav-tabs li {
       margin: 0 2%; }
+
+  .pagination {
+    margin-top: 5%; }
+    .pagination ul li {
+      padding: 2% 5% !important; }
 
   #s2id_lines {
     width: 50% !important; }

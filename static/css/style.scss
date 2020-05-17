@@ -105,6 +105,12 @@ $secondary-color: #0AE;
             @include button($main-color);
         }
     }
+
+    img {
+        position: inherit;
+        float: right;
+        margin: 2% 0;
+    }
     
     h1 {
         @extend %alignment;
@@ -211,6 +217,26 @@ $secondary-color: #0AE;
         }
     }
 
+    .paginator {
+        display: block;
+
+        .pages {
+            padding: 0;
+        
+            a {
+                list-style-type: none;
+                display: initial!important;
+                padding: 1% 2%;
+                background-color: $main-color;
+                color: #FFF;
+            }
+
+            a.active {
+                background-color: $secondary-color;
+            }
+        }
+    }
+
     .query {
         font-weight: 600;
         font-style: italic;
@@ -252,9 +278,22 @@ $secondary-color: #0AE;
         left: 0;
     }
 
-    p.row.index{
+    p.row.index {
         margin-left: 0;
         margin-right: 0;
+    }
+
+    ul.row {
+        margin: 2%;
+        padding: 0;
+    }
+
+    ul.pages {
+        margin-top: 5%;
+
+        a {
+            padding: 2% 5%!important;
+        }
     }
 
     footer {

@@ -33,23 +33,23 @@
         {% endfor %}
     </ul>
 
-    {% if no_pages > 50 %}
-        <ul class="row pages">
-            {% if page > 1 %}
-            <a href="{{ url_for('lines', page=page - 1) }}">
-                &lt;
-            </a>
-            {% endif %}
-            {% for page_no in range(no_pages | int) %}
-            <a href="{{ url_for('lines', page=page_no + 1) }}">
-                {{ page_no + 1 }}
-            </a>
-            {% endfor %}
-            {% if no_pages > page %}
-            <a href="{{ url_for('lines', page=page + 1) }}">
-                &gt;
-            </a>
-            {% endif %}
-        </ul>
+    {% if lines | length > 50 %}
+        <div class="paginator">
+            <ul class="pages">
+                {% if page > 1 %}
+                    <a href="{{ url_for('lines', page=page - 1) }}">&lt;</a>
+                {% endif %}
+                {% for page_no in range(no_pages | int) %}
+                    {% if page_no + 1 == page %}
+                        <a class="active" href="{{ url_for('lines', page=page_no + 1) }}">{{ page_no + 1 }}</a>
+                    {% else %}
+                        <a href="{{ url_for('lines', page=page_no + 1) }}">{{ page_no + 1 }}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if no_pages > page %}
+                    <a href="{{ url_for('lines', page=page + 1) }}">&gt;</a>
+                {% endif %}
+            </ul>
+        </div>
     {% endif %}
 {% endblock %}

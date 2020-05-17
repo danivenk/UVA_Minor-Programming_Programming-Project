@@ -99,6 +99,12 @@ body {
     .container {
         flex: 1;
     }
+
+    img {
+        position: inherit;
+        float: right;
+        margin: 2% 0;
+    }
     
     h1 {
         @extend %alignment;
@@ -106,7 +112,7 @@ body {
     }
 
     ul.nav-tabs {
-        margin: 1% 0 0 0;
+        margin: 2% 0 0 0;
 
         li {
             margin: 0 1% 0 0;
@@ -128,6 +134,12 @@ body {
     .model-list .icon {
         margin-left: 0;
         display: inline-block;
+
+        button {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+        }
     }
 
     .icon-trash {
@@ -142,6 +154,33 @@ body {
         display: block;
         height: 30px;
         width: 30px;
+    }
+
+    .pagination {
+        display: block;
+
+        ul {
+            padding: 0;
+        
+            li {
+                list-style-type: none;
+                display: initial!important;
+                padding: 1% 2%;
+                background-color: $main-color;
+
+                a {
+                    color: #FFF;
+                }
+            }
+
+            li.disabled {
+                display: none!important;
+            }
+
+            .active {
+                background-color: $secondary-color;
+            }
+        }
     }
 
     form {
@@ -196,6 +235,14 @@ body {
 
         li {
             margin: 0 2%;
+        }
+    }
+
+    .pagination {
+        margin-top: 5%;
+
+        ul li {
+            padding: 2% 5%!important;
         }
     }
     

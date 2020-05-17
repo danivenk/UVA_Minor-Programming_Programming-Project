@@ -26,7 +26,7 @@
             {% for line in current_stop.lines %}
                 {% set stopnumber = current_stop.get_stopnumbers()[line] %}
                 {% if not (stopnumber in stopnumber_text) %}
-                    {%- stopnumber_text.append(stopnumber) -%}
+                    {{ stopnumber_text.append(stopnumber) or "" }}
                 {% endif %}
             {% endfor %}
 
@@ -44,7 +44,7 @@
 
                     {% for type, neighbours in type_dict.items() %}
                         <li>
-                            {{ type | capitalize }}
+                            {{ type | title }}
                         </li>
 
                         <ul class="neighbours">

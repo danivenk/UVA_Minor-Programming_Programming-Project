@@ -8,10 +8,13 @@
 
 {% block body %}
     {% if current_user.admin %}
+        <img src="{{ url_for('static', filename='img/NI_icon.svg') }}">
+        
         <h1>Admin</h1>
+
         <p>
             Welcome {{ current_user.username }}, <br>
-            On this side of this app you can edit/delete/create entries in the database
+            On this side of the Network Info app you can edit/delete/create entries in the database
         </p>
     {% else %}
         

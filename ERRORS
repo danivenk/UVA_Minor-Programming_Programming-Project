@@ -1,1 +1,1 @@
-sqlalchemy.orm.exc.StaleDataError: DELETE statement on table 'stop_line_association' expected to delete 119 row(s); Only 0 were matched.
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) SSL SYSCALL error: EOF detected

@@ -62,6 +62,12 @@ function init() {
             };
         }, false);
     });
+
+    const tables = document.querySelectorAll("table.model-list");
+
+    tables.forEach(function(table) {
+        table.classList.add("table-responsive");
+    });
     
 }
 // make sure DOMContent is loaded before the code runs
