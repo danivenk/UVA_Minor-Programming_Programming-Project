@@ -9,18 +9,19 @@ $secondary-color: #0AE;
     text-align: center;
 }
 
-/* button border color inheritance */
+/* button border color mixin */
 @mixin button_border($color) {
     border-color: darken( $color, 10%) !important;
 }
 
-/* button when clicked inheritance */
+/* button when clicked mixin */
 @mixin click($color) {
     background-color: darken( $color, 7%) !important;
     @include button_border($color);
     box-shadow: 0 0 0 0.2rem lighten( $color, 10%) !important;
 }
 
+/* button mixin */
 @mixin button($color) {
     background-color: $color !important;
     @include button_border($color);
@@ -51,6 +52,7 @@ body {
     flex-direction: column;
 }
 
+/* admin bar at top of app */
 .admin {
     width: 100%;
     background-color: $secondary-color;
@@ -67,152 +69,154 @@ body {
     color: #FFF;
 }
 
-    /* nav style */
-    nav {
-        background-color: $main-color;
-    }
+/* nav style */
+nav {
+    background-color: $main-color;
+}
 
-    .navbar {
-        border-radius: 0;
-        padding: .5rem 1rem;
-    }
+.navbar {
+    border-radius: 0;
+    padding: .5rem 1rem;
+}
 
-    .nav-link:hover {
-        color: #FFF!important;
-    }
+.nav-link:hover {
+    color: #FFF!important;
+}
 
-    .dropdown-menu {
-        margin: 0!important;
-        left: auto;
-        right: 0;
-
-        form {
-            padding: 0 5%;
-        }
-
-        .btn-primary {
-            @include button($main-color)
-        }
-    }
-
-    /* content style */
-    .container {
-        flex: 1;
-    }
-
-    img {
-        position: inherit;
-        float: right;
-        margin: 2% 0;
-    }
-    
-    h1 {
-        @extend %alignment;
-        margin: 3% 0;
-    }
-
-    ul.nav-tabs {
-        margin: 2% 0 0 0;
-
-        li {
-            margin: 0 1% 0 0;
-        }
-
-        li:not(.active) {
-            margin: 1.5px 1% 0 1%;
-        }
-
-        .active {
-            border: 1.5px solid #dee2e6;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            border-bottom: none;
-            padding: 0 2%;
-        }
-    }
-
-    .model-list .icon {
-        margin-left: 0;
-        display: inline-block;
-
-        button {
-            border: none;
-            background-color: transparent;
-            padding: 0;
-        }
-    }
-
-    .icon-trash {
-        background-image: url("../img/trashbin.svg");
-        display: block;
-        height: 30px;
-        width: 30px;
-    }
-
-    .icon-pencil {
-        background-image: url("../img/pencil.svg");
-        display: block;
-        height: 30px;
-        width: 30px;
-    }
-
-    .pagination {
-        display: block;
-
-        ul {
-            padding: 0;
-        
-            li {
-                list-style-type: none;
-                display: initial!important;
-                padding: 1% 2%;
-                background-color: $main-color;
-
-                a {
-                    color: #FFF;
-                }
-            }
-
-            li.disabled {
-                display: none!important;
-            }
-
-            .active {
-                background-color: $secondary-color;
-            }
-        }
-    }
+.dropdown-menu {
+    margin: 0!important;
+    left: auto;
+    right: 0;
 
     form {
-        margin-bottom: 1%;
-    }
-
-    #s2id_lines {
-        width: 20%!important;
+        padding: 0 5%;
     }
 
     .btn-primary {
-        @include button($main-color);
+        @include button($main-color)
+    }
+}
+
+/* content style */
+.container {
+    flex: 1;
+}
+
+img {
+    position: inherit;
+    float: right;
+    margin: 2% 0;
+}
+
+h1 {
+    @extend %alignment;
+    margin: 3% 0;
+}
+
+ul.nav-tabs {
+    margin: 2% 0 0 0;
+
+    li {
+        margin: 0 1% 0 0;
     }
 
-    .btn:not(.btn-primary):not(.btn-danger) {
-        color: #FFF;
-        @include button($secondary-color);
+    li:not(.active) {
+        margin: 1.5px 1% 0 1%;
     }
 
-    /* footer */
-    footer {
-        @extend %alignment;
-        left: 0;
-        bottom: 0;
-        width: 100%;
+    .active {
+        border: 1.5px solid #dee2e6;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom: none;
+        padding: 0 2%;
     }
+}
+
+.model-list .icon {
+    margin-left: 0;
+    display: inline-block;
+
+    button {
+        border: none;
+        background-color: transparent;
+        padding: 0;
+    }
+}
+
+/* reference see image_refs.txt in root */
+.icon-trash {
+    background-image: url("../img/trashbin.svg");
+    display: block;
+    height: 30px;
+    width: 30px;
+}
+
+/* reference see image_refs.txt in root */
+.icon-pencil {
+    background-image: url("../img/pencil.svg");
+    display: block;
+    height: 30px;
+    width: 30px;
+}
+
+.pagination {
+    display: block;
+
+    ul {
+        padding: 0;
+    
+        li {
+            list-style-type: none;
+            display: initial!important;
+            padding: 1% 2%;
+            background-color: $main-color;
+
+            a {
+                color: #FFF;
+            }
+        }
+
+        li.disabled {
+            display: none!important;
+        }
+
+        .active {
+            background-color: $secondary-color;
+        }
+    }
+}
+
+form {
+    margin-bottom: 1%;
+}
+
+#s2id_lines {
+    width: 20%!important;
+}
+
+.btn-primary {
+    @include button($main-color);
+}
+
+.btn:not(.btn-primary):not(.btn-danger) {
+    color: #FFF;
+    @include button($secondary-color);
+}
+
+/* footer */
+footer {
+    @extend %alignment;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
 
 
-    /* error page */
-    .error {
-        @extend %alignment;
-    }
+/* error page */
+.error {
+    @extend %alignment;
+}
 
 /* mobile style changes */
 @media screen and (max-device-width: 768px) {

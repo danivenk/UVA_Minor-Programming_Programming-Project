@@ -20,6 +20,8 @@
     <h1>{{ current_line }}</h1>
     <hr>
     <div class="row">
+
+        <!-- show line info (begin, end) and amount of stops -->
         <div class="col-sm-6">
             {% set first = current_line.get_stops()[2] | first %}
             {% set last = current_line.get_stops()[2] | last %}
@@ -33,10 +35,13 @@
             <br>
             {{ current_line.get_stops()[2] | length}} stops
         </div>
+
+        <!-- show table with stopping pattern -->
         <div class="table-responsive col-sm-12">
             <table class="table">
                 <thead>
                     <tr>
+                        <!-- show all stops -->
                         <th></th>
                         {% for stop in current_line.get_stops()[2] %}
                         <th class="stop">
@@ -45,6 +50,8 @@
                         {% endfor %}
                     </tr>
                 </thead>
+
+                <!-- show the stoptype and dot for stopping and - for not stopping -->
                 {% for type, stops in current_line.get_stops()[1].items() %}
                 <tr>
                     <th>{{ type | title }}</th>
@@ -61,11 +68,15 @@
                 {% endfor %}
             </table>
         </div>
+
+        <!-- show all stops with transfer at each one -->
         <div class="col-sm-6">
             <h2>Stops</h2>
             <ul>
                 {% for stop in current_line.get_stops()[2] %}
                     <li>
+
+                        <!-- link to stop -->
                         <a href="{{ url_for('stop', id=stop.id) }}">
                             {{ stop }} ({{ stop.get_stopnumbers()[current_line] }})
                         </a>
@@ -74,6 +85,8 @@
                         Transfers:
                         <ul>
                             {% for transfer_line in stop.lines %}
+
+                                <!-- show transfer line link if transfers present -->
                                 {% if (not transfer_line.name == current_line.name) and stop.lines|length > 1 %}
                                     <li>
                                         <a href="{{ url_for('line', id=transfer_line.id) }}">

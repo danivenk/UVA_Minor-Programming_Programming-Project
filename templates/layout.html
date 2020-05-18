@@ -1,3 +1,12 @@
+<!--
+    layout of main part of the app
+    
+    references:
+        https://jinja.palletsprojects.com/en/2.11.x/templates/
+
+    Dani van Enk, 11823526
+-->
+
 <!DOCTYPE html>
 
 <html lang="en-us">
@@ -31,6 +40,8 @@
 
     <!-- container of the page -->
     <div id="container">
+
+        <!-- show admin bar -->
         {% if current_user.admin %}
             <a href="{{ url_for('admin.index') }}" class="admin">
                 Go to the Admin side

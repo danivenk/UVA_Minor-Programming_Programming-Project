@@ -4,14 +4,20 @@
 
     Dani van Enk, 11823526
 -->
+
 {% extends "admin/master.html" %}
 
+<!-- body of the page -->
 {% block body %}
+    <!-- show content only if user is admin -->
     {% if current_user.admin %}
+
+        <!-- show logo -->
         <img src="{{ url_for('static', filename='img/NI_icon.svg') }}">
-        
+
         <h1>Admin</h1>
 
+        <!-- welcome message -->
         <p>
             Welcome {{ current_user.username }}, <br>
             On this side of the Network Info app you can edit/delete/create entries in the database

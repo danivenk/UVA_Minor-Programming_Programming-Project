@@ -1,3 +1,5 @@
+// Dani van Enk, 11823526
+
 // init() executes after DOMContent has been loaded
 function init() {
     // find form and validation items in the page
@@ -63,8 +65,10 @@ function init() {
         }, false);
     });
 
+    // define model-list table on admin side
     const tables = document.querySelectorAll("table.model-list");
 
+    // add table-responsive to model-list tables
     tables.forEach(function(table) {
         table.classList.add("table-responsive");
     });

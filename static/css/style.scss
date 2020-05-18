@@ -19,18 +19,19 @@ $secondary-color: #0AE;
     text-align: center;
 }
 
-/* button border color inheritance */
+/* button border color mixin */
 @mixin button_border($color) {
     border-color: darken($color, 10%) !important;
 }
 
-/* button when clicked inheritance */
+/* button when clicked mixin */
 @mixin click($color) {
     background-color: darken($color, 7%) !important;
     box-shadow: 0 0 0 0.2rem lighten($color, 10%) !important;
     @include button_border($color);
 }
 
+/* button mixin */
 @mixin button($color) {
     background-color: $color !important;
     float: right !important;
@@ -58,6 +59,7 @@ $secondary-color: #0AE;
     flex-direction: column;
 }
 
+/* admin bar on top of app */
 .admin {
     width: 100%;
     background-color: $secondary-color;
@@ -74,191 +76,191 @@ $secondary-color: #0AE;
     color: #FFF;
 }
 
-    /* nav style */
-    nav {
-        background-color: $main-color;
+/* nav style */
+nav {
+    background-color: $main-color;
+}
+
+.nav-link:hover {
+    color: #FFF!important;
+}
+
+.dropdown-menu {
+    margin: 0!important;
+    left: auto;
+    right: 0;
+
+    form {
+        padding: 0 5%;
     }
 
-    .nav-link:hover {
-        color: #FFF!important;
+    .btn-primary {
+        @include button($main-color)
+    }
+}
+
+/* content style */
+.container {
+    flex: 1;
+
+    form.btn-primary{
+        @include button($main-color);
+    }
+}
+
+img {
+    position: inherit;
+    float: right;
+    margin: 2% 0;
+}
+
+h1 {
+    @extend %alignment;
+    margin: 3% 0;
+}
+
+h4 {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.header {
+    .btn-primary {
+        @include button($main-color);
     }
 
-    .dropdown-menu {
-        margin: 0!important;
-        left: auto;
-        right: 0;
-
-        form {
-            padding: 0 5%;
-        }
-
-        .btn-primary {
-            @include button($main-color)
-        }
+    .btn {
+        float: none!important;
     }
+}
 
-    /* content style */
-    .container {
-        flex: 1;
+.row {
+    margin-top: 2%;
+    margin-bottom: 2%;
 
-        form.btn-primary{
-            @include button($main-color);
-        }
+    .btn-primary {
+        @include button($main-color);
     }
+}
 
-    img {
-        position: inherit;
-        float: right;
-        margin: 2% 0;
-    }
-    
-    h1 {
-        @extend %alignment;
-        margin: 3% 0;
-    }
+.card {
+    padding: 1%;
+}
 
-    h4 {
-        font-weight: bold;
-        font-size: 120%;
-    }
-
-    .header {
-        .btn-primary {
-            @include button($main-color);
-        }
-
-        .btn {
-            float: none!important;
-        }
-    }
+form.menu {
+    display: None;
 
     .row {
-        margin-top: 2%;
-        margin-bottom: 2%;
-
-        .btn-primary {
-            @include button($main-color);
-        }
+        margin: 0!important;
     }
+}
 
-    .card {
-        padding: 1%;
-    }
+a.index {
+    display: contents;
+    @extend %blue;
 
-    form.menu {
-        display: None;
-
-        .row {
-            margin: 0!important;
-        }
-    }
-
-    a.index {
-        display: contents;
+    .index:hover{
         @extend %blue;
-
-        .index:hover{
-            @extend %blue;
-        }
-
     }
 
-    ul li {
-        list-style-type: none;
-        
+}
+
+ul li {
+    list-style-type: none;
+    
+    a {
+        @extend %black;
+    }
+
+    a:hover{
+        @extend %black;
+    }
+}
+
+.neighbours {
+
+    li {
+        display: contents;
+    }
+
+    .between {
+        margin: 0 5%;
+        display: initial;
+    }
+}
+
+table {
+
+    tr {
+        display: flex;
+    }
+
+    td {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 2em;
+    }
+
+    th {
+        text-align: left;
+    }
+
+    .stop {
+        writing-mode: vertical-rl!important;
+        justify-content: flex-end;
+        align-items: center;
+        display: flex;
+        width: 2em;
+    }
+
+    th:not(.stop) {
+        width: 10%!important;
+    }
+}
+
+.paginator {
+    display: block;
+
+    .pages {
+        padding: 0;
+    
         a {
-            @extend %black;
+            list-style-type: none;
+            display: initial!important;
+            padding: 1% 2%;
+            background-color: $main-color;
+            color: #FFF;
         }
 
-        a:hover{
-            @extend %black;
-        }
-    }
-
-    .neighbours {
-
-        li {
-            display: contents;
-        }
-
-        .between {
-            margin: 0 5%;
-            display: initial;
+        a.active {
+            background-color: $secondary-color;
         }
     }
+}
 
-    table {
+.query {
+    font-weight: 600;
+    font-style: italic;
+}
 
-        tr {
-            display: flex;
-        }
+.total {
+    font-weight: bolder;
+}
 
-        td {
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            width: 2em;
-        }
-
-        th {
-            text-align: left;
-        }
-
-        .stop {
-            writing-mode: vertical-rl!important;
-            justify-content: flex-end;
-            align-items: center;
-            display: flex;
-            width: 2em;
-        }
-
-        th:not(.stop) {
-            width: 10%!important;
-        }
-    }
-
-    .paginator {
-        display: block;
-
-        .pages {
-            padding: 0;
-        
-            a {
-                list-style-type: none;
-                display: initial!important;
-                padding: 1% 2%;
-                background-color: $main-color;
-                color: #FFF;
-            }
-
-            a.active {
-                background-color: $secondary-color;
-            }
-        }
-    }
-
-    .query {
-        font-weight: 600;
-        font-style: italic;
-    }
-
-    .total {
-        font-weight: bolder;
-    }
-
-    /* footer */
-    footer {
-        @extend %alignment;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-    }
+/* footer */
+footer {
+    @extend %alignment;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
 
 
-    /* error page */
-    .error {
-        @extend %alignment;
-    }
+/* error page */
+.error {
+    @extend %alignment;
+}
 
 /* mobile style changes */
 @media screen and (max-device-width: 768px) {

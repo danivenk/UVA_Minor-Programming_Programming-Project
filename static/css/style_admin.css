@@ -4,8 +4,9 @@
 .admin, h1, footer, .error {
   text-align: center; }
 
-/* button border color inheritance */
-/* button when clicked inheritance */
+/* button border color mixin */
+/* button when clicked mixin */
+/* button mixin */
 body {
   margin: 0 !important;
   padding: 0 !important; }
@@ -20,6 +21,7 @@ body {
   min-height: 100vh;
   flex-direction: column; }
 
+/* admin bar at top of app */
 .admin {
   width: 100%;
   background-color: #0AE;
@@ -93,12 +95,14 @@ ul.nav-tabs {
     background-color: transparent;
     padding: 0; }
 
+/* reference see image_refs.txt in root */
 .icon-trash {
   background-image: url("../img/trashbin.svg");
   display: block;
   height: 30px;
   width: 30px; }
 
+/* reference see image_refs.txt in root */
 .icon-pencil {
   background-image: url("../img/pencil.svg");
   display: block;

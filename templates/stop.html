@@ -20,8 +20,11 @@
     <h1>{{ current_stop }}</h1>
     <hr>
     <div class="row">
+        <!-- show stop info, stopnumber and location -->
         <div class="col-sm-6">
             Stop Number:
+            
+            <!-- make sure no duplicates -->
             {% set stopnumber_text = [] %}
             {% for line in current_stop.lines %}
                 {% set stopnumber = current_stop.get_stopnumbers()[line] %}
@@ -34,19 +37,25 @@
             <br>
             Location: {{ current_stop.location }}
         </div>
+
+        <!-- show transfers at current stop -->
         <div class="col-sm-6">
             <ul>
                 <h2>Transfers</h2>
+                <!-- get neighbours of current stop -->
                 {% set neighbouring_stops = current_stop.get_neighbouring_stops() %}
                 {% for line, type_dict  in neighbouring_stops.items() %}
+                    <!-- show line link -->
                     <li>
                         <a href="{{ url_for('line', id=line.id) }}">{{ line }} ({{ current_stop.get_stopnumbers()[line] }})</a>
 
                     {% for type, neighbours in type_dict.items() %}
+                        <!-- show stop type -->
                         <li>
                             {{ type | title }}
                         </li>
 
+                        <!-- show neighbours for this stoptype -->
                         <ul class="neighbours">
                             {% if neighbours.previous %}
                                 <li>

@@ -19,13 +19,18 @@
 {% block content %}
     <h1>Lines</h1>
     <hr>
+
+    <!-- show links to all lines (50 per page) -->
     <ul class="row">
+        <!-- find lower and upper bound of lines list from current page number -->
         {% if page == 1 %}
             {% set lower = 0 %}
         {% else %}
             {% set lower = (page - 1) * 50 %}
         {% endif %}
         {% set upper = page * 50 %}
+
+        <!-- loop over lines list across interval -->
         {% for line in lines[lower:upper] %}
             <a class="card col-sm-3", href="{{ url_for('line', id=line.id) }}">
                 <li>{{ line }}</li>
@@ -33,12 +38,17 @@
         {% endfor %}
     </ul>
 
+    <!-- show links to other pages if more than 50 lines -->
     {% if lines | length > 50 %}
         <div class="paginator">
             <ul class="pages">
+                
+                <!-- show left page link if not at leftmost page -->
                 {% if page > 1 %}
                     <a href="{{ url_for('lines', page=page - 1) }}">&lt;</a>
                 {% endif %}
+
+                <!-- show links to all pages -->
                 {% for page_no in range(no_pages | int) %}
                     {% if page_no + 1 == page %}
                         <a class="active" href="{{ url_for('lines', page=page_no + 1) }}">{{ page_no + 1 }}</a>
@@ -46,6 +56,8 @@
                         <a href="{{ url_for('lines', page=page_no + 1) }}">{{ page_no + 1 }}</a>
                     {% endif %}
                 {% endfor %}
+                
+                <!-- show right page link if not at rightmost page -->
                 {% if no_pages > page %}
                     <a href="{{ url_for('lines', page=page + 1) }}">&gt;</a>
                 {% endif %}

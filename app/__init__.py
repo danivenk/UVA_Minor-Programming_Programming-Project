@@ -13,7 +13,8 @@ import sys
 # import modules if name is package
 if __name__ == "__package__":
 
-    # https://stackoverflow.com/a/16985066
+    # import from parent directory
+    #   https://stackoverflow.com/a/16985066
     PACKAGE_PARENT = '..'
     SCRIPT_DIR = os.path.dirname(os.path.realpath(
         os.path.join(os.getcwd(), os.path.expanduser(__file__))))

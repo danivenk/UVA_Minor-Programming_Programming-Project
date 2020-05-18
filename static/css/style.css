@@ -11,8 +11,9 @@ a.index, a.index .index:hover {
 .admin, h1, footer, .error {
   text-align: center; }
 
-/* button border color inheritance */
-/* button when clicked inheritance */
+/* button border color mixin */
+/* button when clicked mixin */
+/* button mixin */
 /* container style */
 #container {
   margin: 0 10% 0 10%;
@@ -23,6 +24,7 @@ a.index, a.index .index:hover {
   min-height: 100vh;
   flex-direction: column; }
 
+/* admin bar on top of app */
 .admin {
   width: 100%;
   background-color: #0AE;

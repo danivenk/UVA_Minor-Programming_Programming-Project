@@ -1,17 +1,21 @@
 <!--
-    admin/master.html
+    master layout for admin pages
+    extends from admin/base.html and imports admin/layout.html
 
     Dani van Enk, 11823526
 -->
+
 {% extends 'admin/base.html' %}
 {% import 'admin/layout.html' as layout with context -%}
 
+<!-- meta head of the layout -->
 {% block head_meta %}
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {% endblock %}
 
+<!-- css head of the layout -->
 {% block head_css %}
     <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,15 +27,23 @@
         rel="stylesheet">
 {% endblock %}
 
+<!-- head of the layout -->
 {% block head %}
     <script src="{{ url_for('static', filename='js/javascript.js') }}">
-    </script><!-- icon inclusion -->
+    </script>
+    
+    <!-- icon inclusion -->
     <link rel="icon" href="{{ url_for('static', filename='img/NI_icon.svg') }}">
 {% endblock %}
 
+
+<!-- body of the layout -->
 {% block page_body %}
+
     <!-- container of the page -->
     <div id="container">
+
+        <!-- admin bar with back to main side link -->
         <a href="{{ url_for('index') }}" class="admin">
             Return to Main side
         </a>
@@ -46,6 +58,8 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                
+                <!-- add the nav items -->
                 <div class="navbar-nav mr-auto" id="nav_menu">
                     {% set menu_items = admin_view.admin.menu() %}
                     {% for item in menu_items %}
@@ -58,7 +72,11 @@
                         {%- endif -%}
                     {% endfor %}
                 </div>
+
+                <!-- login/logged on part of the nav -->
                 <div class="navbar-nav">
+
+                    <!-- login form if not logged in -->
                     {% if not current_user.is_authenticated %}
                         <!-- show login screen in dropdown if not logged in -->
                         <a class="nav-item nav-link dropdown dropdown-toggle"
@@ -115,6 +133,8 @@
                                 </button>
                             </form>
                         </div>
+
+                    <!-- if logged in show welcome message and logout button -->
                     {% else %}
                         <div class="nav-item navbar-text">
                             Hi there, {{ current_user.username }} |
@@ -126,14 +146,18 @@
                         </a>
                     {% endif %}
             </div>
+
+            <!-- add some blocks also present in this block in admin/base.html -->
             {% block access_control %}
             {% endblock %}
         </nav>
 
+        <!-- add some blocks also present in this block in admin/base.html -->
         {% block messages %}
         {{ layout.messages() }}
         {% endblock %}
 
+        <!-- some logic also present in this block in admin/base.html -->
         {# store the jinja2 context for form_rules rendering logic #}
         {% set render_ctx = h.resolve_ctx() %}
 
@@ -148,6 +172,7 @@
     </div>
 {% endblock %}
 
+<!-- trailing js inclusions of layout -->
 {% block tail_js %}
     <!-- bootstrap scripts inclusion -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
