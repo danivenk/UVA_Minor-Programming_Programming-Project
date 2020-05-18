@@ -1,0 +1,9 @@
+Flask
+Flask-Admin
+Flask-Login
+Flask-Migrate
+Flask-Session
+Flask-SQLAlchemy
+
+Werkzeug
+SQLAlchemy
