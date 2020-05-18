@@ -101,6 +101,7 @@ If you wan't to use your own data use the following names for the data files in 
 * something_companies.csv   (columns: company,short_name,line)
 * something_lines.csv       (columns: line,stop,stopnumber-prefix,stoptype,company)
 * something_stops.csv       (columns: stop,line,stopnumber,location,stoptype)
+
 something can be changed to anything you like and the command will become `python load_data.py something`
 
 As long as you use the same style of files as in /data the application should be able to show it correctly.
