@@ -123,10 +123,10 @@
                                 </div>
                     
                                 <input type="hidden" name="page"
-                                    value="{{ request.url_rule }}">
+                                    value="{{ request.full_path }}">
                     
                                 <!-- register via this link -->
-                                <a href="{{ url_for('register', page=request.url_rule ) }}">
+                                <a href="{{ url_for('register', page=request.full_path ) }}">
                                     Sign Up
                                 </a>
                     
@@ -143,7 +143,7 @@
                             Hi there, {{ current_user.username }} |
                         </div>
                         <a class="nav-item nav-link"
-                                href="{{ url_for('logout', page=request.url_rule ) }}"
+                                href="{{ url_for('logout', page=request.full_path ) }}"
                                 role="button">
                             Logout
                         </a>
