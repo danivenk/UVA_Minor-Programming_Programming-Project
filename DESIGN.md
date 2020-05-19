@@ -38,12 +38,30 @@ To the left are links to the rest of the app and to the right is a search bar an
 The login form can be used to login, in the when someone is logged on it'll show the logout button.
 
 URLs linked to this are the /login and /logout URLs, they have a next_page parameter to return you to the page you came from.
-Loggin in and Loggin out is regulated in `app/application.py`.
+Loggin in and Loggin out is regulated in `app/application.py` and in `app/functions/security.py` are helpfunctions defined for password handling.
 
 ![Register page](doc/app_register.png)
 
 The register page can be used to register a new user, it has a back button to go back if you decide not to register.
 
-URLs linked to this are the /register URLs, they have a next_page parameter to return you to the page you came from.
-Registering is regulated in `app/application.py`.
+URLs linked to this is the /register URL, they have a next_page parameter to return you to the page you came from.
+Registering is regulated in `app/application.py` and in `app/functions/security.py` are helpfunctions defined for password handling.
+
+#### Search
+![Search Result page](doc/app_search.png)
+![Search Result page without macrons](doc/app_search_without_macron.png)
+![Search Result page line/stop name and Location](doc/app_line-stop_name_location.png)
+
+The searchbar described in `template/layout.html` can be used to look up Lines or Stops based on their names or Stops based on their location. Also the query can be written with or without [Macrons](https://en.wikipedia.org/wiki/Macron_(diacritic)).
+
+URLs linked to this os the /search URL, they have a page parameter to show a page at the time with max 50 items and a query parameter which is used for the search.
+The search is regulated in `app/application.py` and in `app/functions/search.py` are helpfunctions defined for handling the non macron queries and showing relevant items on the top of the results.
+
+![Search Result page multiple pages 1](doc/app_search_pages_1.png)
+![Search Result page multiple pages 2](doc/app_search_pages_2.png)
+![Search Result page multiple pages 3](doc/app_search_pages_3.png)
+
+Only 50 items per page are shown, this is described in `template/search.html`
+
+#### Stops
 
