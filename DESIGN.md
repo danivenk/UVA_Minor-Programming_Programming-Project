@@ -93,3 +93,20 @@ The stop page described in `template/stop.html` shows information about a stop. 
 
 URLs linked to this is the /stop URL, it has an id parameter which refers to the Stop id.
 The stoppage is regulated in `app/application.py` and uses the class methods of Stop and Line in the `app/models.py`.
+
+#### Admin
+
+![Admin Index Page](doc/app_admin_index.png)
+![Admin Tables 1](doc/app_admin_tables_1.png)
+![Admin Tables 2](doc/app_admin_tables_2.png)
+
+On the admin side of this app entries to the database can be added/edited/deleted, if you are admin of course.
+
+URLs linked to this are all /admin URLs.
+
+The layout of this is described in `templates/master.html` and the rest is based on the [Flask-Admin](https://github.com/flask-admin/flask-admin) code.
+
+#### Extras
+I worked really hard on getting the connections between the Stops and Lines correct. Also the methods used with the Stops and Lines were quite some work. Getting the whole application the same style was my goal the last time I used Flask-Admin and now it finally works.
+
+The `script/load_data.py` is maybe a little bit repetitive but the way it loads the data and links the rows is neat. (at least in my opinion)
