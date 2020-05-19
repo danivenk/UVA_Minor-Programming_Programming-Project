@@ -1,6 +1,6 @@
 # Network Information Application
 
-![Logo](doc/NI_icon.svg)
+![Logo](doc/NI_logo.svg)
 
 In this application a transport network can be set up. Once this is done separate lines can be shown with transfers at each stop. Also Separate stops can be shown with all connected lines. On the line page the stopping pattern of this line can be shown.
 

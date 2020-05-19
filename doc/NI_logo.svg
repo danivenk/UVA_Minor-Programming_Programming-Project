@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="NI_logo.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 111.125 33.866667"
+   height="128"
+   width="420">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="-9"
+     inkscape:window-x="-9"
+     inkscape:window-height="1001"
+     inkscape:window-width="1920"
+     units="px"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="98.043287"
+     inkscape:cx="297.28457"
+     inkscape:zoom="1.9780299"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="レイヤー 1">
+    <path
+       id="path34"
+       style="fill:#00ff00;stroke-width:0.705555"
+       d="m 29.676055,32.455637 a 2.8222222,2.8222222 0 0 0 2.779501,-2.822224 2.8222222,2.8222222 0 0 0 -2.822221,-2.822222 2.8222222,2.8222222 0 0 0 -2.44464,1.411112 H 14.111112 A 8.466667,8.466667 0 0 1 5.6444448,19.755637 V 6.6780536 A 2.8222222,2.8222222 0 0 0 7.0555558,4.2334135 2.8222222,2.8222222 0 0 0 4.2333335,1.411192 2.8222222,2.8222222 0 0 0 1.4111112,4.2334135 2.8222222,2.8222222 0 0 0 2.8222223,6.6780536 V 19.755637 A 11.288888,11.288888 0 0 0 14.111112,31.044525 h 13.078962 a 2.8222222,2.8222222 0 0 0 2.443261,1.411112 2.8222222,2.8222222 0 0 0 0.04272,0 z m -0.0069,-1.411112 a 1.4111111,1.4111111 0 0 1 -0.0014,0 1.4111111,1.4111111 0 0 1 -0.03445,0 1.4111111,1.4111111 0 0 1 -1.411112,-1.376662 1.4111111,1.4111111 0 0 1 0,-0.03445 1.4111111,1.4111111 0 0 1 1.411157,-1.411109 1.4111111,1.4111111 0 0 1 1.411112,1.411109 1.4111111,1.4111111 0 0 1 -1.375283,1.411112 z M 4.2691623,5.6445256 h -0.00138 -0.034451 A 1.4111111,1.4111111 0 0 1 2.8222223,4.2334135 1.4111111,1.4111111 0 0 1 4.2333335,2.8223015 1.4111111,1.4111111 0 0 1 5.6444448,4.2334135 1.4111111,1.4111111 0 0 1 4.2691623,5.6445256 Z" />
+    <path
+       d="m 4.1906143,1.4111919 c -1.541962,0.023343 -2.7796799,1.2800836 -2.7795031,2.8222224 -10e-8,1.5586703 1.2635519,2.8222222 2.8222223,2.8222222 1.0084699,1.87e-4 1.9404049,-0.5377504 2.4446398,-1.4111111 H 19.755557 c 4.676011,0 8.466666,3.7906559 8.466666,8.4666666 v 13.077583 a 2.8222221,2.8222221 0 0 1 1.411112,-0.377582 2.8222221,2.8222221 0 0 1 1.411111,0.377582 V 14.111192 c 0,-6.2346811 -5.054208,-11.2888893 -11.288889,-11.2888889 H 6.6765952 C 6.1726064,1.9493688 5.2413111,1.4114971 4.2333335,1.4111919 c -0.01424,-1.077e-4 -0.02848,-1.077e-4 -0.042719,0 z m 0.00689,1.4111112 h 0.00138 c 0.011482,-1.402e-4 0.022967,-1.402e-4 0.03445,0 0.7660771,-2.284e-4 1.3924081,0.6108114 1.4111111,1.3766602 1.402e-4,0.011483 1.402e-4,0.022968 0,0.034451 10e-8,0.7793351 -0.631776,1.4111112 -1.4111111,1.4111111 C 3.4539991,5.6445255 2.822223,5.0127494 2.8222231,4.2334143 2.8219754,3.4678594 3.4321964,2.841741 4.1975043,2.8223031 Z M 31.339346,27.385835 a 2.8222221,2.8222221 0 0 1 0.02894,0.02205 c -0.0096,-0.0075 -0.01926,-0.0147 -0.02894,-0.02205 z m -3.934299,0.516764 c -0.0086,0.01113 -0.01772,0.02182 -0.02618,0.03307 a 2.8222221,2.8222221 0 0 1 0.02618,-0.03307 z m -0.376205,2.815332 c 0.0039,0.0094 0.0084,0.01824 0.0124,0.02756 a 2.8222221,2.8222221 0 0 1 -0.0124,-0.02756 z m 3.71657,1.507574 a 2.8222221,2.8222221 0 0 1 -0.02756,0.0124 c 0.0094,-0.0039 0.01824,-0.0084 0.02756,-0.0124 z"
+       style="fill:#ff0000;stroke-width:0.705555"
+       id="rect19" />
+    <path
+       d="m 29.590615,1.4112728 a 2.8222222,2.8222222 0 0 0 -2.779501,2.8222223 2.8222222,2.8222222 0 0 0 0.05099,0.5277886 L 4.7625002,26.860885 a 2.8222222,2.8222222 0 0 0 -0.5291667,-0.0496 2.8222222,2.8222222 0 0 0 -0.04272,0 2.8222222,2.8222222 0 0 0 -2.7795023,2.82221 2.8222222,2.8222222 0 0 0 2.8222223,2.822225 2.8222222,2.8222222 0 0 0 2.8222223,-2.822225 2.8222222,2.8222222 0 0 0 -0.1543403,-0.920528 L 28.712804,6.9013771 a 2.8222222,2.8222222 0 0 0 0.920531,0.1543402 2.8222222,2.8222222 0 0 0 2.822221,-2.8222222 2.8222222,2.8222222 0 0 0 -2.822221,-2.8222223 2.8222222,2.8222222 0 0 0 -0.04272,0 z m 0.0069,1.4111111 a 1.4111111,1.4111111 0 0 1 0.0014,0 1.4111111,1.4111111 0 0 1 0.03445,0 1.4111111,1.4111111 0 0 1 1.411112,1.4111112 1.4111111,1.4111111 0 0 1 -1.411157,1.411111 1.4111111,1.4111111 0 0 1 -1.411112,-1.411111 1.4111111,1.4111111 0 0 1 1.375283,-1.4111112 z M 4.1975044,28.222386 a 1.4111111,1.4111111 0 0 1 0.00138,0 1.4111111,1.4111111 0 0 1 0.034451,0 1.4111111,1.4111111 0 0 1 1.4111088,1.411109 1.4111111,1.4111111 0 0 1 -1.4111107,1.411112 1.4111111,1.4111111 0 0 1 -1.4111112,-1.411112 1.4111111,1.4111111 0 0 1 1.3752821,-1.411109 z"
+       style="fill:#0000ff;stroke-width:0.6652"
+       id="rect83" />
+    <g
+       aria-label="NI"
+       id="text72"
+       style="font-style:normal;font-weight:normal;font-size:25.2956px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.66097;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <g
+         id="g848"
+         style="opacity:1">
+        <path
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:'UD Digi Kyokasho NK-B';-inkscape-font-specification:'UD Digi Kyokasho NK-B';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.66097;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+           d="M 15.031207,21.101926 14.833585,8.7505583 c 0,-0.3623068 0.123514,-0.6546225 0.370541,-0.8769471 0.32937,-0.3046671 0.761668,-0.4570006 1.296894,-0.4570006 0.601099,0 1.062217,0.1852705 1.383353,0.5558115 0.189387,0.2223246 0.284081,0.4817033 0.284081,0.7781362 V 24.128011 c 0,0.658739 -0.172919,1.202199 -0.518757,1.63038 -0.370541,0.452884 -0.885182,0.679326 -1.543921,0.679326 -1.021047,0 -1.823886,-0.506406 -2.408517,-1.519219 L 5.8788435,11.430805 6.0764654,25.091418 c 0,0.395243 -0.1358651,0.708145 -0.4075952,0.938704 -0.3293698,0.288198 -0.7534334,0.432297 -1.2721908,0.432297 -0.6669739,0 -1.1527943,-0.222324 -1.4574614,-0.666973 C 2.8074701,25.597824 2.7415961,25.363148 2.7415961,25.091418 V 9.8868841 c 0,-0.9798752 0.4322979,-1.7003717 1.2968936,-2.1614894 0.403478,-0.2140903 0.8522444,-0.3211355 1.3462991,-0.3211355 1.1774971,0 2.0914983,0.5681629 2.7420036,1.7044887 z"
+           id="path850" />
+        <path
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:'UD Digi Kyokasho NK-B';-inkscape-font-specification:'UD Digi Kyokasho NK-B';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.66097;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+           d="m 5.3847656,6.0742188 c -0.6862358,-10e-8 -1.3686073,0.1570831 -1.9707031,0.4765624 h -0.00195 C 2.2022321,7.1960492 1.4101563,8.5155245 1.4101562,9.8867188 V 25.091797 c 10e-8,0.486758 0.1340077,1.009605 0.421875,1.441406 l 0.00391,0.0078 0.00586,0.0059 c 0.5605513,0.818101 1.5920507,1.246094 2.5546875,1.246094 0.7609974,0 1.5478462,-0.24738 2.1367187,-0.757813 C 7.0858565,26.561276 7.40625,25.788507 7.40625,25.091797 v -0.0098 l -0.1230469,-8.578125 5.2636719,9.082032 c 0.752561,1.301902 2.09855,2.18164 3.558594,2.18164 0.963642,0 1.958987,-0.414066 2.574219,-1.166016 l 0.002,-0.0039 0.0039,-0.0039 c 0.555397,-0.687635 0.8125,-1.57327 0.8125,-2.464844 V 8.75 c 0,-0.5797764 -0.222886,-1.1960911 -0.601563,-1.640625 l -0.0039,-0.00391 -0.002,-0.00391 C 18.30041,6.420546 17.37644,6.0859375 16.501953,6.0859375 c -0.784146,0 -1.598955,0.2630446 -2.191406,0.8066406 C 13.800464,7.3556725 13.503906,8.0881609 13.503906,8.75 v 0.011719 L 13.619141,15.982422 9.28125,8.4472656 9.2792969,8.4453125 C 8.456557,7.0100017 6.9893232,6.0742187 5.3847656,6.0742188 Z M 16.501953,8.7480469 c 0.292188,0 0.295926,0.03705 0.335938,0.085937 V 24.128906 c 0,0.422715 -0.08618,0.619175 -0.220703,0.78711 -0.04716,0.05763 -0.149787,0.04333 -0.19336,0.07227 l -0.0625,-3.908203 -0.195312,-12.2460936 c 0.05552,-0.04661 0.09525,-0.085937 0.335937,-0.085937 z M 5.9257812,8.8574219 c 0.3908245,0.1118834 0.7129878,0.3288632 1.046875,0.9121093 v 0.00195 L 15.755859,25.027344 c -0.334548,-0.07186 -0.595049,-0.234315 -0.90625,-0.773438 v -0.002 z M 4.515625,9.1464844 4.7441406,25.041016 c -0.060455,0.04879 -0.1086549,0.0918 -0.3476562,0.0918 -0.3352245,0 -0.2946914,-0.0269 -0.3242188,-0.08203 V 9.8867188 c 0,-0.4408609 0.2044862,-0.5617095 0.4433594,-0.7402344 z"
+           id="path852" />
+      </g>
+      <g
+         id="g854"
+         style="opacity:1">
+        <path
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:'UD Digi Kyokasho NK-B';-inkscape-font-specification:'UD Digi Kyokasho NK-B';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.66097;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+           d="m 24.751733,10.245074 h -1.852705 c -0.271731,0 -0.50229,-0.09058 -0.691677,-0.2717303 -0.263496,-0.2470274 -0.395244,-0.5846315 -0.395244,-1.0128122 0,-0.5105232 0.177036,-0.8810642 0.531109,-1.1116231 0.156451,-0.1070452 0.341721,-0.1605678 0.555812,-0.1605678 h 7.126739 c 0.279964,0 0.518757,0.090577 0.716379,0.2717301 0.255261,0.2387931 0.382892,0.5763972 0.382892,1.0128122 0,0.5022889 -0.177036,0.87283 -0.531108,1.1116231 -0.156451,0.107045 -0.345838,0.160568 -0.568163,0.160568 h -1.840354 v 13.351828 h 1.840354 c 0.279964,0 0.518757,0.09058 0.716379,0.27173 0.255261,0.238793 0.382892,0.576397 0.382892,1.012812 0,0.502289 -0.177036,0.87283 -0.531108,1.111623 -0.156451,0.107045 -0.345838,0.160568 -0.568163,0.160568 h -7.126739 c -0.271731,0 -0.50229,-0.09058 -0.691677,-0.27173 -0.263496,-0.238793 -0.395244,-0.576397 -0.395244,-1.012812 0,-0.510523 0.177036,-0.881064 0.531109,-1.111623 0.156451,-0.107045 0.341721,-0.160568 0.555812,-0.160568 h 1.852705 z"
+           id="path856" />
+        <path
+           id="path858"
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:'UD Digi Kyokasho NK-B';-inkscape-font-specification:'UD Digi Kyokasho NK-B';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10.0572;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+           d="m 86.544922,24.027344 c -1.627839,0 -3.414748,0.484795 -4.878906,1.46875 -2.729832,1.807099 -4.251953,5.297236 -4.251954,8.371094 0,2.644445 1.025146,5.553243 3.070313,7.478515 1.583705,1.501361 3.92683,2.40625 6.060547,2.40625 h 1.978516 v 40.402344 h -1.978516 c -1.630107,0 -3.421449,0.489792 -4.886719,1.476562 -2.724317,1.808788 -4.24414,5.29271 -4.244141,8.363282 0,2.640978 1.030935,5.565074 3.123047,7.492189 1.583097,1.47921 3.891591,2.39258 6.007813,2.39258 h 26.937498 c 1.63996,0 3.46319,-0.45491 4.9668,-1.47657 2.68793,-1.81801 4.21484,-5.288533 4.21484,-8.365231 0,-2.629859 -0.96018,-5.553403 -3.04101,-7.5 l -0.0137,-0.01367 -0.0234,-0.01563 c -1.61885,-1.48394 -3.96079,-2.353515 -6.10352,-2.353515 h -1.92773 V 43.751953 h 1.92773 c 1.6422,0 3.46983,-0.457807 4.97461,-1.482422 2.68255,-1.819608 4.20703,-5.284027 4.20703,-8.357422 0,-2.629861 -0.96017,-5.553403 -3.04101,-7.5 l -0.0137,-0.01367 -0.0234,-0.02344 c -1.61885,-1.483939 -3.96079,-2.347656 -6.10352,-2.347656 z m 12.033203,10.0625 h 2.923825 v 59.726562 h -2.923825 z"
+           transform="scale(0.26458334)" />
+      </g>
+    </g>
+    <text
+       id="text842"
+       y="13.675203"
+       x="34.197395"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.661458;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'UD Digi Kyokasho NK-B';-inkscape-font-specification:'UD Digi Kyokasho NK-B';stroke:#000000;stroke-width:0.661458;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         y="13.675203"
+         x="34.197395"
+         id="tspan840"
+         sodipodi:role="line">Network</tspan><tspan
+         id="tspan844"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'UD Digi Kyokasho NK-B';-inkscape-font-specification:'UD Digi Kyokasho NK-B';stroke:#000000;stroke-width:0.661458;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         y="28.175566"
+         x="34.197395"
+         sodipodi:role="line">   Information</tspan></text>
+  </g>
+</svg>

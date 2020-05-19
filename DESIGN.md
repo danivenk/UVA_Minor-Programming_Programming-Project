@@ -1,5 +1,7 @@
 # Design
 
+![Logo](doc/NI_logo.svg)
+
 ## Technical Components
 Admin section to change/add parts of the Transport Network to the database;
 * Using FlaskLogin and FlaskAdmin this can be achieved
