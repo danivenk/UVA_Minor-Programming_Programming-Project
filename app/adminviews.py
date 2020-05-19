@@ -75,7 +75,6 @@ class AdminView(ModelView):
 
     # excludes from columns and forms
     column_exclude_list = ["password"]
-    form_exclude_columns = ["Order"]
 
     def is_accessible(self):
         """

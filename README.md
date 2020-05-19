@@ -4,6 +4,8 @@
 
 In this application a transport network can be set up. Once this is done separate lines can be shown with transfers at each stop. Also Separate stops can be shown with all connected lines. On the line page the stopping pattern of this line can be shown.
 
+For the installation go to the [Installation Section](#installation)
+
 ## Problem statement
 
 Private and public transport networks all have a site where you can look up lines, transfers and plan your route along the network. People who play transport games (like City Skylines, Simutrans, Open TTD) sometimes want to visualize their network just like the networks in real life. There are tools on the internet which can help create route maps etc, for most players this is enough. But some players go as far as wanting to create a wikipedia like site about their network.
@@ -104,7 +106,8 @@ If you wan't to use your own data use the following names for the data files in 
 
 something can be changed to anything you like and the command will become `python load_data.py something`
 
-As long as you use the same style of files as in /data the application should be able to show it correctly.
+As long as you use the same style of files as in data/ the application should be able to show it correctly.
+The same naming scheme and column order is important.
 
 ## Acknowledgements
 

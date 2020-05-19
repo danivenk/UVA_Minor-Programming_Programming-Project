@@ -288,23 +288,6 @@ class Line(db.Model):
 
         return stops, stops_full_width, correct_order
 
-    def check_stopnumber_prefix(self, prefix):
-        """
-        check if stop_prefix is present in prefix
-
-        parameters:
-            prefix  - stopnumber/prefix to check;
-
-        return True if present else false
-        """
-
-        # loop over stop_prefix in stopnumber_prefix and check if prefix in it
-        for stop_prefix in self.stopnumber_prefix.split(";"):
-            if stop_prefix in prefix:
-                return True
-
-        return False
-
     def __repr__(self):
         """
         returns the representation of the Line class
@@ -320,9 +303,9 @@ class Line(db.Model):
 
 class Company(db.Model):
     """
-    The Line Class defines a line and is based of db.Model
+    The Company Class defines a company and is based of db.Model
 
-    tablename: lines
+    tablename: companies
 
     columns:
         id          - company id;

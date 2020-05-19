@@ -12,7 +12,7 @@ import shlex
 import math
 
 from flask import Flask, abort, request, render_template, session, escape, \
-                  redirect
+                  redirect, url_for
 from flask_session import Session
 from flask_migrate import Migrate
 from flask_admin import Admin
@@ -132,6 +132,10 @@ def search():
     # get page number
     page = request.args.get('page', None)
 
+    # make sure page is defined
+    if not page:
+        page = 1
+
     # check if page is integer else abort 404
     try:
         page = int(page)
@@ -140,6 +144,10 @@ def search():
 
     # get search query
     search_query = request.args.get('search', None)
+
+    # if no query given query an empty string
+    if not search_query:
+        search_query = ""
 
     # split query in subqueries and get list of relevant queries/sub queries
     queries = shlex.split(search_query)
@@ -214,6 +222,10 @@ def lines():
     # get page number
     page = request.args.get('page', None)
 
+    # make sure page is defined
+    if not page:
+        page = 1
+
     # check if page is integer else abort 404
     try:
         page = int(page)
@@ -249,6 +261,10 @@ def line():
     line_id = request.args.get('id', None)
     current_line = Line.query.get(line_id)
 
+    # abort 404 if no line found
+    if not current_line:
+        abort(404, f"Line id {line_id} not found")
+
     return render_template("line.html", current_line=current_line)
 
 
@@ -269,6 +285,10 @@ def stops():
 
     # get page number
     page = request.args.get('page', None)
+
+    # make sure page is defined
+    if not page:
+        page = 1
 
     # check if page is integer else abort 404
     try:
@@ -304,6 +324,10 @@ def stop():
     # get stop_id and get stop from that id
     stop_id = request.args.get('id', None)
     current_stop = Stop.query.get(stop_id)
+
+    # abort 404 if no stop found
+    if not current_stop:
+        abort(404, f"Stop id {stop_id} not found")
 
     return render_template("stop.html", current_stop=current_stop)
 
@@ -378,7 +402,12 @@ def register():
         # remove registering user from session
         session.pop("register_user", None)
 
-        return redirect(next_page, 303)
+        # make sure to not go to /None
+        if next_page:
+            return redirect(next_page, 303)
+        else:
+            return redirect(url_for("index"), 303)
+
     elif request.method == "GET":
         return render_template("register.html", last=next_page)
 
@@ -422,9 +451,13 @@ def login():
     if security.compare_hash(user_login.password, password):
         login_user(user_login)
     else:
-        abort(403)
+        abort(403, "Wrong Credentials")
 
-    return redirect(next_page, 303)
+    # make sure to not go to /None
+    if next_page:
+        return redirect(next_page, 303)
+    else:
+        return redirect(url_for("index"), 303)
 
 
 @app.route("/logout", methods=["GET"])
@@ -449,7 +482,11 @@ def logout():
     # logout user
     logout_user()
 
-    return redirect(next_page, 303)
+    # make sure to not go to /None
+    if next_page:
+        return redirect(next_page, 303)
+    else:
+        return redirect(url_for("index"), 303)
 
 
 @app.errorhandler(HTTPException)
