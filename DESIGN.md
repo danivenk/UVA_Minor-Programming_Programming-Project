@@ -54,7 +54,7 @@ Registering is regulated in `app/application.py` and in `app/functions/security.
 
 The searchbar described in `template/layout.html` can be used to look up Lines or Stops based on their names or Stops based on their location. Also the query can be written with or without [Macrons](https://en.wikipedia.org/wiki/Macron_(diacritic)).
 
-URLs linked to this os the /search URL, they have a page parameter to show a page at the time with max 50 items and a query parameter which is used for the search.
+URLs linked to this is the /search URL, they have a page parameter to show a page at the time with max 50 items and a query parameter which is used for the search.
 The search is regulated in `app/application.py` and in `app/functions/search.py` are helpfunctions defined for handling the non macron queries and showing relevant items on the top of the results.
 
 ![Search Result page multiple pages 1](doc/app_search_pages_1.png)
@@ -63,5 +63,33 @@ The search is regulated in `app/application.py` and in `app/functions/search.py`
 
 Only 50 items per page are shown, this is described in `template/search.html`
 
-#### Stops
+#### Lines/Stops
+![Lines page](doc/app_lines.png)
+![Stops page](doc/app_stops.png)
 
+The lines/stops lists described in `template/lines.html` & `template/stops.html` show a list of all the lines/stops in the database. Just like on the search page only 50 items per page are shown.
+
+URLs linked to this are the /lines and /search URLs, they have a page parameter to show a page at the time with max 50 items.
+What's shown on the page is regulated in `app/application.py`.
+
+
+#### Line/Stop
+![Line page 1](doc/app_line_1.png)
+![Line page 2](doc/app_line_2.png)
+![Line page 3](doc/app_line_3.png)
+![Line page 4](doc/app_line_4.png)
+![Line page 5](doc/app_line_5.png)
+![Line page 6](doc/app_line_6.png)
+
+The line page described in `template/line.html` shows information about a line. It shows the end stops and the number of stops in a line. It also shows the stopping pattern and the transfers per stop.
+
+URLs linked to this is the /line URL, it has an id parameter which refers to the Line id.
+The linepage is regulated in `app/application.py` and uses the class methods of Stop and Line in the `app/models.py`.
+
+![Stop page 1](doc/app_stop_1.png)
+![Stop page 2](doc/app_stop_2.png)
+
+The stop page described in `template/stop.html` shows information about a stop. It shows the line numbers and the Transfers. Per Transfer it shows the neighbours per stop type (Local, Rapid etc)
+
+URLs linked to this is the /stop URL, it has an id parameter which refers to the Stop id.
+The stoppage is regulated in `app/application.py` and uses the class methods of Stop and Line in the `app/models.py`.
