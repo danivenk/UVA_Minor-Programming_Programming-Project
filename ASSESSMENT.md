@@ -2,12 +2,15 @@
 
 ![Logo](doc/NI_logo.svg)
 
-Code
-    Cleaness of the Code
-    Database design
+# Things I'm proud of
+Search bar
+Consistent style over both the admin side and the main side
+Displaying the correct neighbours per stoptype
+Displaying the stopping pattern
+Getting the correct stopping order from the database and returning a list of stopobjects in the correct order from that.
 
-Interactieontwerp — In hoeverre is het product goed bruikbaar voor “anderen”? Er wordt gekeken naar een coherente uitwerking van een idee, maar vooral naar de wijze waarop de website een goede ervaring geeft voor nieuwe en bestaande gebruikers. Te denken valt aan eenvoudig kunnen “ontdekken” van functionaliteit, layout die eenvoudige bediening mogelijk maakt, goede bruikbaarheid voor mensen met een fysieke beperking.
+The data itself, worked way to long to assemble it (about 2 days straight 11AM to past midnight). Probably because I wanted to use the correct location for each of the 103 stops
 
-Repository — In hoeverre is de repository compleet en netjes? We kijken naar het gebruik van de repository én van GitHub zoals dit bedoeld is. Te denken valt aan de indeling van de repository, de vindbaarheid van documentatie en onderdelen van de code, maar ook naar de regelmaat van committen en pushen, en het netjes afvinken van “issues” op GitHub. Een groot probleem is het “opnieuw beginnen” van een repository. Dit moet te allen tijde worden voorkomen.
+The logo although made pretty quickly, it looks quite nice IMO.
 
-Projectdocumentatie — In hoeverre is het project goed gedocumenteerd? We kijken naar de algemene beschrijving van het project in de README.md, de screencast, de technische beschrijving in DESIGN.md en de beschrijving van de voortgang in PROCESS.md. Te denken valt aan duidelijk geschreven teksten en nette diagrammen, expliciete links naar belangrijke onderdelen van de code en het up-to-date zijn met het daadwerkelijke eindproduct.
+Making the Documentation look good, I mean I really wanna do things correct (as with the comments and docstrings in the files)
