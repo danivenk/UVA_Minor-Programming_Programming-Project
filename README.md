@@ -111,6 +111,7 @@ The same naming scheme and column order is important.
 
 ## Screen Cast
 [![Link to video of Screen Cast](doc/thumbnail.png)](http://www.youtube.com/watch?v=lgFgQpXRvLE "Screen Cast")
+
 Literal embed didn't work so this is a thumbnail link to the youtube video
 
 ## Acknowledgements
