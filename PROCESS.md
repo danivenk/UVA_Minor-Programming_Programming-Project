@@ -81,7 +81,7 @@ So decided to use the same method in the Books Project, since I know that method
 
 ## Committed on May 17 2020
 ### Added macron query and pages
-I decided to add the macron_query because not all users will know how to add a macron to a vowel in a search query and people should be able to still search. I won't change the database entries to macron less entries because the aesthetics, the English names in Japan are with them so I have the entries with them.
+I decided to add the macron_query because not all users will know how to add a [Macrons](https://en.wikipedia.org/wiki/Macron_(diacritic)) to a vowel in a search query and people should be able to still search. I won't change the database entries to macron less entries because the aesthetics, the English names in Japan are with them so I have the entries with them.
 
 I also decided to add pages to the lists (/lines, /stops and /search) because this way the lists won't go on for forever and this will make them loop more organized. This does also mean I have to add links to the other pages of the same list. The maximum number of items per list will be 50.
 
@@ -100,4 +100,8 @@ Nothing Special
 Nothing Special
 
 ### DESIGN document update
+Nothing Special
+
+## Committed on May 20 2020
+### Finishing the project
 Nothing Special
