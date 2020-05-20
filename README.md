@@ -109,6 +109,9 @@ something can be changed to anything you like and the command will become `pytho
 As long as you use the same style of files as in data/ the application should be able to show it correctly.
 The same naming scheme and column order is important.
 
+## Screen Cast
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lgFgQpXRvLE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Acknowledgements
 
 * [Flask-Admin](https://github.com/flask-admin/flask-admin)                         - for the admin base template (in /templates/admin/)
