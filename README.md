@@ -123,4 +123,4 @@ Literal embed didn't work so this is a thumbnail link to the youtube video
 * [Edit/Pencil](https://pixabay.com/vectors/edit-icon-pencil-icon-pencil-2375785/)  - for the edit/pencil icon (in style_admin.scss)
 * CS50x University of Amsterdam/Harvard                                             - for the error handler (in /app/application.py)
 
-Dani van Enk, 2020
+Dani van Enk, Hakkajiten, 2020
