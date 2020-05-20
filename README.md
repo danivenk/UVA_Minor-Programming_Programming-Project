@@ -110,7 +110,8 @@ As long as you use the same style of files as in data/ the application should be
 The same naming scheme and column order is important.
 
 ## Screen Cast
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lgFgQpXRvLE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Link to video of Screen Cast](doc/thumbnail.png)](http://www.youtube.com/watch?v=lgFgQpXRvLE "Screen Cast")
+Literal embed didn't work so this is a thumbnail link to the youtube video
 
 ## Acknowledgements
 
