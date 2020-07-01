@@ -15,7 +15,7 @@ references:
 from flask_sqlalchemy import SQLAlchemy, event
 from flask_login import AnonymousUserMixin
 
-from .functions import security as s
+from functions import security as s
 
 # define SQLAlchemy
 db = SQLAlchemy()

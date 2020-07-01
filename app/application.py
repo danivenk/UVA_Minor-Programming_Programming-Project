@@ -21,10 +21,10 @@ from werkzeug.exceptions import default_exceptions, HTTPException
 
 from sqlalchemy import or_
 
-from .models import db, User, AnonymousUser, Stop, Line, Company
-from .adminviews import AdminUserIndexView, AdminView, NetworkView
-from .functions.search import relevance_query, macron_query
-from .functions import security
+from models import db, User, AnonymousUser, Stop, Line, Company
+from adminviews import AdminUserIndexView, AdminView, NetworkView
+from functions.search import relevance_query, macron_query
+from functions import security
 
 # Configure Flask app
 app = Flask(__name__, root_path=os.getcwd())
