@@ -210,3 +210,5 @@ $RECYCLE.BIN/
 
 # libre-office lock files
 .~lock.*
+
+/video

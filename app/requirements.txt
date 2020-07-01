@@ -7,3 +7,5 @@ Flask-SQLAlchemy
 
 Werkzeug
 SQLAlchemy
+
+gunicorn
