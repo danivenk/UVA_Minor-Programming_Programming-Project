@@ -7,5 +7,6 @@ Flask-SQLAlchemy
 
 Werkzeug
 SQLAlchemy
+psycopg2
 
 gunicorn
